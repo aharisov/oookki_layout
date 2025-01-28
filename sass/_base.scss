@@ -1,0 +1,17 @@
+// Base Styles
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-stack;
+    background-color: #f4f4f4;
+    color: #333;
+}
+  
+h1, h2, h3, h4, h5, h6 {
+    color: $primary-color;
+}
+  
+p {
+    line-height: 1.6;
+}
+  
