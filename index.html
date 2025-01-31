@@ -9,101 +9,146 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
+    <header class="flex">
         <div class="cont">
-            <div class="header__inner">
-                <a href="/" class="header__logo"><img src="images/logo.svg" alt="OOOKKI" title="OOOKKI"></a>
+            <div class="header__inner flex">
+                <a href="/" class="header__logo"><img src="images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
                 <div class="header__search">
                     <form action="">
                         <input type="text" placeholder="Recherchez des produits essentiels ...">
                         <button type="submit" title="Rechercher"></button>
                     </form>
                 </div>
-                <div class="header__buttons">
-                    <div class="btn btn-search js-open-search">
-                        <img src="images/ic-search.svg" alt="Rechercher" title="Rechercher">
+                <div class="right flex">
+                    <div class="header__buttons flex">
+                        <div class="header-btn btn-search js-open-search">
+                            <img src="images/ic-search.svg" alt="Rechercher" title="Rechercher">
+                        </div>
+                        <a href="" class="header-btn btn-cart">
+                            <img src="images/ic-cart.svg" alt="Panier" title="Panier">
+                            <i class="cnt">0</i>
+                            <span>Panier</span>
+                        </a>
+                        <a href="" class="header-btn btn-login">
+                            <img src="images/ic-person.svg" alt="Connexion" title="Connexion">
+                            <span>Connexion</span>
+                        </a>
                     </div>
-                    <a href="" class="btn btn-login">
-                        <img src="images/ic-person.svg" alt="Connexion" title="Connexion">
-                        <span>Connexion</span>
-                    </a>
-                    <a href="" class="btn btn-cart">
-                        <img src="images/ic-cart.svg" alt="Panier" title="Panier">
-                        <span>Panier</span>
-                        <i class="cnt">0</i>
-                    </a>
-                </div>
-                <div class="btn btn-mobile js-open-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <button
+                        aria-label="Ouvrir le menu principal"
+                        class="btn-mobile js-open-menu"
+                        onClick=""
+                    >
+                        <div class="bar-one"></div>
+                        <div class="bar-two"></div>
+                        <div class="bar-three"></div>
+                    </button>
                 </div>
             </div>
             <nav class="main-menu">
-                <div class="btn-close js-close-menu"></div>
-                <ul>
+                <ul class="main-menu__inner flex">
                     <li class="main-menu__parent">
-                        <a href="">Abonnements</a>
-                        <ul class="main-menu__dropdown">
-                            <li><a href="">Tous les forfaits</a></li>
-                            <li><a href="">Forfait OOOKKI 5G</a></li>
-                            <li><a href="">Séries OOOKKI</a></li>
-                            <li><a href="">Forfait Low-cost</a></li>
-                            <li><a href="">Forfait flexible</a></li>
-                        </ul>
+                        <span>Abonnements</span>
+                        <div class="main-menu__dropdown">
+                            <ul>
+                                <li><a href="">Tous les forfaits</a></li>
+                                <li><a href="">Forfait OOOKKI 5G</a></li>
+                                <li><a href="">Séries OOOKKI</a></li>
+                                <li><a href="">Forfait Low-cost</a></li>
+                                <li><a href="">Forfait flexible</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="main-menu__parent">
-                        <a href="">Mobiles</a>
-                        <ul class="main-menu__dropdown">
-                            <li><a href="">Tous les mobiles</a></li>
-                            <li><a href="">Bons plans</a></li>
-                            <li><a href="">Smartphones 5G</a></li>
-                            <li><a href="">Comparer</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">TV & Audio</a></li>
-                    <li class="main-menu__parent">
-                        <a href="">Informatique</a>
-                        <ul class="main-menu__dropdown">
-                            <li><a href="">Tous les laptops</a></li>
-                            <li><a href="">Samsung</a></li>
-                            <li><a href="">Apple</a></li>
-                            <li><a href="">Acer</a></li>
-                            <li><a href="">Oookki</a></li>
-                        </ul>
+                        <span>Mobiles</span>
+                        <div class="main-menu__dropdown">
+                            <ul>
+                                <li><a href="">Tous les mobiles</a></li>
+                                <li><a href="">Bons plans</a></li>
+                                <li><a href="">Smartphones 5G</a></li>
+                                <li><a href="">Comparer</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="main-menu__parent">
-                        <a href="">Accessoires</a>
-                        <ul class="main-menu__dropdown">
-                            <li><a href="">Tous les laptops</a></li>
-                            <li><a href="">Samsung</a></li>
-                            <li><a href="">Apple</a></li>
-                            <li><a href="">Acer</a></li>
-                            <li><a href="">Oookki</a></li>
-                        </ul>
+                        <span>TV & Audio</span>
+                        <div class="main-menu__dropdown">
+                            <ul>
+                                <li><a href="">Tous les TV & Audio</a></li>
+                                <li><a href="">Samsung</a></li>
+                                <li><a href="">Apple</a></li>
+                                <li><a href="">Acer</a></li>
+                                <li><a href="">Oookki</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     </li>
                     <li class="main-menu__parent">
-                        <a href="">Consoles</a>
-                        <ul class="main-menu__dropdown">
-                            <li><a href="">Tous les consoles</a></li>
-                            <li><a href="">XBOX</a></li>
-                            <li><a href="">SONY</a></li>
-                            <li><a href="">Nitendo</a></li>
-                        </ul>
+                        <span>Informatique</span>
+                        <div class="main-menu__dropdown">
+                            <ul>
+                                <li><a href="">Tous les laptops</a></li>
+                                <li><a href="">Samsung</a></li>
+                                <li><a href="">Apple</a></li>
+                                <li><a href="">Acer</a></li>
+                                <li><a href="">Oookki</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main-menu__parent">
+                        <span>Accessoires</span>
+                        <div class="main-menu__dropdown">
+                            <ul>
+                                <li><a href="">Tous les laptops</a></li>
+                                <li><a href="">Samsung</a></li>
+                                <li><a href="">Apple</a></li>
+                                <li><a href="">Acer</a></li>
+                                <li><a href="">Oookki</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main-menu__parent">
+                        <span>Consoles</span>
+                        <div class="main-menu__dropdown">
+                            <ul>
+                                <li><a href="">Tous les consoles</a></li>
+                                <li><a href="">XBOX</a></li>
+                                <li><a href="">SONY</a></li>
+                                <li><a href="">Nitendo</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="top-slider swiper">
+    <div class="top-slider swiper mb-common">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/home/slider-pic1.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/home/slider-pic2.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/home/slider-pic3.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/home/slider-pic4.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/home/slider-pic5.jpg" alt=""></div>
-            <div class="swiper-slide"><img src="images/home/slider-pic6.jpg" alt=""></div>
+            <div class="swiper-slide">
+                <img src="images/home/slider-pic1.jpg" alt="" loading="lazy" />
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="images/home/slider-pic2.jpg" alt="" loading="lazy" />
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="images/home/slider-pic3.jpg" alt="" loading="lazy" />
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="images/home/slider-pic4.jpg" alt="" loading="lazy" />
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="images/home/slider-pic5.jpg" alt="" loading="lazy" />
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="images/home/slider-pic6.jpg" alt="" loading="lazy" />
+                <div class="swiper-lazy-preloader"></div>
+            </div>
         </div>
         <div class="swiper-pagination"></div>
       
@@ -113,102 +158,124 @@
 
     <main>
         <!-- home packages -->
-        <section class="home-packs home-section">
+        <section class="home-packs home-section mb-common">
             <div class="cont">
-                <h2>Offres forfaits <span>sans engagements</span></h2>
-
-                <div class="packs-list">
-                    <div class="pack-item">
-                        <h3 class="pack-item__title">One</h3>
-                        <div class="pack-item__offer">100Mo</div>
-                        <ul class="pack-item__specs">
-                            <li class="calls"><strong>2 Heures</strong> d’appels en France</li>
-                            <li class="sms">SMS <strong>Illimités</strong></li>
-                            <li class="mms">MMS <strong>Illimités</strong></li>
-                            <li class="net">
-                                <span>Internet <strong>100Mo</strong> en <strong>4G</strong></span>
-                                <i>SMS et MMS illimités depuis l’Europe, DOM.</i>
-                            </li>
-                        </ul>
-                        <div class="pack-item__price">
-                            <span>2 <sup>€ 99</sup>
-                                <i>/ mois TTC</i>
-                            </span>
-                            <div class="note">Sans engagements</div>
-                        </div>
-                        <div class="pack-item__buttons">
-                            <a href="" class="btn pack-item__link">Voir l’offre</a>
-                            <a href="" class="btn pack-item__buy js-pack-modal" data-modal="pack-modal" data-id="1">Je souscris</a>
-                        </div>
-                    </div>
-                    <div class="pack-item">
-                        <h3 class="pack-item__title">Génial</h3>
-                        <div class="pack-item__offer">140Go</div>
-                        <ul class="pack-item__specs">
-                            <li class="calls">Appels <strong>Illimités</strong></li>
-                            <li class="sms">SMS <strong>Illimités</strong></li>
-                            <li class="mms">MMS <strong>Illimités</strong></li>
-                            <li class="net">
-                                <span>Internet <strong>140Go</strong> en <strong>5G</strong></span>
-                                <i>SMS et MMS illimités depuis l’Europe, DOM.</i>
-                            </li>
-                        </ul>
-                        <div class="pack-item__price">
-                            <span>10 <sup>€ 99</sup>
-                                <i>/ mois TTC</i>
-                            </span>
-                            <div class="note">Sans engagements</div>
-                        </div>
-                        <div class="pack-item__buttons">
-                            <a href="" class="btn pack-item__link">Voir l’offre</a>
-                            <a href="" class="btn pack-item__buy js-pack-modal" data-modal="pack-modal" data-id="2">Je souscris</a>
-                        </div>
-                    </div>
-                    <div class="pack-item">
-                        <h3 class="pack-item__title">Extrems</h3>
-                        <div class="pack-item__offer">300Go</div>
-                        <ul class="pack-item__specs">
-                            <li class="calls">Appel <strong>Illimités</strong></li>
-                            <li class="sms">SMS <strong>Illimités</strong></li>
-                            <li class="mms">MMS <strong>Illimités</strong></li>
-                            <li class="net">
-                                <span>Internet <strong>300Go</strong> en <strong>5G</strong></span>
-                                <i>SMS et MMS illimités depuis l’Europe, DOM.</i>
-                            </li>
-                        </ul>
-                        <div class="pack-item__price">
-                            <span>18 <sup>€ 99</sup>
-                                <i>/ mois TTC</i>
-                            </span>
-                            <div class="note">Sans engagements</div>
-                        </div>
-                        <div class="pack-item__buttons">
-                            <a href="" class="btn pack-item__link">Voir l’offre</a>
-                            <a href="" class="btn pack-item__buy js-pack-modal" data-modal="pack-modal" data-id="3">Je souscris</a>
-                        </div>
-                    </div>
+                <div class="section-head flex">
+                    <h2>Offres forfaits <span class="text-red">sans engagements</span></h2>
+                    <a href="" class="section-link__top link">Voir tous les forfaits</a>
                 </div>
-                <a href="" class="packs-list__link">Voir tous les forfaits</a>
+
+                <div class="packs-list flex">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="pack-item">
+                                    <h3 class="pack-item__title">One</h3>
+                                    <div class="pack-item__offer">100Mo</div>
+                                    <ul class="pack-item__specs">
+                                        <li class="calls"><strong>2 Heures</strong> d’appels en France</li>
+                                        <li class="sms">SMS <strong>Illimités</strong></li>
+                                        <li class="mms">MMS <strong>Illimités</strong></li>
+                                        <li class="net4g">
+                                            <span>Internet <strong>100Mo</strong> en <strong>4G</strong></span>
+                                            <i>SMS et MMS illimités depuis l’Europe, DOM.</i>
+                                        </li>
+                                    </ul>
+                                    <div class="pack-item__price">
+                                        <div class="num">2</div>
+                                        <div class="more">
+                                            <span>€ 99</span>
+                                            <i>/ mois TTC</i>
+                                        </div>
+                                        <div class="note">Sans engagements</div>
+                                    </div>
+                                    <div class="pack-item__buttons">
+                                        <a href="" class="btn btn-red__empty pack-item__link">Voir l’offre</a>
+                                        <a href="" class="btn btn-red js-open-modal" data-modal="pack-modal" data-id="1">Je souscris</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="pack-item">
+                                    <h3 class="pack-item__title">Génial</h3>
+                                    <div class="pack-item__offer">140Go</div>
+                                    <ul class="pack-item__specs">
+                                        <li class="calls">Appels <strong>Illimités</strong></li>
+                                        <li class="sms">SMS <strong>Illimités</strong></li>
+                                        <li class="mms">MMS <strong>Illimités</strong></li>
+                                        <li class="net5g">
+                                            <span>Internet <strong>140Go</strong> en <strong>5G</strong></span>
+                                            <i>SMS et MMS illimités depuis l’Europe, DOM.</i>
+                                        </li>
+                                    </ul>
+                                    <div class="pack-item__price">
+                                        <div class="num">10</div>
+                                        <div class="more">
+                                            <span>€ 99</span>
+                                            <i>/ mois TTC</i>
+                                        </div>
+                                        <div class="note">Sans engagements</div>
+                                    </div>
+                                    <div class="pack-item__buttons">
+                                        <a href="" class="btn btn-red__empty">Voir l’offre</a>
+                                        <a href="" class="btn btn-red js-open-modal" data-modal="pack-modal" data-id="2">Je souscris</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="pack-item">
+                                    <h3 class="pack-item__title">Extrems</h3>
+                                    <div class="pack-item__offer">300Go</div>
+                                    <ul class="pack-item__specs">
+                                        <li class="calls">Appel <strong>Illimités</strong></li>
+                                        <li class="sms">SMS <strong>Illimités</strong></li>
+                                        <li class="mms">MMS <strong>Illimités</strong></li>
+                                        <li class="net5g">
+                                            <span>Internet <strong>300Go</strong> en <strong>5G</strong></span>
+                                            <i>SMS et MMS illimités depuis l’Europe, DOM.</i>
+                                        </li>
+                                    </ul>
+                                    <div class="pack-item__price">
+                                        <div class="num">18</div>
+                                        <div class="more">
+                                            <span>€ 99</span>
+                                            <i>/ mois TTC</i>
+                                        </div>
+                                        <div class="note">Sans engagements</div>
+                                    </div>
+                                    <div class="pack-item__buttons">
+                                        <a href="" class="btn btn-red__empty">Voir l’offre</a>
+                                        <a href="" class="btn btn-red js-open-modal" data-modal="pack-modal" data-id="3">Je souscris</a>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div> <!-- .swiper-wrapper -->
+                        <div class="swiper-pagination circle"></div>
+                    </div> <!-- .swiper -->
+                </div>
+                <div class="section-link__bottom flex">
+                    <a href="" class="link">Voir tous les forfaits</a>
+                </div>
             </div>
         </section>
         <!-- difficile choisir -->
-        <div class="howto-block">
+        <div class="howto-block mb-common">
             <div class="cont">
                 <div class="howto-list flex">
                     <div class="howto-item">
-                        <div class="pic"><img src="images/home/pic-howto1.jpg" alt="Difficile de choisir?"></div>
+                        <div class="pic"><img src="images/home/pic-howto1.jpg" alt="Notre réseau"></div>
                         <div class="inner">
-                            <div class="title">Difficile de choisir un forfait ?</div>
+                            <div class="title">Notre réseau</div>
                             <div class="text">Notre engagement envers l’excellence se reflète dans la robustesse et la fiabilité de notre réseau. Nous comprenons que dans le monde d’aujourd’hui, rester connecté est plus important que jamais. </div>
-                            <a href="" class="btn">Voir le réseau</a>
+                            <a href="" class="btn btn-black">Voir le réseau</a>
                         </div>
                     </div>
                     <div class="howto-item">
-                        <div class="pic"><img src="images/home/pic-howto2.jpg" alt="Difficile de choisir?"></div>
+                        <div class="pic"><img src="images/home/pic-howto2.jpg" alt="Difficile de choisir"></div>
                         <div class="inner">
-                            <div class="title">Difficile de choisir un portable ?</div>
+                            <div class="title">Difficile de choisir</div>
                             <div class="text">Nous savons que le choix du bon téléphone peut être une tâche ardue, c’est pourquoi notre équipe d’experts est toujours disponible pour vous aider à naviguer dans notre large sélection et à trouver l’appareil qui correspond le mieux à vos besoins.</div>
-                            <a href="" class="btn">Trouver votre mobile</a>
+                            <a href="" class="btn btn-black">Trouver votre mobile</a>
                         </div>
                     </div>
                 </div>
@@ -216,113 +283,119 @@
         </div>
 
         <!-- phones selection -->
-        <section class="home-section home-products">
+        <section class="home-section home-products mb-common">
             <div class="cont">
-                <div class="subtitle">Notre sélection</div>
-                <h2>Smartphone + forfait <span class="text-red">5G</span></h2>
-                <a href="" class="btn home-products__link">Voir tous les téléphones</a>
+                <div class="section-head flex">
+                    <div class="subtitle">Notre sélection</div>
+                    <h2>Smartphone <span class="text-red">+ forfait 5G</span></h2>
+                    <a href="" class="section-link__top link">Voir tous les téléphones</a>
+                </div>
 
                 <div class="products-slider swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <a href="">
-                                <div class="product-card">
+                            <div class="product-card">
+                                <a href="">
                                     <div class="pic">
                                         <img src="images/home/Master_Phone_Samsung_8_912cba634f 2.png" alt="Samsung Galaxy Z Fold6">
                                     </div>
                                     <div class="brand">Samsung</div>
                                     <div class="name">Galaxy Z Fold6</div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <a href="">
-                                <div class="product-card">
+                            <div class="product-card">
+                                <a href="">
                                     <div class="pic">
                                         <img src="images/home/Carrousel_02_Samsung_Galaxy_Z_Fold6_Rose_c25064c132 1.png" alt="Samsung Galaxy S24 Ultra">
                                     </div>
                                     <div class="brand">Samsung</div>
                                     <div class="name">Galaxy S24 Ultra</div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <a href="">
-                                <div class="product-card">
+                            <div class="product-card">
+                                <a href="">
                                     <div class="pic">
                                         <img src="images/home/Carrousel_02_Samsung_Galaxy_Z_Flip6_Bleu_9b27ecacfe 1.png" alt="Samsung GalaxyZ Flip6">
                                     </div>
                                     <div class="brand">Samsung</div>
                                     <div class="name">GalaxyZ Flip6</div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                         <div class="swiper-slide">
-                            <a href="">
-                                <div class="product-card">
+                            <div class="product-card">
+                                <a href="">
                                     <div class="pic">
                                         <img src="images/home/samsung-galaxy-S25-ULTRA-bleu.png" alt="Samsung Galaxy S25 Ultra">
                                     </div>
                                     <div class="brand">Samsung</div>
                                     <div class="name">Galaxy S25 Ultra</div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="swiper-pagination"></div>
+                    <div class="swiper-pagination circle"></div>
                   
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
+                </div>
+
+                <div class="section-link__bottom flex">
+                    <a href="" class="link">Voir tous les téléphones</a>
                 </div>
             </div>
         </section>
 
         <!-- advantages -->
-        <section class="home-advants home-section">
+        <section class="home-advants home-section mb-common">
             <div class="cont">
-                <h2>Pourquoi choisir <span>oookki</span></h2>
+                <h2>Pourquoi choisir <span>OOOKKI</span> ?</h2>
                 <div class="advants-list flex">
                     <div class="advants-item">
                         <div class="pic"><img src="images/home/adv1.jpg" alt=""></div>
                         <div class="text">Notre assistance téléphonique est disponible 24 heures sur 24, 7 jours sur 7, ce qui signifie que vous pouvez toujours compter sur nous, peu importe l’heure ou le jour. </div>
-                        <a href="" class="btn link">Contacter l’assistance</a>
+                        <a href="" class="btn btn-black">Contacter l’assistance</a>
                     </div>
                     <div class="advants-item">
                         <div class="pic"><img src="images/home/adv2.png" alt=""></div>
                         <div class="text">Notre engagement envers l’excellence se reflète dans la robustesse et la fiabilité de notre réseau. Nous comprenons que dans le monde d’aujourd’hui, rester connecté est plus important que jamais. </div>
-                        <a href="" class="btn link">Voir le réseau</a>
+                        <a href="" class="btn btn-black">Voir le réseau</a>
                     </div>
                     <div class="advants-item">
                         <div class="pic"><img src="images/home/adv3.jpg" alt=""></div>
                         <div class="text">Dans un monde où la technologie évolue rapidement, nous comprenons l’importance d’un téléphone qui offre à la fois des performances exceptionnelles et un excellent rapport qualité-prix.</div>
-                        <a href="" class="btn link">En savoir plus</a>
+                        <a href="" class="btn btn-black">En savoir plus</a>
                     </div>
                     <div class="advants-item">
                         <div class="pic"><img src="images/home/adv4.jpg" alt=""></div>
                         <div class="text">Dans notre boutique, nous croyons que chaque individu a des besoins uniques en matière de technologie. C’est pourquoi nous sommes fiers d’offrir un large choix de téléphones pour répondre à une variété de préférences et de budgets.</div>
-                        <a href="" class="btn link">Voir les offres</a>
+                        <a href="" class="btn btn-black">Voir les offres</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- faq -->
-        <section class="home-section faq">
+        <section class="home-section faq mb-common">
             <div class="cont">
                 <h2>Quelques conseils ?</h2>
                 <div class="faq-list">
-                    <div class="faq-item">
-                        <div class="faq-item__title" role="button" tabindex="0">Choisir le meilleur téléphone <span class="special-title">OOOKKI</span></div>
-                        <div class="faq-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
+                    <div class="faq-item accordion-item">
+                        <div class="faq-item__title accordion-head" role="button" tabindex="0">Choisir le meilleur téléphone <span class="special-title">OOOKKI</span></div>
+                        <div class="faq-item__text accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-item__title" role="button" tabindex="1">Recevoir sa carte sim gratuitement</div>
-                        <div class="faq-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
+                    <div class="faq-item accordion-item">
+                        <div class="faq-item__title accordion-head" role="button" tabindex="1">Recevoir sa carte sim gratuitement</div>
+                        <div class="faq-item__text accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-item__title" role="button" tabindex="2">L’espace abonnés <span class="special-title">OOOKKI</span></div>
-                        <div class="faq-item__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
+                    <div class="faq-item accordion-item">
+                        <div class="faq-item__title accordion-head" role="button" tabindex="2">L’espace abonnés <span class="special-title">OOOKKI</span></div>
+                        <div class="faq-item__text accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
                     </div>
                 </div>
             </div>
@@ -331,7 +404,7 @@
 
     <footer>
         <div class="cont">
-            <div class="footer-inner">
+            <div class="footer-inner flex">
                 <div class="footer-menu">
                     <h4>Offres télécom</h4>
                     <ul>
@@ -377,9 +450,9 @@
                 <a href="/" class="footer-logo">
                     <img src="images/logo-white.svg" alt="OOOKKI">
                 </a>
-                <div class="socials">
+                <div class="socials flex">
                     <div class="socials__label">Rejoignez-nous sur</div>
-                    <ul class="socials-list">
+                    <ul class="socials__list flex">
                         <li>
                             <a href="" title="Facebook">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
@@ -401,65 +474,41 @@
                                 </svg>
                             </a>
                         </li>
-                        <li>&copy; OOOKKI 2025</li>
                     </ul>
+                    <div class="copyright">&copy; OOOKKI 2025</div>
                 </div>
             </div>
         </div>
     </footer>
 
+    <div class="up-btn">
+        <img src="images/ic-arrow-left.svg" alt="">
+    </div>
+
+    <div class="bg-modal"></div>
+    <div id="pack-modal" class="modal">
+        <div class="modal-close"></div>
+
+        <div class="modal-inner">
+            <div class="offer-item">
+                <div class="pic">
+                    <img src="/images/ic-phone.svg" alt="">
+                    <img src="/images/ic-sim.svg" class="second" alt="">
+                </div>
+                <h4>Mobile + Forfait</h4>
+                <a href="" class="btn btn-black">Continuer</a>
+            </div>
+            <div class="offer-item">
+                <div class="pic">
+                    <img src="/images/ic-sim.svg" alt="">
+                </div>
+                <h4>Forfait Seul</h4>
+                <a href="" class="btn btn-red">Continuer</a>
+            </div>
+        </div>
+    </div>
+
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/app.js"></script>
-
-    <script src="/tarteaucitron/tarteaucitron.js"></script>
-    <script>
-    tarteaucitron.init({
-        "privacyUrl": "", /* Privacy policy url */
-        "bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
-
-        "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
-        "cookieName": "tarteaucitron", /* Cookie name */
-
-        "orientation": "middle", /* Banner position (top - bottom - middle - popup) */
-
-        "groupServices": false, /* Group services by category */
-        "showDetailsOnClick": true, /* Click to expand the description */
-        "serviceDefaultState": "wait", /* Default state (true - wait - false) */
-
-        "showAlertSmall": false, /* Show the small banner on bottom right */
-        "cookieslist": false, /* Show the cookie list */
-        
-        "showIcon": true, /* Show cookie icon to manage cookies */
-        // "iconSrc": "", /* Optional: URL or base64 encoded image */
-        "iconPosition": "BottomRight", /* Position of the icon between BottomRight, BottomLeft, TopRight and TopLeft */
-
-        "adblocker": false, /* Show a Warning if an adblocker is detected */
-
-        "DenyAllCta" : true, /* Show the deny all button */
-        "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
-        "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
-        "alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
-        
-        "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
-
-        "removeCredit": false, /* Remove credit link */
-        "moreInfoLink": true, /* Show more info link */
-        "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
-        "useExternalJs": false, /* If false, the tarteaucitron.services.js file will be loaded */
-
-        // "cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
-
-        "readmoreLink": "", /* Change the default readmore link pointing to tarteaucitron.io */
-        
-        "mandatory": true, /* Show a message about mandatory cookies */
-        "mandatoryCta": true, /* Show the disabled accept button when mandatory on */
-        
-        // "customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
-
-        "googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
-        
-        "partnersList": false /* Details the number of partners on the popup and middle banner */
-    });
-    </script>
 </body>
 </html>

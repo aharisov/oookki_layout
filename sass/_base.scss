@@ -2,16 +2,158 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: $font-stack;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #fff;
+    font-family: $fontPrimary;
+    color: $colorPrimary;
+    line-height: 1.6;
+    overflow-x: hidden;
+
+    &.lock {
+        overflow: hidden;
+    }
 }
   
 h1, h2, h3, h4, h5, h6 {
-    color: $primary-color;
+    font-family: $fontTitle;
 }
-  
+h1, h2 {
+    margin-bottom: 1.2rem;
+    font-size: $fontL;
+}
+h3, h4 {
+    margin-bottom: 1rem;
+    font-size: $fontM;
+}
+h5, h6 {
+    margin-bottom: 1rem;
+    font-size: $fontS;
+}
+
 p {
-    line-height: 1.6;
+    font-size: 1rem;
 }
-  
+
+img {
+    width: 100%;
+}
+
+.cont {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.mb-common {
+    margin-bottom: 2.5rem;
+}
+.text-red {
+    color: $colorRed;
+}
+.link {
+    border-bottom: 1px solid $colorPrimary;
+
+    &:hover {
+        color: $colorRed;
+        border-color: $colorRed;
+    }
+}
+
+.section-head {
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+.section-link__bottom {
+    justify-content: center;
+    margin-top: 0.5rem;
+
+    .link {
+        display: inline-flex;
+        font-size: $fontXS;
+    }
+}
+.section-link__top {
+    display: none;
+    font-size: $fontXS;
+}
+
+.up-btn {
+    position: fixed;
+    right: 1rem;
+    bottom: 2rem;
+    width: 30px;
+    height: 30px;
+    background: $colorWhite;
+    border: 1px solid $colorPrimary;
+    border-radius: $borderRadiusCircle;
+    transform: rotate(90deg);
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+        background: $colorGrayHover;
+    }
+}
+ 
+@media (min-width: 768px) {
+    .up-btn {
+        bottom: 4rem;
+    }
+}
+@media (min-width: 1024px) {
+    h1 {
+        font-size: $fontXXL;
+    }
+    h2 {
+        font-size: $fontXL;
+    }
+    h3 {
+        font-size: $fontL;
+    }
+    h4 {
+        font-size: $fontM;
+    }
+    h1, h2 {
+        margin-bottom: 2rem;
+    }
+    h3, h4 {
+        margin-bottom: 1.5rem;
+    }
+
+    .mb-common {
+        margin-bottom: 3rem;
+    }
+
+    .section-head {
+        margin-bottom: $mb-l;
+
+        h2 {
+            margin-bottom: 0;
+        }
+    }
+    .section-link__top {
+        display: inline-flex;
+    }
+    .section-link__bottom {
+        display: none;
+    }
+
+    .up-btn {
+        right: 2rem;
+    }
+}
+@media (min-width: 1200px) {
+    .up-btn {
+        width: 50px;
+        height: 50px;
+    }
+}
+@media (min-width: 1360px) {
+    .mb-common {
+        margin-bottom: 4rem;
+    }
+}

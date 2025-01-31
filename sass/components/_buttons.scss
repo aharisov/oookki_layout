@@ -1,0 +1,84 @@
+.btn {
+    display: inline-flex;
+    @include flexCenter;
+    padding: 0.5rem 1rem;
+    border-radius: $borderRadiusCommon;
+    cursor: pointer;
+    transition: $transition;
+}
+
+.btn-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1.2rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    .bar-one,
+    .bar-two,
+    .bar-three {
+        width: 2rem;
+        height: 0.2rem;
+        background: $colorPrimary;
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        position: relative;
+        transform-origin: 1px;
+    }
+
+    .bar-one {
+        transform: rotate(0);
+    }
+    .bar-two {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .bar-three {
+        transform: rotate(0);
+    }
+
+    &.opened {
+        .bar-one {
+            transform: rotate(45deg);
+        }
+        .bar-two {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        .bar-three {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.btn-black {
+    @include btn($colorWhite, $colorPrimary, $colorPrimary, $colorWhite, 'full');
+}
+.btn-red {
+    @include btn($colorWhite, $colorRed, $colorRed, $colorWhite, 'full');
+}
+.btn-red__empty {
+    @include btn($colorPrimary, $colorWhite, $colorWhite, $colorPrimary, 'empty');
+}
+
+@media (min-width: 1024px) {
+    .btn {
+        padding: 0.5rem 1.5rem;
+    }
+    .btn-mobile {
+        display: none;
+    }
+}
+@media (min-width: 1200px) {
+    .btn {
+        padding: 0.5rem 2rem;
+    }
+}
