@@ -154,6 +154,7 @@ document.addEventListener('DOMContentLoaded',  function(event) {
     openModal();
 
     const homeTopSlider = new Swiper('.top-slider', {
+        speed: 800,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -165,6 +166,7 @@ document.addEventListener('DOMContentLoaded',  function(event) {
     });
 
     const homePackSlider = new Swiper(".packs-list .swiper", {
+        speed: 600,
         slidesPerView: 1,
         spaceBetween: 20,
         breakpoints: {
@@ -182,6 +184,7 @@ document.addEventListener('DOMContentLoaded',  function(event) {
     });
 
     const homeProductsSlider = new Swiper(".products-slider.swiper", {
+        speed: 600,
         slidesPerView: 1,
         spaceBetween: 20,
         breakpoints: {

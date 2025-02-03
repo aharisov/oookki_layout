@@ -157,6 +157,14 @@ img {
   width: 100%;
 }
 
+main {
+  margin-top: 5rem;
+}
+
+main:has(.top-slider) {
+  margin-top: 50px;
+}
+
 .cont {
   width: 100%;
   max-width: 1320px;
@@ -246,6 +254,12 @@ img {
   }
   h3, h4 {
     margin-bottom: 1.5rem;
+  }
+  main {
+    margin-top: 10rem;
+  }
+  main:has(.top-slider) {
+    margin-top: 122px;
   }
   .mb-common {
     margin-bottom: 3rem;
@@ -818,7 +832,7 @@ header .header__inner .header__search.active {
 @media (min-width: 1024px) {
   .top-slider {
     height: 510px;
-    margin-top: 120px;
+    margin-top: 122px;
   }
   .top-slider.swiper-css-mode > .swiper-wrapper > .swiper-slide {
     overflow: hidden;
@@ -1102,6 +1116,7 @@ header .header__inner .header__search.active {
      object-fit: cover;
   -o-object-fit: contain;
      object-fit: contain;
+  transition: 0.2s linear;
 }
 .home-products .product-card .pic .icon {
   position: absolute;
@@ -1137,6 +1152,9 @@ header .header__inner .header__search.active {
   }
   .home-products .product-card:hover .pic {
     background: #f0eeee;
+  }
+  .home-products .product-card:hover .pic img {
+    transform: scale(1.1);
   }
   .home-products .product-card:hover .name {
     border-bottom: 1px solid #BB2532;

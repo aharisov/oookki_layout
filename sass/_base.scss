@@ -37,6 +37,13 @@ img {
     width: 100%;
 }
 
+main {
+    margin-top: 5rem;
+}
+main:has(.top-slider) {
+    margin-top: 50px;
+}
+
 .cont {
     width: 100%;
     max-width: 1320px;
@@ -123,6 +130,13 @@ img {
     }
     h3, h4 {
         margin-bottom: 1.5rem;
+    }
+
+    main {
+        margin-top: 10rem;
+    }
+    main:has(.top-slider) {
+        margin-top: 122px;
     }
 
     .mb-common {
