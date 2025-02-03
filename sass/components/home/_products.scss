@@ -17,6 +17,7 @@
 
     .product-card {
         .pic {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -32,6 +33,19 @@
                 @include imgFit;
                 object-fit: contain;
             }
+            .icon {
+                position: absolute;
+                right: 2rem;
+                bottom: 2rem;
+                width: 30px;
+                height: 30px;
+                border: 1px solid $colorRed;
+                border-radius: $borderRadiusCircle;
+                background-image: url("../images/ic-5g-new.svg");
+                @include bgImg;
+                background-position: center;
+                background-size: 80%;
+            }
         }
         .name {
             display: inline-block;
@@ -42,6 +56,16 @@
     }
 }
 
+@media (min-width: 360px) {
+    .home-products {
+        .product-card {
+            .pic .icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+}
 @media (min-width: 1024px) {
     .home-products {
         .product-card {
