@@ -65,10 +65,10 @@
     }
 
     .swiper-button-prev {
-        background-image: url("/images/ic-arrow-left.svg");
+        background-image: url("../images/ic-arrow-left.svg");
     }
     .swiper-button-next {
-        background-image: url("/images/ic-arrow-right.svg");
+        background-image: url("../images/ic-arrow-right.svg");
     }
 }
 
@@ -77,27 +77,11 @@
         .swiper-button-prev {
             display: flex;
             left: 1rem;
-
-            &::after {
-                left: 6px;
-                transform: rotate(45deg) skew(-10deg, -10deg);
-            }
-            &:hover::after {
-                left: 2px;
-            }
         }
 
         .swiper-button-next {
             display: flex;
             right: 1rem;
-
-            &::after {
-                right: 6px;
-                transform: rotate(-135deg) skew(-10deg, -10deg);
-            }
-            &:hover::after {
-                right: 2px;
-            }
         }
     }
 }
@@ -115,12 +99,18 @@
                 background-position: 3px 0;
                 background-color: $colorSecond;
             }
+            &[aria-disabled="true"]:hover {
+                background-position: 0 0;
+            }
         }
         .swiper-button-prev {
             left: 2rem;
 
             &:hover {
                 background-position: -3px 0;
+            }
+            &[aria-disabled="true"]:hover {
+                background-position: 0 0;
             }
         }
         .swiper-button-next {

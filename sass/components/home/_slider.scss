@@ -8,7 +8,7 @@
 
     img {
         @include imgFit;
-        object-position: 5%;
+        object-position: center;
     }
 }
 
@@ -19,5 +19,10 @@
     }
     .top-slider.swiper-css-mode > .swiper-wrapper > .swiper-slide {
         overflow: hidden;
+    }
+}
+@media (min-width: 1300px) {
+    .top-slider img {
+        object-position: 5%;
     }
 }

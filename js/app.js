@@ -135,12 +135,12 @@ const openModal = () => {
     });
 
     window.addEventListener("click", function (e) {
-        document.querySelectorAll(".modal").forEach(modal => {
-            if (e.target === modal) {
-                bg.classList.remove("show");
+        if (e.target === bg) {
+            document.querySelectorAll(".modal").forEach(modal => {
                 modal.classList.remove("show");
-            }
-        });
+            });
+            bg.classList.remove("show");
+        }
     });
 }
 
@@ -154,7 +154,6 @@ document.addEventListener('DOMContentLoaded',  function(event) {
     openModal();
 
     const homeTopSlider = new Swiper('.top-slider', {
-        cssMode: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,

@@ -12,8 +12,6 @@
         flex-direction: column;
         width: 100%;
         margin-bottom: $mb-l;
-        padding-bottom: $mb-m;
-        border: 1px solid $colorBorder;
         border-radius: $borderRadiusCommon;
 
         &:last-child {
@@ -23,7 +21,6 @@
         .pic {
             width: 100%;
             height: 200px;
-            margin-bottom: $mb-s;
             
             img {
                 @include imgFit;
@@ -32,10 +29,15 @@
             }
         }
         .inner {
-            padding: 0 1rem;
+            border: 1px solid $colorBorder;
+            border-top: none;
+            border-bottom-left-radius: $borderRadiusCommon;
+            border-bottom-right-radius: $borderRadiusCommon;
+            padding: 0 1rem $mb-m;
 
             .title {
                 margin-bottom: $mb-xs;
+                padding-top: $mb-s;
                 font-size: $fontS;
             }
             .text {
@@ -104,6 +106,10 @@
                 padding: 1.2rem 2rem;
                 background-color: rgba($color: $colorWhite, $alpha: 0.8);
                 border-radius: $borderRadiusCommon;
+
+                .title {
+                    padding-top: 0;
+                }
             }
         }
     }

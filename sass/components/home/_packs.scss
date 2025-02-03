@@ -42,20 +42,23 @@
             background-position: 0 0;
         }
         .calls {
-            background-image: url("/images/ic-call.svg");
+            background-image: url("../images/ic-phone-new.svg");
+            background-position: 5px 0;
         }
         .sms {
-            background-image: url("/images/ic-sms.svg");
+            background-image: url("../images/ic-sms-new.svg");
+            background-position: 10px 0;
         }
         .mms {
-            background-image: url("/images/ic-mms.svg");
+            background-image: url("../images/ic-mms-new.svg");
+            background-position: 5px 0;
         }
         .net4g {
-            background-image: url("/images/ic-4g.svg");
+            background-image: url("../images/ic-4g-new.svg");
             background-size: 40px;
         }
         .net5g {
-            background-image: url("/images/ic-5g.svg");
+            background-image: url("../images/ic-5g-new.svg");
             background-size: 40px;
         }
     }

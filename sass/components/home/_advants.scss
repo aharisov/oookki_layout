@@ -3,16 +3,21 @@
     gap: $gapL;
 
     .advants-item {
-        padding-bottom: 1rem;
         background: $colorSecond;
-        border: 1px solid $colorBorder;
         border-radius: $borderRadiusCommon;
         transition: $transition;
         cursor: default;
 
+        .inner {
+            padding-top: $mb-s;
+            padding-bottom: 1rem;
+            border: 1px solid $colorBorder;
+            border-top: none;
+            border-bottom-left-radius: $borderRadiusCommon;
+            border-bottom-right-radius: $borderRadiusCommon;
+        }
         .pic {
             height: 200px;
-            margin-bottom: $mb-s;
             overflow: hidden;
             transition: $transition;
 
@@ -41,11 +46,16 @@
             flex-direction: column;
             width: 48%;
 
+            .inner {
+                display: inline-flex;
+                flex-direction: column;
+                flex: 1;
+            }
             .text {
                 flex: 1;
             }
             .btn {
-                max-width: 50%;
+                max-width: 70%;
             }
         }
     }
