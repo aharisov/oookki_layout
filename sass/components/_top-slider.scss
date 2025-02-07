@@ -12,6 +12,16 @@
     }
 }
 
+@media (min-width: 420px) {
+    .top-slider {
+        height: 400px;
+    }
+}
+@media (min-width: 640px) {
+    .top-slider {
+        height: 300px;
+    }
+}
 @media (min-width: 1024px) {
     .top-slider {
         height: 510px;
