@@ -45,6 +45,9 @@
                     </div>
                 </div>
             </div>
+
+            <?php include("./parts/product-section/recommend-list.php")?>
+            <?php include("./parts/product-section/section-faq.php")?>
         </div>
     </main>
 
