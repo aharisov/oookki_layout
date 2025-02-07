@@ -118,7 +118,7 @@
             <div class="cont">
                 <div class="howto-list flex">
                     <div class="howto-item">
-                        <div class="pic"><img src="images/home/pic-howto1.jpg" alt="Notre réseau"></div>
+                        <div class="pic"><img src="images/demo/pic-howto1.jpg" alt="Notre réseau"></div>
                         <div class="inner">
                             <div class="title">Notre réseau</div>
                             <div class="text">Notre engagement envers l’excellence se reflète dans la robustesse et la fiabilité de notre réseau. Nous comprenons que dans le monde d’aujourd’hui, rester connecté est plus important que jamais. </div>
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     <div class="howto-item">
-                        <div class="pic"><img src="images/home/pic-howto2.jpg" alt="Difficile de choisir"></div>
+                        <div class="pic"><img src="images/demo/pic-howto2.jpg" alt="Difficile de choisir"></div>
                         <div class="inner">
                             <div class="title">Difficile de choisir</div>
                             <div class="text">Nous savons que le choix du bon téléphone peut être une tâche ardue, c’est pourquoi notre équipe d’experts est toujours disponible pour vous aider à naviguer dans notre large sélection et à trouver l’appareil qui correspond le mieux à vos besoins.</div>
@@ -152,7 +152,7 @@
                             <div class="product-card">
                                 <a href="">
                                     <div class="pic">
-                                        <img src="images/home/Master_Phone_Samsung_8_912cba634f 2.png" alt="Samsung Galaxy Z Fold6">
+                                        <img src="images/demo/Master_Phone_Samsung_8_912cba634f 2.png" alt="Samsung Galaxy Z Fold6">
                                         <div class="icon"></div>
                                     </div>
                                     <div class="brand">Samsung</div>
@@ -164,7 +164,7 @@
                             <div class="product-card">
                                 <a href="">
                                     <div class="pic">
-                                        <img src="images/home/Carrousel_02_Samsung_Galaxy_Z_Fold6_Rose_c25064c132 1.png" alt="Samsung Galaxy S24 Ultra">
+                                        <img src="images/demo/Carrousel_02_Samsung_Galaxy_Z_Fold6_Rose_c25064c132 1.png" alt="Samsung Galaxy S24 Ultra">
                                         <div class="icon"></div>
                                     </div>
                                     <div class="brand">Samsung</div>
@@ -176,7 +176,7 @@
                             <div class="product-card">
                                 <a href="">
                                     <div class="pic">
-                                        <img src="images/home/Carrousel_02_Samsung_Galaxy_Z_Flip6_Bleu_9b27ecacfe 1.png" alt="Samsung GalaxyZ Flip6">
+                                        <img src="images/demo/Carrousel_02_Samsung_Galaxy_Z_Flip6_Bleu_9b27ecacfe 1.png" alt="Samsung GalaxyZ Flip6">
                                         <div class="icon"></div>
                                     </div>
                                     <div class="brand">Samsung</div>
@@ -188,7 +188,7 @@
                             <div class="product-card">
                                 <a href="">
                                     <div class="pic">
-                                        <img src="images/home/samsung-galaxy-S25-ULTRA-bleu.png" alt="Samsung Galaxy S25 Ultra">
+                                        <img src="images/demo/samsung-galaxy-S25-ULTRA-bleu.png" alt="Samsung Galaxy S25 Ultra">
                                         <div class="icon"></div>
                                     </div>
                                     <div class="brand">Samsung</div>
@@ -216,28 +216,28 @@
                 <h2>Pourquoi choisir <span>OOOKKI</span> ?</h2>
                 <div class="advants-list flex">
                     <div class="advants-item">
-                        <div class="pic"><img src="images/home/adv1-new.jpg" alt=""></div>
+                        <div class="pic"><img src="images/demo/adv1-new.jpg" alt=""></div>
                         <div class="inner">
                             <div class="text">Notre assistance téléphonique est disponible 24 heures sur 24, 7 jours sur 7, ce qui signifie que vous pouvez toujours compter sur nous, peu importe l’heure ou le jour. </div>
                             <a href="" class="btn btn-black">Contacter l’assistance</a>
                         </div>
                     </div>
                     <div class="advants-item">
-                        <div class="pic"><img src="images/home/adv2.png" alt=""></div>
+                        <div class="pic"><img src="images/demo/adv2.png" alt=""></div>
                         <div class="inner">
                             <div class="text">Notre engagement envers l’excellence se reflète dans la robustesse et la fiabilité de notre réseau. Nous comprenons que dans le monde d’aujourd’hui, rester connecté est plus important que jamais. </div>
                             <a href="" class="btn btn-black">Voir le réseau</a>
                         </div>
                     </div>
                     <div class="advants-item">
-                        <div class="pic"><img src="images/home/adv3.jpg" alt=""></div>
+                        <div class="pic"><img src="images/demo/adv3.jpg" alt=""></div>
                         <div class="inner">
                             <div class="text">Dans un monde où la technologie évolue rapidement, nous comprenons l’importance d’un téléphone qui offre à la fois des performances exceptionnelles et un excellent rapport qualité-prix.</div>
                             <a href="" class="btn btn-black">En savoir plus</a>
                         </div>
                     </div>
                     <div class="advants-item">
-                        <div class="pic"><img src="images/home/adv4.jpg" alt=""></div>
+                        <div class="pic"><img src="images/demo/adv4.jpg" alt=""></div>
                         <div class="inner">
                             <div class="text">Dans notre boutique, nous croyons que chaque individu a des besoins uniques en matière de technologie. C’est pourquoi nous sommes fiers d’offrir un large choix de téléphones pour répondre à une variété de préférences et de budgets.</div>
                             <a href="" class="btn btn-black">Voir les offres</a>

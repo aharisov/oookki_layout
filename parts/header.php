@@ -49,7 +49,7 @@
                     </div>
                 </li>
                 <li class="main-menu__parent">
-                    <span>Mobiles</span>
+                    <span class="active">Mobiles</span>
                     <div class="main-menu__dropdown">
                         <ul>
                             <li><a href="">Tous les mobiles</a></li>
