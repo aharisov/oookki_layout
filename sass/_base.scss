@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: $fontTitle;
 }
 h1, h2 {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     font-size: $fontL;
 }
 h3, h4 {
@@ -35,6 +35,11 @@ p {
 
 img {
     width: 100%;
+}
+
+button {
+    font-family: $fontPrimary;
+    font-size: $font16;
 }
 
 main {
@@ -106,6 +111,36 @@ main:has(.top-slider) {
         background: $colorGrayHover;
     }
 }
+
+.breadcrumbs {
+    margin-bottom: $mb-l;
+    li {
+        position: relative;
+        margin-right: 1rem;
+        padding-right: 0.5rem;
+
+        &::after {
+            position: absolute;
+            right: -0.5rem;
+            content: "/";
+        }
+        &:last-child::after {
+            display: none;
+        }
+
+        a {
+            border-bottom: 1px solid $colorPrimary;
+
+            &:hover {
+                color: $colorGray;
+                border-color: $colorGray;
+            }
+        }
+        span {
+            cursor: default;
+        }
+    }
+}
  
 @media (min-width: 768px) {
     .up-btn {
@@ -126,7 +161,7 @@ main:has(.top-slider) {
         font-size: $fontM;
     }
     h1, h2 {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
     h3, h4 {
         margin-bottom: 1.5rem;
@@ -141,6 +176,9 @@ main:has(.top-slider) {
 
     .mb-common {
         margin-bottom: 3rem;
+    }
+    .hidden {
+        display: none;
     }
 
     .section-head {

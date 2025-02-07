@@ -4,6 +4,7 @@ $colorBorder: #b1b1b1;
 $colorRed: #BB2532;
 $colorGray: #51656c;
 $colorGrayHover: #f0eeee;
+$colorOrange: #ec7519;
 $colorWhite: #fff;
 
 $fontPrimary: "Roboto", Tahoma, Arial, sans-serif;
@@ -15,6 +16,7 @@ $fontL: 2.074rem;
 $fontM: 1.728rem;
 $fontS: 1.44rem;
 $fontXS: 1.2rem;
+$font16: 1rem;
 $font14: 0.875rem;
 $fontXXS: 0.75rem;
 
@@ -26,9 +28,11 @@ $mb-xl: 2rem;
 
 $borderRadiusCircle: 50%;
 $borderRadiusCommon: 15px;
+$borderRadiusInner: 14px;
 $borderRadiusS: 5px;
 
 $gapS: 1.125rem;
 $gapL: 2rem;
 
 $transition: 0.2s linear;
+$transitionAccordion: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;

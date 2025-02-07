@@ -49,8 +49,11 @@
                 transition: $transition;
                 content: "";
             }
-            &:hover {
+            &:hover  {
                 color: $colorGray;
+            }
+            &.active {
+                color: $colorRed;
             }
             &:hover::after {
                 border-color: $colorGray;
