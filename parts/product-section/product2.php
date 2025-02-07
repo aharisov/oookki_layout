@@ -13,7 +13,7 @@
             <div class="icon"></div>
         </div>
         <div class="brand">Samsung</div>
-        <div class="name">Galaxy Z Flip6</div>
+        <div class="name"><span>Galaxy Z Flip6</span></div>
     </a>
     <div class="inner">
         <ul class="props">

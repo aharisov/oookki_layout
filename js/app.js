@@ -1,5 +1,3 @@
-import addToCompare from './compare';
-
 const openCloseMenu = () => {
     const menuBtn = document.querySelector('.js-open-menu');
     const menu = document.querySelector('.main-menu');
@@ -86,6 +84,8 @@ const scrollMenu = () => {
     const searchForm = document.querySelector('.header__search');
     const filterTop = document.getElementById('filter-top');
 
+    if (!filterTop) return;
+
     window.addEventListener("scroll", function () {
         let currentScroll = window.scrollY;
 
@@ -157,6 +157,7 @@ const sortDropdown = () => {
     const sortInput = document.querySelector(".sort-list input[name='sort']");
     const sortHeadActive = document.querySelector(".sort-head__active");
     const sectionFilter = document.querySelector(".section-filter");
+    const body = document.querySelector("body");
     
     if (sortList) {
         // Toggle dropdown visibility
@@ -175,12 +176,15 @@ const sortDropdown = () => {
                 if (sectionFilter.classList.contains("open")) {
                     sectionFilter.classList.remove("open");
                     bgModal.classList.add("show");
+                    body.classList.add("lock");
                 } else {
                     bgModal.classList.toggle("show");
+                    body.classList.toggle("lock");
                 }
             } else {
                 sectionFilter.classList.remove("open");
                 bgModal.classList.remove("show");
+                body.classList.remove("lock");
             }
         });
 
@@ -189,6 +193,7 @@ const sortDropdown = () => {
                 sortList.classList.remove("open");
                 sortActive.classList.remove("open");
                 bgModal.classList.remove("show");
+                body.classList.remove("lock");
             })
         }
     
@@ -297,21 +302,22 @@ const openFilterBlock = () => {
 
 const showMoreFilterValues = () => {
     const showMoreBtn = document.querySelector('.js-show-more');
+    if (!showMoreBtn) {
+        return;
+    }
     const container = showMoreBtn.parentElement;
 
-    if (showMoreBtn) {
-        showMoreBtn.addEventListener('click', function () {
-            // Toggle the 'expanded' class on the container
-            container.classList.toggle('expanded');
+    showMoreBtn.addEventListener('click', function () {
+        // Toggle the 'expanded' class on the container
+        container.classList.toggle('expanded');
 
-            // Update button text based on state
-            if (container.classList.contains('expanded')) {
-                this.textContent = '- moins de marques';
-            } else {
-                this.textContent = '+ de marques';
-            }
-        });
-    }
+        // Update button text based on state
+        if (container.classList.contains('expanded')) {
+            this.textContent = '- moins de marques';
+        } else {
+            this.textContent = '+ de marques';
+        }
+    });
 }
 
 const stickyFilter = () => {
@@ -380,7 +386,7 @@ document.addEventListener('DOMContentLoaded',  function(event) {
     openFilterBlock();
     showMoreFilterValues();
     stickyFilter();
-    addToCompare();
+    selectProduct();
 
     const homeTopSlider = new Swiper('.top-slider', {
         speed: 800,
@@ -452,6 +458,34 @@ document.addEventListener('DOMContentLoaded',  function(event) {
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
+        },
+    });
+
+    const recommendSlider = new Swiper(".recommend-slider.swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+            768: {
+              slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 3
+            },
+            1200: {
+                slidesPerView: 4
+            },
+            1360: {
+                slidesPerView: 5
+            }
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
     });
 });

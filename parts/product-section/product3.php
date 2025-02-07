@@ -18,7 +18,7 @@
             <div class="icon"></div>
         </div>
         <div class="brand">Apple</div>
-        <div class="name">Iphone 15</div>
+        <div class="name"><span>Iphone 15</span></div>
     </a>
     <div class="inner">
         <ul class="props">

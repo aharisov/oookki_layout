@@ -5,7 +5,7 @@ body {
     background-color: #fff;
     font-family: $fontPrimary;
     color: $colorPrimary;
-    line-height: 1.6;
+    line-height: 1.4;
     overflow-x: hidden;
 
     &.lock {
@@ -148,6 +148,9 @@ main:has(.top-slider) {
     }
 }
 @media (min-width: 1024px) {
+    body {
+        line-height: 1.6;
+    }
     h1 {
         font-size: $fontXXL;
     }

@@ -29,12 +29,14 @@
         padding: 1rem 2rem;
         background: $colorSecond;
         border-radius: $borderRadiusCommon;
+        border: 1px solid transparent;
 
         &:hover {
             background: $colorGrayHover;
+            border-color: $colorBorder;
         }
         &.active {
-            border: 1px solid $colorBorder;
+            border-color: $colorBorder;
         }
 
         img {

@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="footer-bot">
-            <a href="/" class="footer-logo">
+            <a href="/html" class="footer-logo">
                 <img src="images/logo-white.svg" alt="OOOKKI">
             </a>
             <div class="socials flex">
@@ -82,7 +82,8 @@
 </div>
 
 <div class="bg-modal"></div>
-<?include("./pack-modal.php")?>
+<?php include("pack-modal.php")?>
 
 <script src="js/swiper-bundle.min.js"></script>
+<script src="js/scripts.js"></script>
 <script src="js/app.js"></script>

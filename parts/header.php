@@ -1,7 +1,7 @@
 <header class="flex">
     <div class="cont">
         <div class="header__inner flex">
-            <a href="/" class="header__logo"><img src="images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
+            <a href="/html" class="header__logo"><img src="images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
             <div class="header__search">
                 <form action="">
                     <input type="text" placeholder="Recherchez des produits essentiels ...">
@@ -49,10 +49,10 @@
                     </div>
                 </li>
                 <li class="main-menu__parent">
-                    <span class="active">Mobiles</span>
+                    <span>Mobiles</span>
                     <div class="main-menu__dropdown">
                         <ul>
-                            <li><a href="">Tous les mobiles</a></li>
+                            <li><a href="mobiles.php">Tous les mobiles</a></li>
                             <li><a href="">Bons plans</a></li>
                             <li><a href="">Smartphones 5G</a></li>
                             <li><a href="">Comparer</a></li>

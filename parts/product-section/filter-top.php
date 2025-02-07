@@ -26,7 +26,7 @@
                     <li><button aria-selected="false" data-id="4">Meilleures ventes</button></li>
                     <li><button aria-selected="false" data-id="5">Nouveautés</button></li>
                 </ul>
-                <div class="sort-btn__mobile"><button type="submit" class="btn btn-red">Trier</button></div>
+                <div class="sort-btn__mobile"><button type="submit" class="btn btn-black">Trier</button></div>
             </form>
         </div>
     </div>

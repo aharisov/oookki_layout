@@ -62,11 +62,14 @@
 .btn-black {
     @include btn($colorWhite, $colorPrimary, $colorPrimary, $colorWhite, 'full');
 }
+.btn-black__empty {
+    @include btn($colorPrimary, $colorWhite, $colorWhite, $colorPrimary, 'empty');
+}
 .btn-red {
     @include btn($colorWhite, $colorRed, $colorRed, $colorWhite, 'full');
 }
 .btn-red__empty {
-    @include btn($colorPrimary, $colorWhite, $colorWhite, $colorPrimary, 'empty');
+    @include btn($colorRed, $colorWhite, $colorWhite, $colorRed, 'empty');
 }
 
 @media (min-width: 1024px) {
