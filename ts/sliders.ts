@@ -1,0 +1,109 @@
+declare var Swiper: any;
+
+document.addEventListener('DOMContentLoaded',  function(event) {
+    const homeTopSlider = new Swiper('.top-slider', {
+        speed: 800,
+        autoplay: {
+            delay: 8000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    const homePackSlider = new Swiper(".packs-list .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+
+    const homeProductsSlider = new Swiper(".products-slider.swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoHeight: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    const sectionNav = new Swiper(".section-nav .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+            550: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 5,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+
+    const recommendSlider = new Swiper(".recommend-slider.swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoHeight: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                autoHeight: false,
+                slidesPerView: 3,
+            },
+            1200: {
+                autoHeight: false,
+                slidesPerView: 4,
+            },
+            1360: {
+                autoHeight: false,
+                slidesPerView: 5,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+});

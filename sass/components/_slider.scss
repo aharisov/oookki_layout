@@ -1,4 +1,8 @@
 .swiper {
+    .swiper-slide {
+        display: flex;
+        height: auto;
+    }
     .swiper-pagination {
         position: absolute;
         bottom: 2rem;
@@ -8,6 +12,10 @@
         justify-content: center;
         width: 100%;
         height: 15px;
+
+        &.swiper-pagination-lock {
+            display: none;
+        }
 
         .swiper-pagination-bullet {
             display: inline-flex;
@@ -62,8 +70,11 @@
         &[aria-disabled="true"] {
             opacity: 0.5;
         }
-    }
 
+        &.swiper-button-lock {
+            display: none;
+        }
+    }
     .swiper-button-prev {
         background-image: url("../images/ic-arrow-left.svg");
     }

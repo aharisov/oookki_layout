@@ -7,6 +7,9 @@
     .swiper-wrapper {
         padding-bottom: 4rem;
     }
+    &:has(.swiper-pagination-lock) .swiper-wrapper {
+        padding-bottom: 0;
+    }
     .swiper .swiper-pagination {
         bottom: 1rem;
     }

@@ -33,16 +33,7 @@
                             <?php include("./parts/product-section/filter-mobile.php");?>
                         </div>
                     </div>
-                    <div class="section-products">
-                        <div class="section-products__inner">
-                            <?php for($i = 1; $i <= 4; $i++):?>
-                                <?php include("./parts/product-section/product1.php")?>
-                                <?php include("./parts/product-section/product2.php")?>
-                                <?php include("./parts/product-section/product3.php")?>
-                            <?php endfor;?>
-                        </div>
-                        <?php include("./parts/page-nav.php")?>
-                    </div>
+                    <?php include("./parts/product-section/product-list.php")?>
                 </div>
             </div>
 

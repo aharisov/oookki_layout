@@ -290,4 +290,7 @@ const closeCompareModal = (): void => {
     }
 }
 
-closeCompareModal();
+document.addEventListener('DOMContentLoaded',  function(event) {
+    closeCompareModal();
+    selectProduct();
+});

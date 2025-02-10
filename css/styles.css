@@ -387,6 +387,7 @@ header .header__inner .header__search button {
   background-position: center 0;
   background-repeat: no-repeat;
   background-size: cover;
+  background-size: contain;
   transition: 0.2s linear;
 }
 header .header__inner .header__search button:hover {
@@ -756,6 +757,10 @@ header .header__inner .header__search.active {
     padding: 0.5rem 2rem;
   }
 }
+.swiper .swiper-slide {
+  display: flex;
+  height: auto;
+}
 .swiper .swiper-pagination {
   position: absolute;
   bottom: 2rem;
@@ -765,6 +770,9 @@ header .header__inner .header__search.active {
   justify-content: center;
   width: 100%;
   height: 15px;
+}
+.swiper .swiper-pagination.swiper-pagination-lock {
+  display: none;
 }
 .swiper .swiper-pagination .swiper-pagination-bullet {
   display: inline-flex;
@@ -813,6 +821,9 @@ header .header__inner .header__search.active {
 }
 .swiper .swiper-button-prev[aria-disabled=true], .swiper .swiper-button-next[aria-disabled=true] {
   opacity: 0.5;
+}
+.swiper .swiper-button-prev.swiper-button-lock, .swiper .swiper-button-next.swiper-button-lock {
+  display: none;
 }
 .swiper .swiper-button-prev {
   background-image: url("../images/ic-arrow-left.svg");
@@ -866,10 +877,13 @@ header .header__inner .header__search.active {
   }
 }
 .top-slider {
-  height: 300px;
+  height: 540px;
   margin-top: 50px;
 }
 .top-slider .swiper-wrapper, .top-slider .swiper-slide {
+  height: 100%;
+}
+.top-slider figure {
   height: 100%;
 }
 .top-slider img {
@@ -880,21 +894,58 @@ header .header__inner .header__search.active {
   -o-object-position: center;
      object-position: center;
 }
+.top-slider .slide-inner {
+  position: relative;
+  width: 100%;
+}
+.top-slider .slide-inner .slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+.top-slider .slide-inner .slide-text {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  height: 100%;
+  margin-left: 1.5rem;
+  margin-top: 4rem;
+}
+.top-slider .slide-inner .slide-text .anonce {
+  margin-bottom: 1.5rem;
+  font-size: 1.44rem;
+}
+.top-slider .slide-inner .slide-text .btn {
+  max-width: 200px;
+}
+.top-slider .slide-inner.bg-dark .slide-text {
+  color: #fff;
+}
+.top-slider .slide-inner.bg-light .slide-text {
+  color: #000;
+}
 
-@media (min-width: 420px) {
+@media (min-width: 640px) {
   .top-slider {
     height: 400px;
   }
-}
-@media (min-width: 640px) {
-  .top-slider {
-    height: 300px;
+  .top-slider .slide-inner .slide-text {
+    margin-top: 5rem;
+    margin-left: 5rem;
   }
 }
 @media (min-width: 1024px) {
   .top-slider {
     height: 510px;
     margin-top: 122px;
+  }
+  .top-slider .slide-inner .slide-text {
+    justify-content: center;
+    margin-top: auto;
+    margin-left: 14%;
   }
   .top-slider.swiper-css-mode > .swiper-wrapper > .swiper-slide {
     overflow: hidden;
@@ -1873,7 +1924,7 @@ header .header__inner .header__search.active {
     position: relative;
     bottom: auto;
     left: auto;
-    z-index: auto;
+    z-index: 10;
     width: 100%;
     max-width: 270px;
     height: 100%;
@@ -2187,6 +2238,9 @@ header .header__inner .header__search.active {
 .products-slider .swiper-wrapper {
   padding-bottom: 4rem;
 }
+.products-slider:has(.swiper-pagination-lock) .swiper-wrapper {
+  padding-bottom: 0;
+}
 .products-slider .swiper .swiper-pagination {
   bottom: 1rem;
 }
@@ -2207,6 +2261,7 @@ header .header__inner .header__search.active {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
   border: 1px solid #b1b1b1;
   border-radius: 15px;
   transition: 0.2s linear;
@@ -2461,6 +2516,10 @@ header .header__inner .header__search.active {
 .product-card .promo .bold {
   font-weight: bold;
 }
+.product-card .promo.empty {
+  display: none;
+  background: transparent;
+}
 
 @media (min-width: 550px) {
   .product-card .promo {
@@ -2468,6 +2527,20 @@ header .header__inner .header__search.active {
   }
   .product-card .promo p {
     font-size: 0.875rem;
+  }
+}
+@media (min-width: 768px) {
+  .product-card:has(.promo.empty) .inner {
+    height: 100%;
+  }
+  .product-card:has(.promo.empty) .inner .compare {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 100%;
+  }
+  .product-card .promo.empty {
+    display: block;
   }
 }
 @media (min-width: 1024px) {

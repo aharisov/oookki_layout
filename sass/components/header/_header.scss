@@ -55,6 +55,7 @@ header {
                 height: 20px;
                 background-image: url("../images/ic-search.svg");
                 @include bgImg;
+                background-size: contain;
                 transition: $transition;
 
                 &:hover {

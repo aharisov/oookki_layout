@@ -16,12 +16,12 @@
         array(
             "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/np960xha-kg2fr/gallery/fr-galaxy-book5-pro-16-inch-np960-np960xha-kg2fr-thumb-544979423?$216_216_PNG$",
             "price" => "2150",
-            "name" => 'Galaxy Book5 Pro'
+            "name" => 'Galaxy Book5 Pro (16", Core Ultra 7, 16Go)'
         ),
         array(
             "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/sm-x510nzaaeub/gallery/fr-galaxy-tab-s9-fe-sm-x510-sm-x510nzaaeub-thumb-538518143?$216_216_PNG$",
             "price" => "530",
-            "name" => 'Galaxy Tab S9'
+            "name" => 'Galaxy Tab S9 FE (10.9" , Wi-Fi)'
         ),
         array(
             "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/sm-a356bzkbeub/gallery/fr-galaxy-a-sm-a356bzkbeub-front-awesome-navy-thumb-544027356?$216_216_PNG$",

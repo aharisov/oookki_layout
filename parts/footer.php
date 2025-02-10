@@ -82,8 +82,8 @@
 </div>
 
 <div class="bg-modal"></div>
-<?php include("pack-modal.php")?>
+<?php include("home/pack-modal.php")?>
 
 <script src="js/swiper-bundle.min.js"></script>
+<script src="js/helpers.js"></script>
 <script src="js/scripts.js"></script>
-<script src="js/app.js"></script>

@@ -1,4 +1,63 @@
 "use strict";
+const openCloseMenu = () => {
+    const menuBtn = document.querySelector('.js-open-menu');
+    const menu = document.querySelector('.main-menu');
+    const body = document.querySelector('body');
+    if (!menuBtn || !menu || !body)
+        return;
+    menuBtn.addEventListener('click', function () {
+        this.classList.toggle('opened');
+        menu.classList.toggle('active');
+        body.classList.toggle('lock');
+    });
+};
+const openDropdown = () => {
+    const parentItems = document.querySelectorAll('.main-menu__parent');
+    parentItems.forEach(item => {
+        item.addEventListener('click', function (event) {
+            event.stopPropagation();
+            // Close all other dropdowns
+            parentItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('opened');
+                }
+            });
+            // Toggle the clicked one
+            this.classList.toggle('opened');
+        });
+    });
+    document.addEventListener('click', () => {
+        parentItems.forEach(item => item.classList.remove('opened'));
+    });
+};
+const scrollMenu = () => {
+    let lastScrollTop = 0;
+    const header = document.querySelector("header");
+    const searchForm = document.querySelector('.header__search');
+    const filterTop = document.getElementById('filter-top');
+    if (!header || !searchForm || !filterTop)
+        return;
+    window.addEventListener("scroll", function () {
+        let currentScroll = window.scrollY;
+        if (window.scrollY > 200 && !filterTop.classList.contains("fixed")) {
+            if (currentScroll > lastScrollTop) {
+                // Scrolling Down → Hide header
+                header.classList.add("header-hidden");
+                searchForm.classList.remove("active");
+            }
+            else {
+                // Scrolling Up → Show header
+                header.classList.remove("header-hidden");
+            }
+        }
+        lastScrollTop = currentScroll;
+    });
+};
+document.addEventListener('DOMContentLoaded', function (event) {
+    openCloseMenu();
+    openDropdown();
+    scrollMenu();
+});
 /**
  * Adds a compare item element to the compare modal window.
  * @param product - The product to be compared.
@@ -247,4 +306,300 @@ const closeCompareModal = () => {
         });
     }
 };
-closeCompareModal();
+document.addEventListener('DOMContentLoaded', function (event) {
+    closeCompareModal();
+    selectProduct();
+});
+const showCloseFilter = () => {
+    const filter = document.querySelector(".section-filter");
+    const openFilterBtn = document.querySelector(".js-open-filter");
+    const screenW = window.innerWidth;
+    const closeFilterBtn = document.querySelector(".js-close-filter");
+    const sortList = document.querySelector(".sort-list");
+    const bgModal = document.querySelector(".bg-modal");
+    if (filter && openFilterBtn && closeFilterBtn && bgModal && screenW < 768) {
+        openFilterBtn.addEventListener("click", () => {
+            filter.classList.toggle("open");
+            if (screenW < 550) {
+                if (sortList === null || sortList === void 0 ? void 0 : sortList.classList.contains("open")) {
+                    sortList.classList.remove("open");
+                    bgModal.classList.add("show");
+                }
+                else {
+                    bgModal.classList.toggle("show");
+                }
+            }
+            if (screenW >= 550 && screenW < 768) {
+                bgModal.classList.toggle("show");
+            }
+        });
+        closeFilterBtn.addEventListener("click", () => {
+            filter.classList.remove("open");
+            openFilterBtn.classList.remove("active");
+            bgModal.classList.remove("show");
+        });
+    }
+};
+const openFilterBlock = () => {
+    const filterBlocks = document.querySelectorAll(".filter-block");
+    filterBlocks.forEach(block => {
+        const header = block.querySelector("h4[role='btn']");
+        const content = block.querySelector(".filter-block__inner");
+        if (header && content) {
+            header.addEventListener("click", () => {
+                const isActive = header.getAttribute("aria-active") === "true";
+                header.setAttribute("aria-active", isActive ? "false" : "true");
+                content.setAttribute("aria-hidden", isActive ? "true" : "false");
+            });
+        }
+    });
+};
+const showMoreFilterValues = () => {
+    const showMoreBtn = document.querySelector(".js-show-more");
+    if (!showMoreBtn)
+        return;
+    const container = showMoreBtn.parentElement;
+    showMoreBtn.addEventListener("click", function () {
+        if (container) {
+            container.classList.toggle("expanded");
+            this.textContent = container.classList.contains("expanded") ? "- moins de marques" : "+ de marques";
+        }
+    });
+};
+const stickyFilter = () => {
+    const filterTop = document.getElementById("filter-top");
+    const sidebar = document.querySelector(".section-filter");
+    const sidebarInner = document.querySelector(".section-filter__inner");
+    const container = document.querySelector(".section-products");
+    const header = document.querySelector("header");
+    if (filterTop && sidebar && sidebarInner && container && header) {
+        const filterTopOffset = filterTop.offsetTop;
+        const sidebarInitialOffset = sidebar.offsetTop - 180;
+        window.addEventListener("scroll", () => {
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollY >= filterTopOffset - 150) {
+                filterTop.classList.add("fixed");
+                header.classList.add("header-hidden");
+            }
+            else {
+                filterTop.classList.remove("fixed");
+                header.classList.remove("header-hidden");
+            }
+            if (window.innerWidth >= 768) {
+                const containerRect = container.getBoundingClientRect();
+                const containerBottom = containerRect.bottom;
+                const sidebarHeight = sidebarInner.offsetHeight;
+                if (scrollY >= sidebarInitialOffset) {
+                    if (containerBottom < sidebarHeight) {
+                        sidebarInner.classList.add("absolute");
+                        sidebarInner.classList.remove("fixed");
+                        sidebarInner.style.top = `${container.offsetHeight - sidebarHeight}px`;
+                    }
+                    else {
+                        sidebarInner.classList.add("fixed");
+                        sidebarInner.classList.remove("absolute");
+                        sidebarInner.style.top = "80px";
+                    }
+                }
+                else {
+                    sidebarInner.classList.remove("absolute", "fixed");
+                    sidebarInner.style.top = "";
+                }
+            }
+        });
+    }
+};
+document.addEventListener('DOMContentLoaded', function (event) {
+    showCloseFilter();
+    openFilterBlock();
+    showMoreFilterValues();
+    stickyFilter();
+});
+const sortDropdown = () => {
+    const sortActive = document.querySelector(".sort-active");
+    const sortList = document.querySelector(".sort-list");
+    const sortButtons = document.querySelectorAll(".sort-list-inner button");
+    const screenW = window.innerWidth;
+    const sortCloseBtn = document.querySelector(".js-sort-close");
+    const bgModal = document.querySelector(".bg-modal");
+    const sortInput = document.querySelector(".sort-list input[name='sort']");
+    const sortHeadActive = document.querySelector(".sort-head__active");
+    const sectionFilter = document.querySelector(".section-filter");
+    const body = document.querySelector("body");
+    if (!sortActive || !sortList || !sortInput || !sortHeadActive || !sectionFilter || !body || !bgModal)
+        return;
+    // Toggle dropdown visibility
+    sortActive.addEventListener("click", () => {
+        sortActive.classList.toggle("open");
+        if (sortList.classList.contains("open")) {
+            sortList.classList.remove("open");
+            if (screenW >= 550)
+                sortList.style.maxHeight = "0px";
+        }
+        else {
+            sortList.classList.add("open");
+            if (screenW >= 550)
+                sortList.style.maxHeight = `${sortList.scrollHeight}px`;
+        }
+        if (screenW < 550) {
+            if (sectionFilter.classList.contains("open")) {
+                sectionFilter.classList.remove("open");
+                bgModal.classList.add("show");
+                body.classList.add("lock");
+            }
+            else {
+                bgModal.classList.toggle("show");
+                body.classList.toggle("lock");
+            }
+        }
+        else {
+            sectionFilter.classList.remove("open");
+            bgModal.classList.remove("show");
+            body.classList.remove("lock");
+        }
+    });
+    if (screenW < 550 && sortCloseBtn) {
+        sortCloseBtn.addEventListener("click", () => {
+            sortList.classList.remove("open");
+            sortActive.classList.remove("open");
+            bgModal.classList.remove("show");
+            body.classList.remove("lock");
+        });
+    }
+    // Handle option selection
+    sortButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Remove "aria-selected" from all buttons
+            sortButtons.forEach(btn => btn.setAttribute("aria-selected", "false"));
+            // Set the clicked button as selected
+            button.setAttribute("aria-selected", "true");
+            // Update the active selection text
+            sortActive.textContent = button.textContent;
+            sortInput.value = button.getAttribute("data-id") || "";
+            if (screenW < 550)
+                sortHeadActive.textContent = button.textContent || "";
+            sortActive.classList.remove("open");
+            // Close dropdown smoothly
+            if (screenW >= 550) {
+                sortList.classList.remove("open");
+                sortList.style.maxHeight = "0px";
+            }
+        });
+    });
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!sortActive.contains(event.target) && !sortList.contains(event.target)) {
+            sortList.classList.remove("open");
+            sortActive.classList.remove("open");
+            if (screenW >= 550)
+                sortList.style.maxHeight = "0px";
+        }
+    });
+};
+document.addEventListener('DOMContentLoaded', function (event) {
+    sortDropdown();
+});
+document.addEventListener('DOMContentLoaded', function (event) {
+    const homeTopSlider = new Swiper('.top-slider', {
+        speed: 800,
+        autoplay: {
+            delay: 8000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    const homePackSlider = new Swiper(".packs-list .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+    const homeProductsSlider = new Swiper(".products-slider.swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoHeight: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    const sectionNav = new Swiper(".section-nav .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+            550: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 5,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+    const recommendSlider = new Swiper(".recommend-slider.swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoHeight: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                autoHeight: false,
+                slidesPerView: 3,
+            },
+            1200: {
+                autoHeight: false,
+                slidesPerView: 4,
+            },
+            1360: {
+                autoHeight: false,
+                slidesPerView: 5,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+});
