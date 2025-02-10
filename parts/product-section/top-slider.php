@@ -10,7 +10,7 @@
                 <div class="slide-bg">
                     <figure>
                         <picture>
-                            <source srcset="images/demo/mob-slider-s.jpeg" media="(max-width: 640px)">
+                            <source srcset="images/demo/mob-slider-small.jpeg" media="(max-width: 640px)">
                             <source srcset="images/demo/mob-slider-l.jpeg">
                             <img src="images/demo/mob-slider-l.jpeg" alt="" loading="lazy">
                         </picture>
@@ -28,7 +28,7 @@
                 <div class="slide-bg">
                     <figure>
                         <picture>
-                            <source srcset="images/demo/mob-slider-s2.jpeg" media="(max-width: 640px)">
+                            <source srcset="images/demo/mob-slider-small2.jpeg" media="(max-width: 640px)">
                             <source srcset="images/demo/mob-slider-l2.jpeg">
                             <img src="images/demo/mob-slider-l.jpeg" alt="" loading="lazy">
                         </picture>

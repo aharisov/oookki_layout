@@ -168,6 +168,8 @@
         }
         .price {
             margin-bottom: $mb-l;
+        }
+        .price-inner {
             span {
                 display: inline-flex;
                 font-family: $fontTitle;
@@ -181,6 +183,35 @@
                 font-weight: normal;
                 color: $colorGray;
                 text-decoration: line-through;
+            }
+        }
+        .price-suptitle {
+            font-size: $font14;
+            color: $colorBorder;
+        }
+        .price-credit {
+            font-size: $font16;
+            font-weight: bold;
+            color: $colorGray;
+        }
+        .price-note {
+            padding: 0;
+            color: $colorGray;
+            transition: $transition;
+
+            &:hover {
+                color: $colorPrimary;
+            }
+
+            .icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 20px;
+                border: 1px solid $colorBorder;
+                border-radius: $borderRadiusCircle;
+                font-size: $font14;
             }
         }
         .compare {

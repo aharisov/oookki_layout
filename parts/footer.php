@@ -85,5 +85,5 @@
 <?php include("home/pack-modal.php")?>
 
 <script src="js/swiper-bundle.min.js"></script>
-<script src="js/helpers.js"></script>
+<script src="js/helpers.js?t=<?php echo time()?>"></script>
 <script src="js/scripts.js"></script>

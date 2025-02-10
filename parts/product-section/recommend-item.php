@@ -41,7 +41,9 @@
     </a>
     <div class="inner">
         <div class="price">
-            <span><?php echo $products[$num]["price"]?>€</span>
+            <div class="price-inner">
+                <span><?php echo $products[$num]["price"]?>€</span>
+            </div>
         </div>
     </div>
 </div>

@@ -12,6 +12,9 @@
     &.show {
         display: block;
     }
+    &.on-top {
+        z-index: 100000;
+    }
 }
 
 .modal {
@@ -23,7 +26,7 @@
     justify-content: space-between;
     width: 98%;
     min-height: 200px;
-    padding: 2.5rem 1rem 2rem;
+    padding: 2.5rem 2rem 2rem;
     background: $colorWhite;
     border: 1px solid $colorBorder;
     border-radius: $borderRadiusCommon;

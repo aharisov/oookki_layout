@@ -2231,6 +2231,60 @@ header .header__inner .header__search.active {
   width: 100%;
 }
 
+.price-details-modal .modal-inner {
+  flex-direction: column;
+}
+.price-details-modal .price-details .block {
+  margin-bottom: 2rem;
+}
+.price-details-modal .price-details .block:last-child {
+  margin-bottom: 0;
+}
+.price-details-modal .price-details .block .line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.price-details-modal .price-details .block .line .left {
+  width: 60%;
+}
+.price-details-modal .price-details .block .line-sum {
+  padding-top: 0.75rem;
+  border-top: 1px solid #b1b1b1;
+  font-weight: bold;
+}
+.price-details-modal .price-details .block .line-sum .right {
+  font-family: "Oswald", Tahoma, Arial, sans-serif;
+}
+.price-details-modal .credit-note {
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 15px;
+}
+.price-details-modal .credit-note p {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+.price-details-modal .credit-note .flex {
+  align-items: center;
+}
+.price-details-modal .credit-note svg {
+  width: auto;
+  height: 20px;
+  margin-left: 1rem;
+}
+.price-details-modal .credit-note svg path {
+  fill: #fa5022;
+}
+
+@media (min-width: 1024px) {
+  .price-details-modal.modal {
+    max-width: 800px;
+  }
+  .price-details-modal.modal .modal-inner {
+    gap: 0;
+  }
+}
 .products-slider .subtitle {
   position: absolute;
   top: -1rem;
@@ -2425,19 +2479,46 @@ header .header__inner .header__search.active {
 .product-card .inner .price {
   margin-bottom: 1.5rem;
 }
-.product-card .inner .price span {
+.product-card .inner .price-inner span {
   display: inline-flex;
   font-family: "Oswald", Tahoma, Arial, sans-serif;
   font-size: 1.728rem;
   font-weight: bold;
 }
-.product-card .inner .price .price-old {
+.product-card .inner .price-inner .price-old {
   margin-left: 1rem;
   font-family: "Roboto", Tahoma, Arial, sans-serif;
   font-size: 1.2rem;
   font-weight: normal;
   color: #51656c;
   text-decoration: line-through;
+}
+.product-card .inner .price-suptitle {
+  font-size: 0.875rem;
+  color: #b1b1b1;
+}
+.product-card .inner .price-credit {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #51656c;
+}
+.product-card .inner .price-note {
+  padding: 0;
+  color: #51656c;
+  transition: 0.2s linear;
+}
+.product-card .inner .price-note:hover {
+  color: #000;
+}
+.product-card .inner .price-note .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #b1b1b1;
+  border-radius: 50%;
+  font-size: 0.875rem;
 }
 .product-card .inner .compare {
   display: flex;
@@ -2779,6 +2860,9 @@ footer {
 .bg-modal.show {
   display: block;
 }
+.bg-modal.on-top {
+  z-index: 100000;
+}
 
 .modal {
   position: fixed;
@@ -2789,7 +2873,7 @@ footer {
   justify-content: space-between;
   width: 98%;
   min-height: 200px;
-  padding: 2.5rem 1rem 2rem;
+  padding: 2.5rem 2rem 2rem;
   background: #fff;
   border: 1px solid #b1b1b1;
   border-radius: 15px;

@@ -6,7 +6,7 @@
     <title>OOOKKI | Téléphones mobiles</title>
 
     <link rel="stylesheet" href="css/swiper.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?t=<?php echo time()?>">
 </head>
 <body>
     <?php include("./parts/header.php")?>
@@ -42,6 +42,7 @@
         </div>
     </main>
 
+    <?php include("./parts/product-section/price-details-modal.php")?>
     <?php include("./parts/product-section/compare-modal.php")?>
     <?php include("./parts/footer.php")?>
 </body>

@@ -1,0 +1,64 @@
+.price-details-modal {
+    .modal-inner {
+        flex-direction: column;
+    }
+
+    .price-details .block {
+        margin-bottom: 2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: $mb-s;
+
+            .left {
+                width: 60%;
+            }
+        }
+        .line-sum {
+            padding-top: $mb-s;
+            border-top: 1px solid $colorBorder;
+            font-weight: bold;
+
+            .right {
+                font-family: $fontTitle;
+            }
+        }
+    }
+
+    .credit-note {
+        padding: 1rem;
+        background: $colorSecond;
+        border-radius: $borderRadiusCommon;
+
+        p {
+            margin-bottom: $mb-xs;
+            font-size: $font14;
+        }
+        .flex {
+            align-items: center;
+        }
+        svg {
+            width: auto;
+            height: 20px;
+            margin-left: 1rem;
+        }
+        svg path {
+            fill: #fa5022;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .price-details-modal.modal {
+        max-width: 800px;
+
+        .modal-inner {
+            gap: 0;
+        }
+    }
+}

@@ -10,7 +10,8 @@
             "colors_code" => ["rgb(121, 128, 129)", "rgb(50, 52, 75)", "rgba(255, 217, 223, 0.5)"],
             "colors_stock" => [1, 1, 0],
             "stockage" => ["128 Go", "256 Go", "512 Go", "1 To"],
-            "promo" => ["0", "80"]
+            "promo" => ["0", "80"],
+            "credit" => "48"
         ),
         array(
             "pic" => "images/demo/Carrousel_02_Samsung_Galaxy_Z_Flip6_Bleu_9b27ecacfe%201.png",
@@ -22,7 +23,8 @@
             "colors_code" => ["rgb(94, 182, 221)", "rgb(121, 128, 129)", "rgb(81, 119, 132)", "rgb(255, 241, 104)"],
             "colors_stock" => [1, 0, 1, 0],
             "stockage" => ["256 Go", "512 Go"],
-            "promo" => ["50", "80"]
+            "promo" => ["50", "80"],
+            "credit" => "35"
         ),
         array(
             "pic" => "images/demo/1_Iphone15_Blue_184x184.webp",
@@ -34,7 +36,8 @@
             "colors_code" => ["rgb(94, 182, 221)", "rgb(56, 51, 54)", "rgb(255, 217, 223)", "rgb(255, 241, 104)", "rgb(81, 119, 132)"],
             "colors_stock" => [1, 1, 1, 1, 1],
             "stockage" => ["128 Go", "256 Go", "512 Go"],
-            "promo" => ["100", "100"]
+            "promo" => ["100", "100"],
+            "credit" => "28"
         ),
         array(
             "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/sm-s721bzkdeub/gallery/fr-galaxy-s24-fe-s721-sm-s721bzkdeub-thumb-543654434?$216_216_PNG$",
@@ -46,7 +49,8 @@
             "colors_code" => ["rgb(121, 128, 129)", "rgb(50, 52, 75)", "rgba(255, 217, 223, 0.5)"],
             "colors_stock" => [1, 0, 0],
             "stockage" => ["128 Go", "256 Go", "512 Go"],
-            "promo" => ["0", "0"]
+            "promo" => ["0", "0"],
+            "credit" => "32"
         ),
     ];
 ?>
@@ -85,10 +89,21 @@
                         </ul>
 
                         <div class="price">
-                            <span><?php echo $products[$j]["price"]?>€</span>
-                            <?php if (!empty($products[$j]["old_price"])):?>
-                                <span class="price-old"><?php echo $products[$j]["old_price"]?>€</span>
-                            <?php endif;?>
+                            <div class="price-suptitle">À partir de</div>
+                            <div class="price-inner">
+                                <span><?php echo $products[$j]["price"]?>€</span>
+                                <?php if (!empty($products[$j]["old_price"])):?>
+                                    <span class="price-old"><?php echo $products[$j]["old_price"]?>€</span>
+                                <?php endif;?>
+                            </div>
+                            <div class="price-credit">
+                                <span>+<?php echo $products[$j]["credit"]?>€</span>
+                                <span>/ mois x 3 mois</span>
+                            </div>
+                            <button type="button" class="price-note" data-modal="price-details-modal">
+                                <span>après remboursement</span>
+                                <span class="icon">i</span>
+                            </button>
                         </div>
 
                         <div class="compare">
