@@ -1,6 +1,6 @@
 <?php $num = rand(1, 99);?>
 <div class="product-card">
-    <a href="/product.php">
+    <a href="product.php">
         <div class="pic">
             <div class="colors flex">
                 <span title="Gris" style="background: rgb(121, 128, 129);"></span>

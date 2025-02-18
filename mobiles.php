@@ -17,7 +17,7 @@
             <div class="cont">
                 <nav class="breadcrumbs">
                     <ul class="flex">
-                        <li><a href="/">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li><span>Téléphones</span></li>
                     </ul>
                 </nav>

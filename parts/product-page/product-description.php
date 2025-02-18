@@ -1,4 +1,4 @@
-<article class="product-description">
+<article id="product-description" class="product-description tab-panel" aria-hidden="true">
     <h2>Le nouveau Galaxy Z Fold6 est là !</h2>
 
     <div class="description-inner">
@@ -8,10 +8,13 @@
                 <p>Le Galaxy Z Fold6 se décline en un éventail de couleurs qui feront tourner les têtes, y compris de nouveaux coloris Blanc et Noir Carbone, disponibles en exclusivité sur samsung.com</p>
             </div>
             <div class="media">
-                <figure class="common-video__figure loaded">
-                    <video controls="" autoplay="" name="media">
-                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-design.webm?imbypass=true" type="video/webm">
+                <figure>
+                    <video controls="" name="media">
+                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-design.webm" type="video/webm">
                     </video>
+                    <div class="cover">
+                        <img src="https://images.samsung.com/is/image/samsung/assets/fr/smartphones/galaxy-z-fold6/images/galaxy-z-fold6-features-highlights-design-start.jpg" alt="Couverture vidéo">
+                    </div>
                 </figure>
             </div>
         </section>
@@ -23,9 +26,12 @@
             </div>
             <div class="media">
                 <figure>
-                    <video controls="" autoplay="" name="media">
-                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-note-assist.webm?imbypass=true" type="video/webm">
+                    <video controls="" name="media">
+                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-note-assist.webm" type="video/webm">
                     </video>
+                    <div class="cover">
+                        <img src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/images/galaxy-z-fold6-features-highlights-note-assist-start.jpg" alt="Couverture vidéo">
+                    </div>
                 </figure>
             </div>
         </section>
@@ -36,10 +42,13 @@
             </div>
             <div class="media">
                 <figure>
-                    <video controls="" autoplay="" name="media">
-                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-performance-a.webm?imbypass=true" type="video/webm">
-                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-performance-a.mp4?imbypass=true" type="video/mp4">
+                    <video controls="" name="media">
+                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-performance-a.webm" type="video/webm">
+                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-performance-a.mp4" type="video/mp4">
                     </video>
+                    <div class="cover">
+                        <img src="https://images.samsung.com/is/image/samsung/assets/fr/smartphones/galaxy-z-fold6/images/galaxy-z-fold6-features-highlights-performance-a-start.jpg" alt="Couverture vidéo">
+                    </div>
                 </figure>
             </div>
         </section>
@@ -50,9 +59,12 @@
             </div>
             <div class="media">
                 <figure>
-                    <video controls="" autoplay="" name="media">
-                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-cts.webm?imbypass=true" type="video/webm">
+                    <video controls="" name="media">
+                        <source src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/videos/galaxy-z-fold6-features-highlights-cts.webm" type="video/webm">
                     </video>
+                    <div class="cover">
+                        <img src="https://images.samsung.com/fr/smartphones/galaxy-z-fold6/images/galaxy-z-fold6-features-highlights-cts-start.jpg" alt="Couverture vidéo">
+                    </div>
                 </figure>
             </div>
         </section>

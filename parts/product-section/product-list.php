@@ -62,7 +62,7 @@
                 $num = rand(1, 99);
             ?>
                 <div class="product-card">
-                    <a href="/product.php">
+                    <a href="product.php">
                         <div class="pic">
                             <div class="colors flex">
                                 <?php foreach($products[$j]["colors_name"] as $index => $color):?>

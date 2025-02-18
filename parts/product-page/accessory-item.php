@@ -4,24 +4,24 @@
 
     $products = [
         array(
-            "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/sm-s721bzkdeub/gallery/fr-galaxy-s24-fe-s721-sm-s721bzkdeub-thumb-543654434?$216_216_PNG$",
-            "price" => "649",
-            "name" => "Galaxy S24 FE"
+            "pic" => "https://static.s-sfr.fr/media/catalogue/article/accessoire/vok6lxc4/620720-1-Coque-transparente-Samsung-Galaxy-Z-Flip6-150x150.jpg",
+            "price" => "38",
+            "name" => "Coque transparente pour Samsung Galaxy Z Flip6"
         ),
         array(
             "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/2407/gallery/fr-galaxy-buds3-pro-r630-sm-r630nzaaxef-thumb-542343231?$216_216_PNG$",
-            "price" => "250",
+            "price" => "199",
             "name" => "Galaxy Buds3 Pro"
         ),
         array(
-            "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/np960xha-kg2fr/gallery/fr-galaxy-book5-pro-16-inch-np960-np960xha-kg2fr-thumb-544979423?$216_216_PNG$",
-            "price" => "2150",
-            "name" => 'Galaxy Book5 Pro (16", Core Ultra 7, 16Go)'
+            "pic" => "https://static.s-sfr.fr/media/catalogue/article/accessoire/edhsqw7m/620714-1-CoqueanneauSamsungZFlip6gris1_150x150.jpg",
+            "price" => "59",
+            "name" => 'Coque avec anneau pour Samsung Galaxy Z Flip6 gris'
         ),
         array(
-            "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/sm-x510nzaaeub/gallery/fr-galaxy-tab-s9-fe-sm-x510-sm-x510nzaaeub-thumb-538518143?$216_216_PNG$",
+            "pic" => "https://static.s-sfr.fr/media/catalogue/article/accessoire/yezm4dqq/620748-1-GalaxyWatchUltra4G47mmGris_150x150.jpg",
             "price" => "530",
-            "name" => 'Galaxy Tab S9 FE (10.9" , Wi-Fi)'
+            "name" => 'Samsung Galaxy Watch Ultra'
         ),
         array(
             "pic" => "https://images.samsung.com/is/image/samsung/p6pim/fr/sm-a356bzkbeub/gallery/fr-galaxy-a-sm-a356bzkbeub-front-awesome-navy-thumb-544027356?$216_216_PNG$",
@@ -31,10 +31,9 @@
     ];
 ?>
 <div class="product-card">
-    <a href="product.php">
+    <a href="/product.php">
         <div class="pic">
             <img src="<?php echo $products[$num]["pic"]?>" alt="<?php echo $products[$num]["name"]?>">
-            <div class="icon"></div>
         </div>
         <div class="brand">Samsung</div>
         <div class="name"><span><?php echo $products[$num]["name"]?></span></div>
