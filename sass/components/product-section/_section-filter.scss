@@ -110,6 +110,7 @@
                 }
             }
             [aria-active="false"] {
+                margin-bottom: 0.3rem;
                 &::after {
                     display: block;
                     @include arrow(12px);
@@ -184,12 +185,12 @@
             top: 60px;
             z-index: 9999;
             width: 100%;
-            max-width: 215px;
+            max-width: 245px;
         }
         .absolute {
             position: absolute;
             width: 100%;
-            max-width: 215px;
+            max-width: 245px;
         }
 
         .filter-close, .filter-head, .filter-btn__mobile {

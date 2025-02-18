@@ -1,7 +1,7 @@
 <header class="flex">
     <div class="cont">
         <div class="header__inner flex">
-            <a href="/html" class="header__logo"><img src="images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
+            <a href="index.php" class="header__logo"><img src="images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
             <div class="header__search">
                 <form action="">
                     <input type="text" placeholder="Recherchez des produits essentiels ...">

@@ -36,6 +36,9 @@ p {
 img {
     width: 100%;
 }
+img.icon {
+    width: auto;
+}
 
 button {
     font-family: $fontPrimary;
@@ -111,12 +114,16 @@ main:has(.top-slider) {
         background: $colorGrayHover;
     }
 }
+.product-page .up-btn {
+    bottom: 6rem;
+}
 
 .breadcrumbs {
     margin-bottom: $mb-l;
     li {
         position: relative;
         margin-right: 1rem;
+        margin-bottom: 0.5rem;
         padding-right: 0.5rem;
 
         &::after {
@@ -142,6 +149,11 @@ main:has(.top-slider) {
     }
 }
  
+[aria-hidden="true"]:not(svg),
+.hidden {
+    display: none;
+}
+
 @media (min-width: 768px) {
     .up-btn {
         bottom: 4rem;
@@ -180,9 +192,6 @@ main:has(.top-slider) {
     .mb-common {
         margin-bottom: 3rem;
     }
-    .hidden {
-        display: none;
-    }
 
     .section-head {
         margin-bottom: $mb-l;
@@ -204,6 +213,14 @@ main:has(.top-slider) {
         &:hover {
             transform: rotate(90deg) scale(1.2);
         }
+    }
+    .product-page .up-btn {
+        bottom: 2rem;
+    }
+}
+@media (min-width: 1200px) {
+    .breadcrumbs li {
+        margin-bottom: 0;
     }
 }
 @media (min-width: 1360px) {

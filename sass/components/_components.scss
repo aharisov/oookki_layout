@@ -1,23 +1,30 @@
 @import "./header/header";
 @import "./header/menu";
 @import "./buttons";
-@import "./slider";
-@import "./top-slider";
+@import "./sliders/slider";
+@import "./sliders/top-slider";
 
 @import "./home/howto";
 @import "./home/packs";
 @import "./home/advants";
 @import "./home/faq";
 
-@import "./section/section-nav";
-@import "./section/filter-top";
-@import "./section/section-filter";
-@import "./section/section-products";
-@import "./section/compare-modal";
-@import "./section/recommend-list";
-@import "./section/price-details-modal";
+@import "./product-section/section-nav";
+@import "./product-section/filter-top";
+@import "./product-section/section-filter";
+@import "./product-section/section-products";
+@import "./product-section/compare-modal";
+@import "./product-section/recommend-list";
+@import "./product-section/price-details-modal";
 
-@import "./products-slider";
+@import "./product-page/product-info";
+@import "./product-page/product-features";
+@import "./product-page/product-description";
+@import "./product-page/product-images";
+@import "./product-page/product-top";
+@import "./product-page/in-cart-modal";
+
+@import "./sliders/products-slider";
 @import "./product-card";
 
 @import "./footer";
