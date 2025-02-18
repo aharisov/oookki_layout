@@ -106,4 +106,18 @@ document.addEventListener('DOMContentLoaded',  function(event) {
             prevEl: '.swiper-button-prev',
         },
     });
+
+    const productImagesSlider = new Swiper(".product-page__slider .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 });

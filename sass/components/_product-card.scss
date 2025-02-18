@@ -242,7 +242,7 @@
         padding: 1rem;
         border-bottom-left-radius: $borderRadiusInner;
         border-bottom-right-radius: $borderRadiusInner;
-        background: rgba(187, 37, 50, 0.7);
+        background: $colorRedTransparent;
         color: $colorWhite;
 
         .hidden {

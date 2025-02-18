@@ -1,4 +1,41 @@
 "use strict";
+function addToCart() {
+    const modal = document.getElementById("in-cart-modal");
+    const modalBg = document.querySelector(".bg-modal");
+    const modalTitle = document.querySelector(".modal-title span");
+    const modalImage = document.querySelector(".modal-picture img");
+    const continueShopping = document.querySelector(".continue");
+    const cartCounter = document.querySelector(".btn-cart .cnt");
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    if (!modalTitle || !modalImage || !continueShopping || !cartCounter || !addToCartButtons) {
+        return;
+    }
+    let cartCount = 0;
+    function updateModal(title, imageUrl) {
+        modalTitle.textContent = `${title}`;
+        modalImage.src = imageUrl;
+        // Increment cart count
+        cartCount++;
+        cartCounter.textContent = cartCount.toString();
+    }
+    // Close modal function
+    function closeModalHandler() {
+        modal.classList.remove("show");
+        modalBg.classList.remove("show");
+    }
+    // Event listeners for add to cart buttons
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const productTitle = this.getAttribute("data-title");
+            const productImage = this.getAttribute("data-image");
+            updateModal(productTitle, productImage);
+        });
+    });
+    continueShopping.addEventListener("click", closeModalHandler);
+}
+document.addEventListener("DOMContentLoaded", () => {
+    addToCart();
+});
 const openCloseMenu = () => {
     const menuBtn = document.querySelector('.js-open-menu');
     const menu = document.querySelector('.main-menu');
@@ -57,6 +94,80 @@ document.addEventListener('DOMContentLoaded', function (event) {
     openCloseMenu();
     openDropdown();
     scrollMenu();
+});
+function moveElementOnResize(elementSelector, fromSelector, toSelector, beforeFromSelector, beforeToSelector, breakpoint) {
+    const element = document.querySelector(elementSelector);
+    const fromContainer = document.querySelector(fromSelector);
+    const toContainer = document.querySelector(toSelector);
+    const beforeFromElement = document.querySelector(beforeFromSelector);
+    const beforeToElement = document.querySelector(beforeToSelector);
+    if (!element || !fromContainer || !toContainer || !beforeFromElement || !beforeToElement) {
+        console.error("One or more elements not found");
+        return;
+    }
+    function moveElement() {
+        if (window.innerWidth <= breakpoint) {
+            if (element.parentElement !== toContainer) {
+                fromContainer.contains(element) && fromContainer.removeChild(element);
+                toContainer.insertBefore(element, beforeFromElement);
+            }
+        }
+        else {
+            if (element.parentElement !== fromContainer) {
+                toContainer.contains(element) && toContainer.removeChild(element);
+                fromContainer.insertBefore(element, beforeToElement);
+            }
+        }
+    }
+    window.addEventListener("resize", moveElement);
+    window.addEventListener("DOMContentLoaded", moveElement);
+    moveElement(); // Initial check
+}
+moveElementOnResize(".product-title", ".product-info__inner", ".product-info", ".product-page__slider", ".return-calculate", 768);
+function playVideo() {
+    const figures = document.querySelectorAll(".media figure");
+    if (!figures)
+        return;
+    figures.forEach((figure) => {
+        const video = figure.querySelector(".media video");
+        const cover = figure.querySelector(".media .cover");
+        if (!video || !cover)
+            return;
+        // Observer to autoplay video when in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !video.dataset.played) {
+                    playVideo();
+                    video.dataset.played = "true"; // Mark video as played once
+                }
+            });
+        }, { threshold: 0.5 } // 50% of the video must be visible
+        );
+        observer.observe(figure);
+        function playVideo() {
+            cover.style.opacity = "0"; // Start fade out
+            setTimeout(() => {
+                cover.style.visibility = "hidden";
+                video.style.visibility = "visible";
+                video.play();
+            }, 300); // Matches transition duration
+        }
+        // Show cover after video ends
+        video.addEventListener("ended", () => {
+            video.style.visibility = "hidden";
+            cover.style.visibility = "visible";
+            setTimeout(() => {
+                cover.style.opacity = "1"; // Fade in effect
+            }, 50);
+        });
+        // Manual replay when clicking the cover
+        cover.addEventListener("click", () => {
+            playVideo();
+        });
+    });
+}
+document.addEventListener("DOMContentLoaded", () => {
+    playVideo();
 });
 /**
  * Adds a compare item element to the compare modal window.
@@ -415,6 +526,88 @@ document.addEventListener('DOMContentLoaded', function (event) {
     showMoreFilterValues();
     stickyFilter();
 });
+function getProductPayment() {
+    const paymentRadios = document.querySelectorAll('input[name="pay-type"]');
+    const payTypeBlocks = document.querySelectorAll(".pay-subtype");
+    function updatePaymentVisibility() {
+        const selectedRadio = document.querySelector('input[name="pay-type"]:checked');
+        const selectedValue = selectedRadio ? selectedRadio.value : null;
+        const selectedParent = selectedRadio === null || selectedRadio === void 0 ? void 0 : selectedRadio.closest(".option-block");
+        payTypeBlocks.forEach((block) => {
+            const blockType = block.getAttribute("data-type");
+            const payTypeContainer = document.querySelector(".product-options.payment-options");
+            if (selectedValue === "cash") {
+                payTypeContainer.setAttribute("aria-hidden", "true");
+                selectedParent === null || selectedParent === void 0 ? void 0 : selectedParent.classList.add("last");
+            }
+            else {
+                payTypeContainer.setAttribute("aria-hidden", "false");
+                selectedParent === null || selectedParent === void 0 ? void 0 : selectedParent.classList.remove("last");
+                if (blockType === selectedValue) {
+                    block.setAttribute("aria-hidden", "false");
+                }
+                else {
+                    block.setAttribute("aria-hidden", "true");
+                }
+            }
+        });
+    }
+    // Run on page load to set the correct visibility
+    updatePaymentVisibility();
+    // Listen for changes on the radio inputs
+    paymentRadios.forEach((radio) => {
+        radio.addEventListener("change", updatePaymentVisibility);
+    });
+}
+document.addEventListener("DOMContentLoaded", () => {
+    getProductPayment();
+});
+function productPhotoChange() {
+    const colorButtons = document.querySelectorAll("input[name='color']");
+    const swiperContainer = document.querySelector(".product-page__slider .swiper-wrapper");
+    if (!swiperContainer || !colorButtons)
+        return;
+    function updateGallery(color) {
+        var _a;
+        if (!swiperContainer)
+            return;
+        // Convert colors with 2 words, ex. "Bleu nuit" to "bleu-nuit"
+        const formattedColor = color.toLowerCase().replace(/\s+/g, "-");
+        const images = swiperContainer.querySelectorAll("img");
+        const toCartBtn = document.querySelector(".add-to-cart");
+        images.forEach((img) => {
+            const link = img.closest("a");
+            const newImage = img.getAttribute(`data-${formattedColor}`);
+            if (newImage && img.src !== newImage) {
+                img.style.opacity = "0"; // Start fade out
+                setTimeout(() => {
+                    img.src = newImage;
+                    link === null || link === void 0 ? void 0 : link.setAttribute("href", newImage);
+                    img.setAttribute("alt", `Smartphone color: ${color}`);
+                    img.style.opacity = "1"; // Fade in after src change
+                }, 300); // Wait for fade out duration
+            }
+        });
+        // update image on btn
+        toCartBtn === null || toCartBtn === void 0 ? void 0 : toCartBtn.setAttribute("data-image", (_a = images[0]) === null || _a === void 0 ? void 0 : _a.getAttribute(`data-${formattedColor}`));
+        // Refresh Swiper to update images
+        const swiperInstance = window.swiper;
+        if (swiperInstance) {
+            swiperInstance.update();
+        }
+    }
+    colorButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const selectedColor = button.value;
+            if (selectedColor) {
+                updateGallery(selectedColor);
+            }
+        });
+    });
+}
+document.addEventListener("DOMContentLoaded", () => {
+    productPhotoChange();
+});
 const sortDropdown = () => {
     const sortActive = document.querySelector(".sort-active");
     const sortList = document.querySelector(".sort-list");
@@ -499,6 +692,64 @@ const sortDropdown = () => {
 };
 document.addEventListener('DOMContentLoaded', function (event) {
     sortDropdown();
+});
+function initTabs() {
+    var _a;
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+    const tabSelect = document.querySelector(".product-top__tabs-select");
+    const tabSwitch = document.querySelector(".product-top__tabs-switch");
+    function activateTab(tabId) {
+        tabButtons.forEach(button => {
+            button.classList.toggle("active", button.dataset.tab === tabId);
+        });
+        tabPanels.forEach(panel => {
+            if (panel.id === tabId) {
+                panel.setAttribute("aria-hidden", "false");
+                // Get panel position and subtract offset (e.g., 20px for spacing)
+                const offset = 100;
+                const panelTop = panel.getBoundingClientRect().top + window.scrollY - offset;
+                // Smooth scroll
+                window.scrollTo({ top: panelTop, behavior: "smooth" });
+            }
+            else {
+                panel.setAttribute("aria-hidden", "true");
+            }
+        });
+        // Update the select text on mobile
+        if (tabSelect) {
+            const activeButton = document.querySelector(`[data-tab="${tabId}"]`);
+            if (activeButton) {
+                tabSelect.textContent = activeButton.textContent;
+                tabSelect.classList.remove("active");
+            }
+        }
+    }
+    // Handle tab button clicks
+    tabButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            if (button.dataset.tab) {
+                activateTab(button.dataset.tab);
+            }
+            // Close mobile menu after selection
+            if (tabSwitch) {
+                tabSwitch.classList.remove("open");
+                tabSelect.classList.remove("active");
+            }
+        });
+    });
+    // Toggle tab menu on mobile
+    tabSelect === null || tabSelect === void 0 ? void 0 : tabSelect.addEventListener("click", () => {
+        tabSwitch === null || tabSwitch === void 0 ? void 0 : tabSwitch.classList.toggle("open");
+        tabSelect.classList.toggle("active");
+    });
+    // Ensure the first tab is active on load
+    const firstTab = (_a = tabButtons[0]) === null || _a === void 0 ? void 0 : _a.dataset.tab;
+    if (firstTab)
+        activateTab(firstTab);
+}
+document.addEventListener("DOMContentLoaded", () => {
+    initTabs();
 });
 document.addEventListener('DOMContentLoaded', function (event) {
     const homeTopSlider = new Swiper('.top-slider', {
@@ -602,4 +853,85 @@ document.addEventListener('DOMContentLoaded', function (event) {
             prevEl: '.swiper-button-prev',
         },
     });
+    const productImagesSlider = new Swiper(".product-page__slider .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 });
+function stickyElement(element, hideHeader) {
+    if (!element)
+        return;
+    const elementRect = element.getBoundingClientRect();
+    const header = document.querySelector("header");
+    const originalTop = elementRect.top + window.scrollY - 70;
+    const stickyClass = "sticky";
+    function handleScroll() {
+        if (window.scrollY >= originalTop) {
+            if (!element.classList.contains(stickyClass)) {
+                element.classList.add(stickyClass);
+                if (hideHeader)
+                    header === null || header === void 0 ? void 0 : header.classList.add("header-hidden");
+            }
+        }
+        else {
+            if (element.classList.contains(stickyClass)) {
+                element.classList.remove(stickyClass);
+                element.style.transform = "";
+                if (hideHeader)
+                    header === null || header === void 0 ? void 0 : header.classList.remove("header-hidden");
+            }
+        }
+    }
+    window.addEventListener("scroll", handleScroll);
+}
+// Example usage:
+document.addEventListener("DOMContentLoaded", () => {
+    const stickyProductTop = document.querySelector(".product-top");
+    const stickyMobileTabs = document.querySelector(".product-top__tabs");
+    if (stickyProductTop && window.innerWidth >= 1024) {
+        stickyElement(stickyProductTop, true);
+    }
+    if (stickyMobileTabs && window.innerWidth < 1024) {
+        stickyElement(stickyMobileTabs, true);
+    }
+});
+function stickySidebar(leftElement, rightElement, offset = 20) {
+    function onScroll() {
+        const leftRect = leftElement.getBoundingClientRect();
+        const rightRect = rightElement.getBoundingClientRect();
+        const rightBottom = rightElement.offsetTop + rightElement.offsetHeight;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const leftHeight = leftElement.offsetHeight;
+        if (scrollY + offset > rightElement.offsetTop && scrollY + leftHeight + offset < rightBottom) {
+            leftElement.style.position = "fixed";
+            leftElement.style.top = `${offset}px`;
+            leftElement.classList.add("sticky");
+        }
+        else if (scrollY + leftHeight + offset >= rightBottom) {
+            leftElement.style.position = "absolute";
+            leftElement.style.top = `${rightElement.offsetHeight - leftHeight}px`;
+        }
+        else {
+            leftElement.style.position = "static";
+            leftElement.classList.remove("sticky");
+        }
+    }
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll); // Handle screen resizing
+    onScroll(); // Call once to set the initial position
+}
+// Example usage:
+const left = document.querySelector(".product-page__slider .inner");
+const right = document.querySelector(".product-info .product-info__inner");
+if (left && right && window.innerWidth >= 768) {
+    stickySidebar(left, right, 100);
+}

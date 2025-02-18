@@ -1,0 +1,38 @@
+.in-cart-modal {
+    &.modal {
+        max-width: 640px;
+    }
+    .modal-title {
+        text-align: center;
+    }
+    .modal-picture {
+        width: 50%;
+        height: 200px;
+        margin: 0 auto $mb-l;
+
+        img {
+            @include imgFit;
+            object-fit: contain;
+        }
+    }
+    .modal-buttons {
+        justify-content: center;
+
+        .btn {
+            margin: 0 $mb-s $mb-s;
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    .in-cart-modal {
+        .modal-picture {
+            height: 300px;
+        }
+        .modal-buttons {
+            .btn {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
