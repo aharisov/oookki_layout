@@ -2666,6 +2666,9 @@ header .header__inner .header__search.active {
   .product-options .option-block .option-props li {
     width: 30%;
   }
+  .summary-inner {
+    transition: 0.2s linear;
+  }
   .summary-inner .summary-block li, .summary-inner .summary-block p {
     font-size: 1.2rem;
   }
