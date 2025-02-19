@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="footer-bot">
-            <a href="/html" class="footer-logo">
+            <a href="index.php" class="footer-logo">
                 <img src="images/logo-white.svg" alt="OOOKKI">
             </a>
             <div class="socials flex">

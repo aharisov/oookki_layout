@@ -85,23 +85,21 @@
                         <li>
                             <input id="pay-type1" type="radio" name="pay-type" value="location" checked />
                             <label for="pay-type1">
-                                <p class="config-title">Location</p>
+                                <p class="config-title">OOOKKI power (loa)</p>
                                 <span>à partir de 20€/ mois</span>
                             </label>    
                         </li>
                         <li>
                             <input id="pay-type2" type="radio" name="pay-type" value="credit" />
                             <label for="pay-type2">
-                                <p class="config-title w-icon">
-                                    Comptant
-                                </p>
-                                <span>en 3 ou 4 fois</span>
+                                <p class="config-title">EASY</p>
+                                <span>payement en 3 ou 4 fois</span>
                             </label>    
                         </li>
                         <li>
                             <input id="pay-type3" type="radio" name="pay-type" value="cash" />
                             <label for="pay-type3">
-                                <p class="config-title"><?php echo $props["price"]?> €</p>
+                                <p class="config-title">CASH</p>
                                 <span>en 1 seule fois</span>
                             </label>    
                         </li>
@@ -200,6 +198,22 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="summary-inner pay-cash" aria-hidden="true">
+                <div class="summary-block">
+                    <ul>
+                        <li>
+                            <span class="left"><strong><?php echo $props["name"]?></strong></span>
+                            <span class="right"><strong><?php echo $props["price"]?></strong></span>
+                        </li>
+                        <li>
+                            <span class="left">Remboursement après achat</span>
+                            <span class="right"><?php echo $props["bonus"][0]?></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <button type="button" 
                 class="btn btn-red add-to-cart open-modal" 
                 data-modal="in-cart-modal"

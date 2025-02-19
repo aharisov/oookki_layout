@@ -421,6 +421,7 @@
     }
 
     .summary-inner {
+        transition: $transition;
         .summary-block {
             li, p {
                 font-size: $fontXS;

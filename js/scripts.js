@@ -529,16 +529,28 @@ document.addEventListener('DOMContentLoaded', function (event) {
 function getProductPayment() {
     const paymentRadios = document.querySelectorAll('input[name="pay-type"]');
     const payTypeBlocks = document.querySelectorAll(".pay-subtype");
+    if (!paymentRadios || !payTypeBlocks)
+        return;
     function updatePaymentVisibility() {
         const selectedRadio = document.querySelector('input[name="pay-type"]:checked');
         const selectedValue = selectedRadio ? selectedRadio.value : null;
         const selectedParent = selectedRadio === null || selectedRadio === void 0 ? void 0 : selectedRadio.closest(".option-block");
+        const summaryBlocks = document.querySelectorAll(".summary-inner");
+        if (!summaryBlocks)
+            return;
         payTypeBlocks.forEach((block) => {
             const blockType = block.getAttribute("data-type");
             const payTypeContainer = document.querySelector(".product-options.payment-options");
             if (selectedValue === "cash") {
                 payTypeContainer.setAttribute("aria-hidden", "true");
                 selectedParent === null || selectedParent === void 0 ? void 0 : selectedParent.classList.add("last");
+                // hide summary for products with several payments
+                // show block for one price
+                summaryBlocks.forEach(block => {
+                    block.setAttribute("aria-hidden", "true");
+                    if (block.classList.contains("pay-cash"))
+                        block.setAttribute("aria-hidden", "false");
+                });
             }
             else {
                 payTypeContainer.setAttribute("aria-hidden", "false");
@@ -549,6 +561,13 @@ function getProductPayment() {
                 else {
                     block.setAttribute("aria-hidden", "true");
                 }
+                // show summary for products with several payments
+                // hide block for one price
+                summaryBlocks.forEach(block => {
+                    block.setAttribute("aria-hidden", "false");
+                    if (block.classList.contains("pay-cash"))
+                        block.setAttribute("aria-hidden", "true");
+                });
             }
         });
     }
