@@ -14,25 +14,29 @@ const handleRadioSelection = () => {
 
 // update pay block with the value of chosen sim card
 const updatePayBlock = () => {
-    const payBlockTotal = document.querySelector<HTMLElement>(".pay-summary .pay-block.all-info");
-    const payBlockList = payBlockTotal?.querySelector<HTMLElement>(".pay-block ul");
+    const payBlockList = document.querySelectorAll<HTMLElement>(".pay-summary .pay-block.all-info ul");
     const selectedCard = document.querySelector<HTMLInputElement>("input[name='card']:checked");
 
-    if (!payBlockTotal || !payBlockList || !selectedCard) return;
+    if (!payBlockList || !selectedCard) return;
 
     // Remove existing "offer" entry if any
-    const existingOfferte = payBlockList.querySelector(".card-offer");
-    if (existingOfferte) {
-        existingOfferte.remove();
-    }
+    payBlockList.forEach(el => {
+        const existingOffer = el.querySelector(".card-offer");
 
-    // Create new list item for selected card
-    const newListItem = document.createElement("li");
-    newListItem.classList.add("card-offer");
-    newListItem.innerHTML = `<span>${selectedCard.value}</span><span>offerte</span>`;
+        if (existingOffer) {
+            existingOffer.remove();
+        }
+    })
 
-    // Append new list item to the list
-    payBlockList.appendChild(newListItem);
+    payBlockList.forEach(el => {
+        // Create new list item for selected card
+        const newListItem = document.createElement("li");
+        newListItem.classList.add("card-offer");
+        newListItem.innerHTML = `<span>${selectedCard.value}</span><span>offerte</span>`;
+
+        // Append new list item to the list
+            el.appendChild(newListItem);
+    });
 };
 
 const updateButtonState = () => {

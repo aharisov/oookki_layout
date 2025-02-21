@@ -4006,10 +4006,6 @@ form .form-line.btn-submit-wrap {
   transform: scale(1.2);
 }
 
-.pay-summary {
-  display: none;
-}
-
 .pay-mobile {
   display: flex;
   justify-content: space-between;
@@ -4057,6 +4053,85 @@ form .form-line.btn-submit-wrap {
   background: #f5f5f5;
 }
 
+.pay-summary {
+  display: none;
+  flex-direction: column;
+}
+.pay-summary .pay-block {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(81, 101, 108, 0.1);
+  border-radius: 15px;
+}
+.pay-summary .pay-block ul {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #b1b1b1;
+}
+.pay-summary .pay-block li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.pay-summary .pay-block li span:first-child {
+  width: 70%;
+}
+.pay-summary .pay-block .sum {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-family: "Oswald", Tahoma, Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.pay-summary .pay-block .sum .right {
+  color: rgba(187, 37, 50, 0.7);
+}
+.pay-summary .pay-note {
+  margin-top: 0.75rem;
+}
+.pay-summary .pay-note p {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  color: #51656c;
+}
+.pay-summary .pay-note p:last-child {
+  margin-bottom: 0;
+}
+
+.basket-price-modal .pay-summary {
+  display: flex;
+}
+.basket-price-modal .pay-summary .pay-summary-inner {
+  height: 380px;
+  overflow-y: auto;
+}
+.basket-price-modal .pay-summary .pay-block h5, .basket-price-modal .pay-summary .pay-block .sum {
+  font-size: 1.2rem;
+}
+.basket-price-modal .pay-summary .pay-block ul {
+  padding-bottom: 0.5rem;
+}
+.basket-price-modal .pay-summary .pay-block li {
+  margin-bottom: 0.2rem;
+}
+.basket-price-modal .pay-summary .pay-block .sum {
+  margin-top: 0.5rem;
+  font-weight: normal;
+}
+
+@media (min-height: 700px) {
+  .basket-price-modal .pay-summary .pay-summary-inner {
+    height: 420px;
+  }
+}
+@media (min-height: 800px) {
+  .basket-price-modal .pay-summary .pay-summary-inner {
+    height: auto;
+  }
+}
 @media (min-width: 480px) {
   .summary-products .summary-product {
     flex-wrap: nowrap;
@@ -4121,47 +4196,6 @@ form .form-line.btn-submit-wrap {
   }
   .pay-summary {
     display: flex;
-    flex-direction: column;
-  }
-  .pay-summary .pay-block {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: rgba(81, 101, 108, 0.1);
-    border-radius: 15px;
-  }
-  .pay-summary .pay-block ul {
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #b1b1b1;
-  }
-  .pay-summary .pay-block li {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0.5rem;
-  }
-  .pay-summary .pay-block li span:first-child {
-    width: 70%;
-  }
-  .pay-summary .pay-block .sum {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    font-family: "Oswald", Tahoma, Arial, sans-serif;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  .pay-summary .pay-block .sum .right {
-    color: rgba(187, 37, 50, 0.7);
-  }
-  .pay-summary .pay-note p {
-    display: inline-flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 0.5rem;
-    color: #51656c;
-  }
-  .pay-summary .pay-note p:last-child {
-    margin-bottom: 0;
   }
 }
 @media (min-width: 1200px) {
