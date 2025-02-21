@@ -26,6 +26,7 @@
 <div class="bg-modal"></div>
 <?php include("basket/change-plan-modal.php")?>
 <?php include("basket/basket-price-modal.php")?>
+<?php include("basket/number-transfer-modal.php")?>
 
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/helpers.js?t=<?php echo time()?>"></script>

@@ -23,7 +23,7 @@
                             <span>Pour obtenir votre RIO, appelez gratuitement le 3179 depuis le téléphone dont vous souhaitez porter le numéro.</span>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-black__empty more-info">En savoir plus sur le transfert de numéro <i class="fa-solid fa-angles-right"></i></button>
+                    <button type="button" class="btn btn-black__empty more-info open-modal" data-modal="number-transfer-modal">En savoir plus sur le transfert de numéro <i class="fa-solid fa-angles-right"></i></button>
                 </div>
             </div>
         </div>

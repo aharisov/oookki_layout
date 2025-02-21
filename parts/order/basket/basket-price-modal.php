@@ -1,4 +1,4 @@
-<div id="basket-price-modal" class="modal price-details-modal basket-price-modal">
+<section id="basket-price-modal" class="modal price-details-modal basket-price-modal">
     <div class="modal-close"></div>
 
     <div class="modal-inner summary-block pay-summary">

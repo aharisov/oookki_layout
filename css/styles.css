@@ -4404,6 +4404,34 @@ form .form-line.btn-submit-wrap {
     left: 8rem;
   }
 }
+.transfer-steps {
+  counter-reset: section;
+}
+.transfer-steps li {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(81, 101, 108, 0.1);
+}
+.transfer-steps li:last-child {
+  border: none;
+}
+.transfer-steps li::before {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(81, 101, 108, 0.1);
+  counter-increment: section;
+  content: counter(section);
+}
+
 footer {
   margin-top: 4rem;
   background: #000;

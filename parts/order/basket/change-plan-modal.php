@@ -1,4 +1,4 @@
-<div id="change-plan-modal" class="modal price-details-modal change-plan-modal">
+<section id="change-plan-modal" class="modal price-details-modal change-plan-modal">
     <div class="modal-close"></div>
 
     <div class="modal-inner">
@@ -91,4 +91,4 @@
             </div>
         </div>
     </div>
-</div>
+</section>
