@@ -27,7 +27,8 @@
 
     <div class="summary-products">
         <?php foreach($cart as $index => $cartItem):?>
-            <div class="summary-product" data-id="<?php echo $index?>">
+            <div class="summary-product" data-id="<?php echo $index?>" 
+                <?php if (isset($cartItem["is_plan"])) echo 'aria-label="plan"';?>>
                 <div class="product-pic">
                     <a href="product.php" target="_blank">
                         <img src="<?php echo $cartItem["pic"]?>" alt="<?php echo $cartItem["name"]?>">

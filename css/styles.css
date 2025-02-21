@@ -4073,6 +4073,9 @@ form .form-line.btn-submit-wrap {
   align-items: flex-start;
   margin-bottom: 0.5rem;
 }
+.pay-summary .pay-block li.hidden {
+  display: none;
+}
 .pay-summary .pay-block li span:first-child {
   width: 70%;
 }
@@ -4458,6 +4461,47 @@ form .form-line.btn-submit-wrap {
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
+  }
+}
+.cart-empty .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0 1.5rem;
+}
+.cart-empty .icon svg {
+  width: 120px;
+  height: 120px;
+}
+.cart-empty .icon svg path {
+  fill: rgba(81, 101, 108, 0.1);
+}
+.cart-empty .icon h2 {
+  margin-top: 0.75rem;
+  color: rgba(187, 37, 50, 0.7);
+}
+.cart-empty .content .content-item {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: rgba(81, 101, 108, 0.1);
+  border-radius: 15px;
+}
+
+@media (min-width: 480px) {
+  .cart-empty .content {
+    justify-content: space-between;
+  }
+  .cart-empty .content .content-item {
+    width: 48%;
+  }
+}
+@media (min-width: 1024px) {
+  .cart-empty .content {
+    justify-content: space-between;
+  }
+  .cart-empty .content .content-item {
+    width: 32%;
   }
 }
 footer {

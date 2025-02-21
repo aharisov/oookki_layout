@@ -9,7 +9,7 @@
         </div>
 
         <div class="modal-buttons flex">
-            <a href="" class="btn btn-red__empty">Aller au panier</a>
+            <a href="order-step1.php" class="btn btn-red__empty">Aller au panier</a>
             <button class="btn btn-black continue">Continuer les achats</button>
         </div>
     </div>

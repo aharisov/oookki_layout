@@ -13,7 +13,7 @@
                     <div class="header-btn btn-search js-open-search">
                         <img src="images/ic-search.svg" alt="Rechercher" title="Rechercher">
                     </div>
-                    <a href="" class="header-btn btn-cart">
+                    <a href="order-step1.php" class="header-btn btn-cart">
                         <img src="images/ic-cart.svg" alt="Panier" title="Panier">
                         <i class="cnt">0</i>
                         <span>Panier</span>

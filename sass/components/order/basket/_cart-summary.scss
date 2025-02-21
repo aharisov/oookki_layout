@@ -175,6 +175,9 @@
             align-items: flex-start;
             margin-bottom: $mb-xs;
 
+            &.hidden {
+                display: none;
+            }
             span:first-child {
                 width: 70%;
             }

@@ -7,7 +7,7 @@
                 <span>1er paiement du téléphone</span>
                 <span>800€</span>
             </li>
-            <li>
+            <li aria-label="plan">
                 <span>1er paiement du Forfait Extrems OOOKKI</span>
                 <span>18,99€</span>
             </li>
@@ -28,7 +28,7 @@
                 <span>Loyer du téléphone</span>
                 <span>24,99€</span>
             </li>
-            <li>
+            <li aria-label="plan">
                 <span>Forfait Extrems OOOKKI</span>
                 <span>18,99€</span>
             </li>
