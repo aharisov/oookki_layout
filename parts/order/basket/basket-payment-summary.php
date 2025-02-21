@@ -1,13 +1,13 @@
 <section class="summary-block pay-summary">
     <h3 class="title">Votre paiement</h3>
 
-    <div class="pay-block">
+    <div class="pay-block all-info">
         <ul>
             <li>
                 <span>1er paiement du téléphone</span>
                 <span>800€</span>
             </li>
-            <li>
+            <li aria-label="plan">
                 <span>1er paiement du Forfait Extrems OOOKKI</span>
                 <span>18,99€</span>
             </li>
@@ -28,7 +28,7 @@
                 <span>Loyer du téléphone</span>
                 <span>24,99€</span>
             </li>
-            <li>
+            <li aria-label="plan">
                 <span>Forfait Extrems OOOKKI</span>
                 <span>18,99€</span>
             </li>

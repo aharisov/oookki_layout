@@ -27,7 +27,8 @@
 
     <div class="summary-products">
         <?php foreach($cart as $index => $cartItem):?>
-            <div class="summary-product">
+            <div class="summary-product" data-id="<?php echo $index?>" 
+                <?php if (isset($cartItem["is_plan"])) echo 'aria-label="plan"';?>>
                 <div class="product-pic">
                     <a href="product.php" target="_blank">
                         <img src="<?php echo $cartItem["pic"]?>" alt="<?php echo $cartItem["name"]?>">
@@ -42,13 +43,13 @@
                 </div>
                 <div class="product-buttons flex">
                     <?php if (isset($cartItem["is_changeable"])):?>
-                        <button class="btn btn-black__empty open-modal" data-modal="modify-plan-modal">
+                        <a href="mobiles.php" class="btn btn-black__empty">
                             <i class="fa-solid fa-arrows-rotate"></i>
                             <span>Modifier</span>    
-                        </button>
+                        </a>
                     <?php endif?>
                     <?php if (isset($cartItem["is_plan"])):?>
-                        <button class="btn btn-black__empty open-modal" data-modal="modify-plan-modal">
+                        <button class="btn btn-black__empty open-modal" data-modal="change-plan-modal" data-id="<?php echo $index?>">
                             <i class="fa-solid fa-right-left"></i>
                             <span>Changer</span>
                         </button>

@@ -1,0 +1,29 @@
+.transfer-steps {
+    counter-reset: section;
+
+    li {
+        position: relative;
+        margin-bottom: $mb-m;
+        padding-left: 3rem;
+        padding-bottom: $mb-m;
+        border-bottom: 1px solid $colorGrayTransparent;
+
+        &:last-child {
+            border: none;
+        }
+        &::before {
+            position: absolute;
+            top: 3px;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: $borderRadiusCircle;
+            background: $colorGrayTransparent;
+            counter-increment: section;
+            content: counter(section);
+        }
+    }
+}

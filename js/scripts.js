@@ -168,24 +168,143 @@ function moveElementOnResize(elementSelector, fromSelector, toSelector, beforeFr
     moveElement(); // Initial check
 }
 moveElementOnResize(".product-title", ".product-info__inner", ".product-info", ".product-page__slider", ".return-calculate", 768);
-function changeCartOption() {
-    const optionButtons = document.querySelectorAll(".config-option .switch");
-    console.info(optionButtons);
-    if (!optionButtons)
+const updateOrderPlan = () => {
+    const changeButton = document.querySelector(".js-change-plan");
+    if (!changeButton)
         return;
-    optionButtons.forEach(btn => {
-        if (!btn.classList.contains("accordion-item")) {
-            btn.classList.remove("active");
-            btn.addEventListener("click", function () {
-                console.info("t");
-                this.classList.add("active");
-            });
+    changeButton.addEventListener("click", () => {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+        const modal = document.getElementById("change-plan-modal");
+        const bgModal = document.querySelector(".bg-modal");
+        if (!modal && !bgModal)
+            return;
+        const dataId = modal === null || modal === void 0 ? void 0 : modal.getAttribute("data-id");
+        const activePack = modal === null || modal === void 0 ? void 0 : modal.querySelector(".pack-item.active");
+        if (!activePack)
+            return;
+        // Extract data from the active pack
+        const title = ((_b = (_a = activePack.querySelector(".pack-item__title")) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim()) || "N/A";
+        const offer = ((_d = (_c = activePack.querySelector(".pack-item__offer")) === null || _c === void 0 ? void 0 : _c.textContent) === null || _d === void 0 ? void 0 : _d.trim()) || "";
+        const priceNum = ((_f = (_e = activePack.querySelector(".pack-item__price .num")) === null || _e === void 0 ? void 0 : _e.textContent) === null || _f === void 0 ? void 0 : _f.trim()) || "0";
+        const priceMore = ((_h = (_g = activePack.querySelector(".pack-item__price .more span")) === null || _g === void 0 ? void 0 : _g.textContent) === null || _h === void 0 ? void 0 : _h.trim()) || "€ 0";
+        const priceNote = ((_k = (_j = activePack.querySelector(".pack-item__price .note")) === null || _j === void 0 ? void 0 : _j.textContent) === null || _k === void 0 ? void 0 : _k.trim()) || "";
+        // Update the .summary-product block
+        const summaryProduct = document.querySelector(`.summary-product[data-id="${dataId}"]`);
+        if (!summaryProduct)
+            return;
+        summaryProduct.querySelector(".product-title a").textContent = title;
+        summaryProduct.querySelector(".product-props").textContent = `${priceNote} - ${offer}`;
+        summaryProduct.querySelector(".product-note").textContent = `${priceNum}${priceMore}/mois`;
+        modal === null || modal === void 0 ? void 0 : modal.classList.remove("show");
+        bgModal === null || bgModal === void 0 ? void 0 : bgModal.classList.remove("show");
+    });
+};
+const choosePlan = () => {
+    const planList = document.querySelectorAll(".packs-list-modal .pack-item");
+    const changeBtn = document.querySelector(".js-change-plan");
+    if (!planList || !changeBtn)
+        return;
+    planList.forEach(plan => {
+        plan.addEventListener("click", function () {
+            // Remove "active" class from all plans
+            planList.forEach(p => p.classList.remove("active"));
+            // Add "active" to clicked plan
+            this.classList.add("active");
+            // Enable the change button
+            changeBtn.disabled = false;
+        });
+    });
+};
+choosePlan();
+updateOrderPlan();
+const handleRadioSelection = () => {
+    const cardRadios = document.querySelectorAll("input[name='card']");
+    const phoneSaveRadios = document.querySelectorAll("input[name='phone_save']");
+    const abonRadios = document.querySelectorAll("input[name='abon']");
+    const phoneNumber = document.querySelector("#phone-number");
+    const phoneRio = document.querySelector("#phone-rio");
+    cardRadios.forEach(radio => radio.addEventListener("change", updatePayBlock));
+    [...cardRadios, ...phoneSaveRadios, ...abonRadios].forEach(radio => radio.addEventListener("change", updateButtonState));
+    if (phoneNumber)
+        phoneNumber.addEventListener("keyup", updateButtonState);
+    if (phoneRio)
+        phoneRio.addEventListener("keyup", updateButtonState);
+};
+// update pay block with the value of chosen sim card
+const updatePayBlock = () => {
+    const payBlockList = document.querySelectorAll(".pay-summary .pay-block.all-info ul");
+    const selectedCard = document.querySelector("input[name='card']:checked");
+    if (!payBlockList || !selectedCard)
+        return;
+    // Remove existing "offer" entry if any
+    payBlockList.forEach(el => {
+        const existingOffer = el.querySelector(".card-offer");
+        if (existingOffer) {
+            existingOffer.remove();
         }
     });
-}
-document.addEventListener("DOMContentLoaded", () => {
-    // changeCartOption();
-});
+    payBlockList.forEach(el => {
+        // Create new list item for selected card
+        const newListItem = document.createElement("li");
+        newListItem.classList.add("card-offer");
+        newListItem.innerHTML = `<span>${selectedCard.value}</span><span>offerte</span>`;
+        // Append new list item to the list
+        el.appendChild(newListItem);
+    });
+};
+const updateButtonState = () => {
+    var _a, _b;
+    const phoneSaveChecked = ((_a = document.querySelector("input[name='phone_save']:checked")) === null || _a === void 0 ? void 0 : _a.value) === "yes";
+    const abonChecked = ((_b = document.querySelector("input[name='abon']:checked")) === null || _b === void 0 ? void 0 : _b.value) === "yes";
+    const phoneNumber = document.querySelector("#phone-number");
+    const phoneRio = document.querySelector("#phone-rio");
+    const nextStepButton = document.querySelector(".next-step");
+    if (!nextStepButton || !phoneNumber || !phoneRio)
+        return;
+    // Check if all radio groups have a selection
+    const allGroupsChecked = ["card", "phone_save", "abon"].every(group => document.querySelector(`input[name='${group}']:checked`));
+    if (!allGroupsChecked) {
+        nextStepButton.disabled = true;
+        console.info('not all checked');
+        return;
+    }
+    else {
+        nextStepButton.disabled = false;
+        nextStepButton.addEventListener("click", clickNextBtn);
+    }
+    if (phoneSaveChecked) {
+        phoneNumber.required = true;
+        phoneRio.required = true;
+        const isPhoneNumberFilled = phoneNumber.value.length === phoneNumber.maxLength;
+        const isPhoneRioFilled = phoneRio.value.length === phoneRio.maxLength;
+        nextStepButton.disabled = !(isPhoneNumberFilled && isPhoneRioFilled);
+        console.info('phone save checked', isPhoneNumberFilled, isPhoneRioFilled);
+    }
+    else {
+        phoneNumber.required = false;
+        phoneRio.required = false;
+        console.info('phone save unchecked');
+    }
+    if (abonChecked) {
+        nextStepButton.disabled = true;
+        console.info('abon checked');
+    }
+};
+const clickNextBtn = (e) => {
+    e.preventDefault();
+    const nextStepButton = document.querySelector(".next-step");
+    if (!nextStepButton)
+        return;
+    const url = nextStepButton.getAttribute("data-next");
+    if (url) {
+        window.location.href = url;
+    }
+};
+const init = () => {
+    handleRadioSelection();
+    updateButtonState(); // Ensure correct state on load
+};
+init();
 function playVideo() {
     const figures = document.querySelectorAll(".media figure");
     if (!figures)
@@ -832,6 +951,42 @@ function initTabs() {
 document.addEventListener("DOMContentLoaded", () => {
     initTabs();
 });
+const removeFromCart = () => {
+    const removeButtons = document.querySelectorAll(".product-buttons .delete");
+    if (!removeButtons)
+        return;
+    removeButtons.forEach(btn => {
+        btn.addEventListener("click", function () {
+            const product = this.closest(".summary-product");
+            if (product) {
+                product.remove();
+                if (product.getAttribute("aria-label") == "plan") {
+                    onPlanRemove();
+                }
+                // Check if there are remaining products
+                setTimeout(() => {
+                    const remainingProducts = document.querySelectorAll(".summary-product");
+                    if (remainingProducts.length === 0) {
+                        window.location.href = "basket-empty.php";
+                    }
+                }, 200);
+            }
+        });
+    });
+};
+const onPlanRemove = () => {
+    const configBlocks = document.querySelectorAll(".line-config-block");
+    const payBlockElements = document.querySelectorAll(".pay-block li[aria-label='plan']");
+    if (!configBlocks || !payBlockElements)
+        return;
+    configBlocks.forEach(block => {
+        block.classList.add("hidden");
+    });
+    payBlockElements.forEach(block => {
+        block.classList.add("hidden");
+    });
+};
+removeFromCart();
 document.addEventListener('DOMContentLoaded', function (event) {
     const homeTopSlider = new Swiper('.top-slider', {
         speed: 800,
@@ -947,8 +1102,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
             prevEl: '.swiper-button-prev',
         },
     });
-    if (!homeTopSlider)
-        return;
+    const orderPackSlider = new Swiper(".packs-list-modal .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 19,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 });
 function stickyElement(element, hideHeader) {
     if (!element)
