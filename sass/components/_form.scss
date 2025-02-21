@@ -1,0 +1,29 @@
+form {
+    .form-line {
+        margin-bottom: $mb-s;
+
+        label {
+            display: block;
+            margin-bottom: $mb-xs;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            max-width: 360px;
+            padding: 1rem 0.3rem;
+            border: 1px solid $colorGray;
+            border-radius: $borderRadiusS;
+        }
+
+        &.btn-submit-wrap {
+            margin-top: $mb-l;
+        }
+    }
+}
+
+.auth-form {
+    .note {
+        margin-top: $mb-m;
+        font-size: $font14;
+    }
+}

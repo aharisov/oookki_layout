@@ -69,12 +69,17 @@ main:has(.top-slider) {
     color: $colorRed;
 }
 .link {
+    padding: 0;
     border-bottom: 1px solid $colorPrimary;
+    transition: $transition;
 
     &:hover {
         color: $colorRed;
         border-color: $colorRed;
     }
+}
+.red {
+    color: $colorRedTransparent;
 }
 
 .section-head {
