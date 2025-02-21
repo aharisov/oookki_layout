@@ -10,18 +10,6 @@
         width: 100%;
         max-width: 200px;
         margin: $mb-m auto 0;
-
-        &:disabled {
-            background: $colorBorder;
-            color: $colorWhite;
-            cursor: default;
-
-            &:hover {
-                background: $colorBorder;
-                border-color: $colorBorder;
-                color: $colorWhite;
-            }
-        }
     }
 }
 

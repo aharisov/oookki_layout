@@ -217,24 +217,91 @@ const choosePlan = () => {
 };
 choosePlan();
 updateOrderPlan();
-function changeCartOption() {
-    const optionButtons = document.querySelectorAll(".config-option .switch");
-    console.info(optionButtons);
-    if (!optionButtons)
+const handleRadioSelection = () => {
+    const cardRadios = document.querySelectorAll("input[name='card']");
+    const phoneSaveRadios = document.querySelectorAll("input[name='phone_save']");
+    const abonRadios = document.querySelectorAll("input[name='abon']");
+    const phoneNumber = document.querySelector("#phone-number");
+    const phoneRio = document.querySelector("#phone-rio");
+    cardRadios.forEach(radio => radio.addEventListener("change", updatePayBlock));
+    [...cardRadios, ...phoneSaveRadios, ...abonRadios].forEach(radio => radio.addEventListener("change", updateButtonState));
+    if (phoneNumber)
+        phoneNumber.addEventListener("keyup", updateButtonState);
+    if (phoneRio)
+        phoneRio.addEventListener("keyup", updateButtonState);
+};
+// update pay block with the value of chosen sim card
+const updatePayBlock = () => {
+    const payBlockTotal = document.querySelector(".pay-summary .pay-block.all-info");
+    const payBlockList = payBlockTotal === null || payBlockTotal === void 0 ? void 0 : payBlockTotal.querySelector(".pay-block ul");
+    const selectedCard = document.querySelector("input[name='card']:checked");
+    if (!payBlockTotal || !payBlockList || !selectedCard)
         return;
-    optionButtons.forEach(btn => {
-        if (!btn.classList.contains("accordion-item")) {
-            btn.classList.remove("active");
-            btn.addEventListener("click", function () {
-                console.info("t");
-                this.classList.add("active");
-            });
-        }
-    });
-}
-document.addEventListener("DOMContentLoaded", () => {
-    // changeCartOption();
-});
+    // Remove existing "offer" entry if any
+    const existingOfferte = payBlockList.querySelector(".card-offer");
+    if (existingOfferte) {
+        existingOfferte.remove();
+    }
+    // Create new list item for selected card
+    const newListItem = document.createElement("li");
+    newListItem.classList.add("card-offer");
+    newListItem.innerHTML = `<span>${selectedCard.value}</span><span>offerte</span>`;
+    // Append new list item to the list
+    payBlockList.appendChild(newListItem);
+};
+const updateButtonState = () => {
+    var _a, _b;
+    const phoneSaveChecked = ((_a = document.querySelector("input[name='phone_save']:checked")) === null || _a === void 0 ? void 0 : _a.value) === "yes";
+    const abonChecked = ((_b = document.querySelector("input[name='abon']:checked")) === null || _b === void 0 ? void 0 : _b.value) === "yes";
+    const phoneNumber = document.querySelector("#phone-number");
+    const phoneRio = document.querySelector("#phone-rio");
+    const nextStepButton = document.querySelector(".next-step");
+    if (!nextStepButton || !phoneNumber || !phoneRio)
+        return;
+    // Check if all radio groups have a selection
+    const allGroupsChecked = ["card", "phone_save", "abon"].every(group => document.querySelector(`input[name='${group}']:checked`));
+    if (!allGroupsChecked) {
+        nextStepButton.disabled = true;
+        console.info('not all checked');
+        return;
+    }
+    else {
+        nextStepButton.disabled = false;
+        nextStepButton.addEventListener("click", clickNextBtn);
+    }
+    if (phoneSaveChecked) {
+        phoneNumber.required = true;
+        phoneRio.required = true;
+        const isPhoneNumberFilled = phoneNumber.value.length === phoneNumber.maxLength;
+        const isPhoneRioFilled = phoneRio.value.length === phoneRio.maxLength;
+        nextStepButton.disabled = !(isPhoneNumberFilled && isPhoneRioFilled);
+        console.info('phone save checked', isPhoneNumberFilled, isPhoneRioFilled);
+    }
+    else {
+        phoneNumber.required = false;
+        phoneRio.required = false;
+        console.info('phone save unchecked');
+    }
+    if (abonChecked) {
+        nextStepButton.disabled = true;
+        console.info('abon checked');
+    }
+};
+const clickNextBtn = (e) => {
+    e.preventDefault();
+    const nextStepButton = document.querySelector(".next-step");
+    if (!nextStepButton)
+        return;
+    const url = nextStepButton.getAttribute("data-next");
+    if (url) {
+        window.location.href = url;
+    }
+};
+const init = () => {
+    handleRadioSelection();
+    updateButtonState(); // Ensure correct state on load
+};
+init();
 function playVideo() {
     const figures = document.querySelectorAll(".media figure");
     if (!figures)

@@ -3885,16 +3885,6 @@ form .form-line.btn-submit-wrap {
   max-width: 200px;
   margin: 1rem auto 0;
 }
-.order-buttons .next-step:disabled {
-  background: #b1b1b1;
-  color: #fff;
-  cursor: default;
-}
-.order-buttons .next-step:disabled:hover {
-  background: #b1b1b1;
-  border-color: #b1b1b1;
-  color: #fff;
-}
 
 .order-note {
   color: #51656c;
@@ -4272,6 +4262,7 @@ form .form-line.btn-submit-wrap {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  cursor: default;
 }
 .basket-block .config-options .config-option .accordion-content iframe {
   width: 100%;

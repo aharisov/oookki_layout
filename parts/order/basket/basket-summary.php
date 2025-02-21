@@ -42,10 +42,10 @@
                 </div>
                 <div class="product-buttons flex">
                     <?php if (isset($cartItem["is_changeable"])):?>
-                        <button class="btn btn-black__empty open-modal" data-modal="modify-product-modal" data-id="<?php echo $index?>">
+                        <a href="mobiles.php" class="btn btn-black__empty">
                             <i class="fa-solid fa-arrows-rotate"></i>
                             <span>Modifier</span>    
-                        </button>
+                        </a>
                     <?php endif?>
                     <?php if (isset($cartItem["is_plan"])):?>
                         <button class="btn btn-black__empty open-modal" data-modal="change-plan-modal" data-id="<?php echo $index?>">

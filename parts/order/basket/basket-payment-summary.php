@@ -1,7 +1,7 @@
 <section class="summary-block pay-summary">
     <h3 class="title">Votre paiement</h3>
 
-    <div class="pay-block">
+    <div class="pay-block all-info">
         <ul>
             <li>
                 <span>1er paiement du téléphone</span>
