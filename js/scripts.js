@@ -36,6 +36,50 @@ function addToCart() {
 document.addEventListener("DOMContentLoaded", () => {
     addToCart();
 });
+function applyInputMask(input, pattern) {
+    input.addEventListener("input", (event) => {
+        const target = event.target;
+        let value = target.value.replace(/\s+/g, "").toUpperCase(); // Remove spaces and force uppercase if needed
+        let maskedValue = "";
+        let patternIndex = 0;
+        let valueIndex = 0;
+        while (patternIndex < pattern.length && valueIndex < value.length) {
+            if (pattern[patternIndex] === "0") {
+                // Only numbers allowed
+                if (/\d/.test(value[valueIndex])) {
+                    maskedValue += value[valueIndex++];
+                }
+                else {
+                    valueIndex++; // Skip invalid character
+                    continue;
+                }
+            }
+            else if (pattern[patternIndex] === "X") {
+                // Any alphanumeric character
+                if (/[A-Z0-9]/.test(value[valueIndex])) {
+                    maskedValue += value[valueIndex++];
+                }
+                else {
+                    valueIndex++; // Skip invalid character
+                    continue;
+                }
+            }
+            else {
+                // Add predefined character from pattern
+                maskedValue += pattern[patternIndex];
+            }
+            patternIndex++;
+        }
+        target.value = maskedValue;
+    });
+}
+// Usage example:
+const inputPhone = document.getElementById("phone-number");
+const inputRio = document.getElementById("phone-rio");
+if (inputPhone)
+    applyInputMask(inputPhone, "00 00 00 00 00"); // Example: Phone number format
+if (inputRio)
+    applyInputMask(inputRio, "00 X XXXXXX 0X0"); // Example: Custom alphanumeric format
 const openCloseMenu = () => {
     const menuBtn = document.querySelector('.js-open-menu');
     const menu = document.querySelector('.main-menu');
@@ -124,6 +168,24 @@ function moveElementOnResize(elementSelector, fromSelector, toSelector, beforeFr
     moveElement(); // Initial check
 }
 moveElementOnResize(".product-title", ".product-info__inner", ".product-info", ".product-page__slider", ".return-calculate", 768);
+function changeCartOption() {
+    const optionButtons = document.querySelectorAll(".config-option .switch");
+    console.info(optionButtons);
+    if (!optionButtons)
+        return;
+    optionButtons.forEach(btn => {
+        if (!btn.classList.contains("accordion-item")) {
+            btn.classList.remove("active");
+            btn.addEventListener("click", function () {
+                console.info("t");
+                this.classList.add("active");
+            });
+        }
+    });
+}
+document.addEventListener("DOMContentLoaded", () => {
+    // changeCartOption();
+});
 function playVideo() {
     const figures = document.querySelectorAll(".media figure");
     if (!figures)
@@ -885,6 +947,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
             prevEl: '.swiper-button-prev',
         },
     });
+    if (!homeTopSlider)
+        return;
 });
 function stickyElement(element, hideHeader) {
     if (!element)
