@@ -1,4 +1,4 @@
-<section class="summary-block">
+<section class="summary-block pay-summary">
     <h3 class="title">Votre paiement</h3>
 
     <div class="pay-block">
@@ -46,8 +46,10 @@
 </section>
 
 <div class="pay-mobile">
-    <p>1er paiement · 788,99€</p>
-    <p>Puis par mois · 44,98€</p>
+    <div>
+        <p><span>1er paiement</span> <i>788,99€</i></p>
+        <p><span>Puis par mois</span> <i>44,98€</i></p>
+    </div>
 
     <button class="btn btn-black__empty open-modal" data-modal="basket-price-modal">Détail du prix</button>
 </div>

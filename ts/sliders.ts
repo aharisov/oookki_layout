@@ -120,4 +120,6 @@ document.addEventListener('DOMContentLoaded',  function(event) {
             prevEl: '.swiper-button-prev',
         },
     });
+
+    if (!homeTopSlider) return;
 });

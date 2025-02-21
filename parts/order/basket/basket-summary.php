@@ -43,14 +43,14 @@
                 <div class="product-buttons flex">
                     <?php if (isset($cartItem["is_changeable"])):?>
                         <button class="btn btn-black__empty open-modal" data-modal="modify-plan-modal">
-                            <i class="fa-solid fa-right-left"></i>
-                            <span>Changer</span>
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <span>Modifier</span>    
                         </button>
                     <?php endif?>
                     <?php if (isset($cartItem["is_plan"])):?>
                         <button class="btn btn-black__empty open-modal" data-modal="modify-plan-modal">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                            <span>Modifier</span>
+                            <i class="fa-solid fa-right-left"></i>
+                            <span>Changer</span>
                         </button>
                     <?php endif?>
                     <button class="btn delete" data-id="<?php echo $index?>">

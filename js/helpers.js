@@ -6,15 +6,23 @@ const accordion = () => {
         accordionHeaders.forEach(el => {
             el.addEventListener("click", function () {
                 const accordionItem = this.parentElement;
-                const isActive = accordionItem.classList.contains("active");
+                const isActive = accordionItem.classList.contains("active");  
+                const isOption = accordionItem.classList.contains("config-option");
 
+                const accordionContainer = accordionItem.closest(".accordion-container");
                 // Close all accordion items
-                document.querySelectorAll(".accordion-item").forEach(item => {
-                    item.classList.remove("active");
-                });
+                if (accordionContainer) {
+                    accordionContainer.querySelectorAll(".accordion-item").forEach(item => {
+                        item.classList.remove("active");
+                    });
+                } else {
+                    document.querySelectorAll(".accordion-item").forEach(item => {
+                        item.classList.remove("active");
+                    });
+                }
 
                 // Toggle only the clicked one
-                if (!isActive) {
+                if (!isActive || isOption) {
                     accordionItem.classList.add("active");
                 }
             });
@@ -24,6 +32,8 @@ const accordion = () => {
 // scroll to top button
 const scrollToTop = () => {
     const scrollToTopBtn = document.querySelector(".up-btn");
+
+    if (!scrollToTopBtn) return;
 
     // Show button when user scrolls down
     window.addEventListener("scroll", function () {
@@ -47,6 +57,8 @@ const openCloseSearch = () => {
     const btn = document.querySelector('.js-open-search');
     const searchForm = document.querySelector('.header__search');
 
+    if (!btn || !searchForm) return;
+
     btn.addEventListener('click', function() {
         searchForm.classList.toggle('active');
     })
@@ -56,6 +68,8 @@ const openModal = () => {
     const bg = document.querySelector(".bg-modal");
     const openButtons = document.querySelectorAll("[data-modal]");
     const closeButtons = document.querySelectorAll(".modal .modal-close");
+
+    if (!bg || !openButtons || !closeButtons) return;
 
     openButtons.forEach(button => {
         button.addEventListener("click", function (e) {

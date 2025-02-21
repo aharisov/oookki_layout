@@ -12,12 +12,13 @@
     <?php include("./parts/order/order-header.php")?>
     <main>
         <div class="cont">
-            <form class="order-form">
-                <div class="left">
+            <form class="order-wrap flex" method="post">
+                <div class="order-content">
                     <?php include("./parts/order/basket/basket-abon.php")?>
                     <?php include("./parts/order/basket/basket-line-config.php")?>
                     <?php include("./parts/order/basket/basket-sim-type.php")?>
                     <?php include("./parts/order/step1-buttons.php")?>
+                    <?php include("./parts/order/basket/basket-why-we.php")?>
                 </div>
                 <aside class="cart-summary">
                     <?php include("./parts/order/basket/basket-summary.php")?>
@@ -27,6 +28,6 @@
             </form>
         </div>
     </main>
-    <?php include("./parts/footer.php")?>
+    <?php include("./parts/order/order-footer.php")?>
 </body>
 </html>
