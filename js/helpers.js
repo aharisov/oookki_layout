@@ -76,9 +76,15 @@ const openModal = () => {
             e.preventDefault();
             const modalId = this.getAttribute("data-modal");
             const modal = document.getElementById(modalId);
+            const dataId = this.getAttribute("data-id");
+
             if (modal) {
                 bg.classList.add("show", "on-top");
                 modal.classList.add("show");
+
+                if (dataId) {
+                    modal.setAttribute("data-id", dataId);
+                }
             }
         });
     });
@@ -87,6 +93,7 @@ const openModal = () => {
         button.addEventListener("click", function () {
             bg.classList.remove("show", "on-top");
             this.closest(".modal").classList.remove("show");
+            this.closest(".modal").setAttribute("data-id", "");
         });
     });
 

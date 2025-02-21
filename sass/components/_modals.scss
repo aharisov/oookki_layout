@@ -26,7 +26,7 @@
     justify-content: space-between;
     width: 98%;
     min-height: 200px;
-    padding: 2.5rem 2rem 2rem;
+    padding: 2.5rem 1rem 2rem;
     background: $colorWhite;
     border: 1px solid $colorBorder;
     border-radius: $borderRadiusCommon;
@@ -93,7 +93,24 @@
         }
     }
 }
+
+.packs-list-modal {
+    width: 100%;
+    
+    .swiper {
+        padding-bottom: 40px;
+
+        .swiper-pagination {
+            bottom: 0.5rem;
+        }
+    }
+}
+
 @media (min-width: 768px) {
+    .modal {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
     .offer-item {
         width: 48%;
 

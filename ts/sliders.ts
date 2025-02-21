@@ -121,5 +121,18 @@ document.addEventListener('DOMContentLoaded',  function(event) {
         },
     });
 
-    if (!homeTopSlider) return;
+    const orderPackSlider = new Swiper(".packs-list-modal .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 19,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 });

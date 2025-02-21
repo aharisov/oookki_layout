@@ -5,6 +5,13 @@
     border-radius: $borderRadiusCommon;
     cursor: pointer;
     transition: $transition;
+
+    &:disabled, &:disabled:hover {
+        background: $colorSecond;
+        border-color: $colorGray;
+        color: $colorGray;
+        cursor: not-allowed;
+    }
 }
 
 .btn-mobile {

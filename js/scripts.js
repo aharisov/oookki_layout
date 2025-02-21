@@ -168,6 +168,55 @@ function moveElementOnResize(elementSelector, fromSelector, toSelector, beforeFr
     moveElement(); // Initial check
 }
 moveElementOnResize(".product-title", ".product-info__inner", ".product-info", ".product-page__slider", ".return-calculate", 768);
+const updateOrderPlan = () => {
+    const changeButton = document.querySelector(".js-change-plan");
+    if (!changeButton)
+        return;
+    changeButton.addEventListener("click", () => {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+        const modal = document.getElementById("change-plan-modal");
+        const bgModal = document.querySelector(".bg-modal");
+        if (!modal && !bgModal)
+            return;
+        const dataId = modal === null || modal === void 0 ? void 0 : modal.getAttribute("data-id");
+        const activePack = modal === null || modal === void 0 ? void 0 : modal.querySelector(".pack-item.active");
+        if (!activePack)
+            return;
+        // Extract data from the active pack
+        const title = ((_b = (_a = activePack.querySelector(".pack-item__title")) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim()) || "N/A";
+        const offer = ((_d = (_c = activePack.querySelector(".pack-item__offer")) === null || _c === void 0 ? void 0 : _c.textContent) === null || _d === void 0 ? void 0 : _d.trim()) || "";
+        const priceNum = ((_f = (_e = activePack.querySelector(".pack-item__price .num")) === null || _e === void 0 ? void 0 : _e.textContent) === null || _f === void 0 ? void 0 : _f.trim()) || "0";
+        const priceMore = ((_h = (_g = activePack.querySelector(".pack-item__price .more span")) === null || _g === void 0 ? void 0 : _g.textContent) === null || _h === void 0 ? void 0 : _h.trim()) || "€ 0";
+        const priceNote = ((_k = (_j = activePack.querySelector(".pack-item__price .note")) === null || _j === void 0 ? void 0 : _j.textContent) === null || _k === void 0 ? void 0 : _k.trim()) || "";
+        // Update the .summary-product block
+        const summaryProduct = document.querySelector(`.summary-product[data-id="${dataId}"]`);
+        if (!summaryProduct)
+            return;
+        summaryProduct.querySelector(".product-title a").textContent = title;
+        summaryProduct.querySelector(".product-props").textContent = `${priceNote} - ${offer}`;
+        summaryProduct.querySelector(".product-note").textContent = `${priceNum}${priceMore}/mois`;
+        modal === null || modal === void 0 ? void 0 : modal.classList.remove("show");
+        bgModal === null || bgModal === void 0 ? void 0 : bgModal.classList.remove("show");
+    });
+};
+const choosePlan = () => {
+    const planList = document.querySelectorAll(".packs-list-modal .pack-item");
+    const changeBtn = document.querySelector(".js-change-plan");
+    if (!planList || !changeBtn)
+        return;
+    planList.forEach(plan => {
+        plan.addEventListener("click", function () {
+            // Remove "active" class from all plans
+            planList.forEach(p => p.classList.remove("active"));
+            // Add "active" to clicked plan
+            this.classList.add("active");
+            // Enable the change button
+            changeBtn.disabled = false;
+        });
+    });
+};
+choosePlan();
+updateOrderPlan();
 function changeCartOption() {
     const optionButtons = document.querySelectorAll(".config-option .switch");
     console.info(optionButtons);
@@ -947,8 +996,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
             prevEl: '.swiper-button-prev',
         },
     });
-    if (!homeTopSlider)
-        return;
+    const orderPackSlider = new Swiper(".packs-list-modal .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 19,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 });
 function stickyElement(element, hideHeader) {
     if (!element)
