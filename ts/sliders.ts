@@ -3,9 +3,9 @@ declare var Swiper: any;
 document.addEventListener('DOMContentLoaded',  function(event) {
     const homeTopSlider = new Swiper('.top-slider', {
         speed: 800,
-        autoplay: {
-            delay: 8000,
-        },
+        // autoplay: {
+        //     delay: 8000,
+        // },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,

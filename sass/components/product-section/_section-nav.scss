@@ -74,6 +74,9 @@
     .section-nav .swiper-wrapper {
         justify-content: center;
     }
+    .section-nav .section-nav__list {
+        padding-bottom: 0;
+    }
 
     .section-nav__item {
         a {

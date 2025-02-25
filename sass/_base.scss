@@ -1,4 +1,10 @@
 // Base Styles
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 body {
     margin: 0;
     padding: 0;
@@ -47,6 +53,7 @@ button {
 
 main {
     margin-top: 5rem;
+    flex: 1;
 }
 main:has(.top-slider) {
     margin-top: 50px;
@@ -80,6 +87,9 @@ main:has(.top-slider) {
 }
 .red {
     color: $colorRedTransparent;
+}
+.red-full {
+    color: $colorRed;
 }
 
 .section-head {

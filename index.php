@@ -6,7 +6,9 @@
     <title>OOOKKI page d'accueil</title>
 
     <link rel="stylesheet" href="css/swiper.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?t=<?php echo time()?>">
+
+    <script src="https://kit.fontawesome.com/425e9c0def.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php include("./parts/header.php")?>
