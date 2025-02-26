@@ -4,6 +4,47 @@
         padding: 1rem;
         border: 1px solid $colorGrayTransparent;
         border-radius: $borderRadiusCommon;
+
+        &.recommend-list {
+            margin-top: 1rem;
+            margin-bottom: 0;
+
+            .section-products {
+                margin-bottom: $mb-xl;
+                padding-bottom: $mb-xl;
+                border-bottom: 1px solid $colorGrayTransparent;
+
+                &:last-child {
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                    border: none;
+                }
+                .product-card {
+                    opacity: 1;
+                    transform: translateY(0);
+
+                    &.hidden {
+                        display: flex;
+                        opacity: 0;
+                        transform: translateY(20px);
+                        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+                    }
+                }
+                .product-card .pic {
+                    height: 180px;
+                }
+            }
+            .section-head {
+                h3 {
+                    margin-bottom: $mb-m;
+                }
+            }
+            .section-inner {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1rem;
+            }
+        }
     }
     .cart-summary {
         width: 100%;
@@ -63,8 +104,6 @@
             width: 65%;
 
             .product-title {
-                font-weight: bold;
-
                 &:hover a {
                     color: $colorRedTransparent;
                 }
@@ -284,6 +323,17 @@
         }
     }
 }
+@media (min-width: 640px) {
+    .order-wrap {
+        .order-content {
+            &.recommend-list {
+                .section-inner {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+    }
+}
 @media (min-width: 768px) {
     .order-wrap {
         justify-content: space-between;
@@ -292,6 +342,16 @@
             padding: 1rem;
             border: 1px solid $colorSecond;
             border-radius: $borderRadiusCommon;
+
+            &.recommend-list {
+                margin-top: 0;
+                padding: 1rem;
+                border: 1px solid $colorSecond;
+
+                .section-inner {
+                    grid-template-columns: repeat(1, 1fr);
+                }
+            }
         }
         .cart-summary {
             width: 38%;
@@ -328,6 +388,20 @@
     
     .pay-summary {
         display: flex;
+    }
+}
+@media (min-width: 1024px) {
+    .order-wrap {
+        .order-content {
+            &.recommend-list {
+                .section-products {
+                    padding-bottom: 3rem;
+                }
+                .section-inner {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
     }
 }
 @media (min-width: 1200px) {

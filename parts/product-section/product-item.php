@@ -1,19 +1,20 @@
 <?php $num = rand(1, 99);?>
 <div class="product-card">
-    <a href="product.php">
+   
         <div class="pic">
             <div class="colors flex">
                 <span title="Gris" style="background: rgb(121, 128, 129);"></span>
                 <span title="Bleu nuit" style="background: rgb(50, 52, 75);"></span>
                 <span title="Rose" class="na" style="background: rgba(255, 217, 223, 0.5);"></span>
             </div>
-
-            <img src="images/demo/Master_Phone_Samsung_8_912cba634f 2.png" alt="Samsung Galaxy Z Fold6">
+            <a href="product.php">
+                <img src="images/demo/Master_Phone_Samsung_8_912cba634f 2.png" alt="Samsung Galaxy Z Fold6">
+            </a>
             <div class="icon"></div>
         </div>
-        <div class="brand">Samsung</div>
-        <div class="name"><span>Galaxy Z Fold6</span></div>
-    </a>
+        <div class="brand"><a href="brand-page.php">Samsung</a></div>
+        <div class="name"> <a href="product.php">Galaxy Z Fold6</a></div>
+   
     <div class="inner">
         <ul class="props">
             <li>

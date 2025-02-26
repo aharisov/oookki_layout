@@ -2,11 +2,12 @@
 function addToCart() {
     const modal = document.getElementById("in-cart-modal");
     const modalBg = document.querySelector(".bg-modal");
-    const modalTitle = document.querySelector(".modal-title span");
+    const modalTitle = document.querySelector(".modal-product .name");
     const modalImage = document.querySelector(".modal-picture img");
     const continueShopping = document.querySelector(".continue");
     const cartCounter = document.querySelector(".btn-cart .cnt");
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    const body = document.querySelector("body");
     if (!modalTitle || !modalImage || !continueShopping || !cartCounter || !addToCartButtons) {
         return;
     }
@@ -22,6 +23,7 @@ function addToCart() {
     function closeModalHandler() {
         modal.classList.remove("show");
         modalBg.classList.remove("show");
+        body.classList.remove("lock");
     }
     // Event listeners for add to cart buttons
     addToCartButtons.forEach(button => {
@@ -29,6 +31,7 @@ function addToCart() {
             const productTitle = this.getAttribute("data-title");
             const productImage = this.getAttribute("data-image");
             updateModal(productTitle, productImage);
+            body.classList.add("lock");
         });
     });
     continueShopping.addEventListener("click", closeModalHandler);
@@ -292,7 +295,7 @@ const updateButtonState = () => {
 };
 const clickNextBtn = (e) => {
     e.preventDefault();
-    const nextStepButton = document.querySelector(".next-step");
+    const nextStepButton = document.querySelector(".order-buttons .next-step");
     if (!nextStepButton)
         return;
     const url = nextStepButton.getAttribute("data-next");
@@ -300,9 +303,33 @@ const clickNextBtn = (e) => {
         window.location.href = url;
     }
 };
+const showNextSection = (e) => {
+    e.preventDefault();
+    const nextStepButton = document.querySelector(".order-buttons .next");
+    const currentSection = document.querySelector(".order-content.recommend-list");
+    const nextSection = document.querySelector(".order-content.config-content");
+    if (!nextStepButton || !currentSection || !nextSection)
+        return;
+    const url = nextStepButton.getAttribute("data-next");
+    if (url) {
+        window.location.href = url;
+    }
+    else {
+        currentSection.setAttribute("aria-hidden", "true");
+        nextSection.setAttribute("aria-hidden", "false");
+        const offset = 100;
+        const sectionTop = nextSection.getBoundingClientRect().top + window.scrollY - offset;
+        // Smooth scroll
+        window.scrollTo({ top: sectionTop, behavior: "smooth" });
+    }
+};
 const init = () => {
     handleRadioSelection();
     updateButtonState(); // Ensure correct state on load
+    const nextStepButton = document.querySelector(".order-buttons .next");
+    if (!nextStepButton)
+        return;
+    nextStepButton.addEventListener("click", showNextSection);
 };
 init();
 function playVideo() {
@@ -987,6 +1014,24 @@ const onPlanRemove = () => {
     });
 };
 removeFromCart();
+const revealOnScroll = () => {
+    const container = document.querySelector(".order-content .more-products .section-inner");
+    if (!container)
+        return;
+    const divs = Array.from(container.children).slice(2); // Selects divs starting from the third one
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove("hidden");
+                observer.unobserve(entry.target); // Stop observing once visible
+            }
+        });
+    }, { root: null, threshold: 0.2 } // 20% visibility triggers animation
+    );
+    divs.forEach(div => observer.observe(div));
+};
+// Run when DOM is loaded
+document.addEventListener("DOMContentLoaded", revealOnScroll);
 document.addEventListener('DOMContentLoaded', function (event) {
     const homeTopSlider = new Swiper('.top-slider', {
         speed: 800,
@@ -1025,7 +1070,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         spaceBetween: 20,
         autoHeight: true,
         breakpoints: {
-            768: {
+            640: {
                 slidesPerView: 2,
             },
             1024: {
@@ -1064,10 +1109,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
         spaceBetween: 20,
         autoHeight: true,
         breakpoints: {
-            768: {
+            640: {
                 slidesPerView: 2,
             },
-            1024: {
+            800: {
                 autoHeight: false,
                 slidesPerView: 3,
             },
@@ -1078,6 +1123,29 @@ document.addEventListener('DOMContentLoaded', function (event) {
             1360: {
                 autoHeight: false,
                 slidesPerView: 5,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    const modalRecommendSlider = new Swiper(".modal-recommend .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoHeight: true,
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            768: {
+                direction: "vertical",
+                slidesPerView: "auto",
             },
         },
         pagination: {

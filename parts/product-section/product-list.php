@@ -62,20 +62,20 @@
                 $num = rand(1, 99);
             ?>
                 <div class="product-card">
-                    <a href="product.php">
-                        <div class="pic">
-                            <div class="colors flex">
-                                <?php foreach($products[$j]["colors_name"] as $index => $color):?>
-                                    <span class="<?php if ($products[$j]["colors_stock"][$index] == 0) echo "na";?>" title="<?php echo $color?>" style="background: <?php echo $products[$j]["colors_code"][$index]?>;"></span>
-                                <?php endforeach?>
-                            </div>
-
-                            <img src="<?php echo $products[$j]["pic"]?>" alt="<?php echo $products[$j]["name"]?>">
-                            <div class="icon"></div>
+                    <div class="pic">
+                        <div class="colors flex">
+                            <?php foreach($products[$j]["colors_name"] as $index => $color):?>
+                                <span class="<?php if ($products[$j]["colors_stock"][$index] == 0) echo "na";?>" title="<?php echo $color?>" style="background: <?php echo $products[$j]["colors_code"][$index]?>;"></span>
+                            <?php endforeach?>
                         </div>
-                        <div class="brand"><?php echo $products[$j]["brand"]?></div>
-                        <div class="name"><span><?php echo $products[$j]["name"]?></span></div>
-                    </a>
+
+                        <a href="product.php">
+                            <img src="<?php echo $products[$j]["pic"]?>" alt="<?php echo $products[$j]["name"]?>">
+                        </a>
+                        <div class="icon"></div>
+                    </div>
+                    <div class="brand"><a href="brand-page.php"><?php echo $products[$j]["brand"]?></a></div>
+                    <div class="name"><a href="product.php"><?php echo $products[$j]["name"]?></a></div>
                     <div class="inner">
                         <ul class="props">
                             <?php foreach($products[$j]["stockage"] as $index => $volume):?>

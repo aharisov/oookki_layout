@@ -1,11 +1,12 @@
 function addToCart(): void {
     const modal = document.getElementById("in-cart-modal") as HTMLDivElement;
     const modalBg = document.querySelector(".bg-modal") as HTMLDivElement;
-    const modalTitle = document.querySelector(".modal-title span") as HTMLHeadingElement;
+    const modalTitle = document.querySelector(".modal-product .name") as HTMLHeadingElement;
     const modalImage = document.querySelector(".modal-picture img") as HTMLImageElement;
     const continueShopping = document.querySelector(".continue") as HTMLButtonElement;
     const cartCounter = document.querySelector(".btn-cart .cnt") as HTMLElement;
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    const body = document.querySelector("body") as HTMLElement;
 
     if (!modalTitle || !modalImage || !continueShopping || !cartCounter || !addToCartButtons) {
         return;
@@ -26,6 +27,7 @@ function addToCart(): void {
     function closeModalHandler() {
         modal.classList.remove("show");
         modalBg.classList.remove("show");
+        body.classList.remove("lock");
     }
 
     // Event listeners for add to cart buttons
@@ -34,6 +36,8 @@ function addToCart(): void {
             const productTitle = this.getAttribute("data-title")!;
             const productImage = this.getAttribute("data-image")!;
             updateModal(productTitle, productImage);
+
+            body.classList.add("lock");
         });
     });
 

@@ -65,6 +65,7 @@ const openCloseSearch = () => {
 }
 // open modal windows
 const openModal = () => {
+    const body = document.querySelector("body");
     const bg = document.querySelector(".bg-modal");
     const openButtons = document.querySelectorAll("[data-modal]");
     const closeButtons = document.querySelectorAll(".modal .modal-close");
@@ -94,6 +95,7 @@ const openModal = () => {
             bg.classList.remove("show", "on-top");
             this.closest(".modal").classList.remove("show");
             this.closest(".modal").setAttribute("data-id", "");
+            body.classList.remove("lock");
         });
     });
 
@@ -103,6 +105,7 @@ const openModal = () => {
                 modal.classList.remove("show");
             });
             bg.classList.remove("show");
+            body.classList.remove("lock");
         }
     });
 }

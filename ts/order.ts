@@ -86,7 +86,7 @@ const updateButtonState = () => {
 const clickNextBtn = (e: Event) => {
     e.preventDefault();
 
-    const nextStepButton = document.querySelector<HTMLButtonElement>(".next-step");
+    const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next-step");
     if (!nextStepButton) return;
 
     const url = nextStepButton.getAttribute("data-next");
@@ -96,9 +96,37 @@ const clickNextBtn = (e: Event) => {
     }
 }
 
+const showNextSection = (e: Event) => {
+    e.preventDefault();
+
+    const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next");
+    const currentSection = document.querySelector<HTMLButtonElement>(".order-content.recommend-list");
+    const nextSection = document.querySelector<HTMLButtonElement>(".order-content.config-content");
+    if (!nextStepButton || !currentSection || !nextSection) return;
+
+    const url = nextStepButton.getAttribute("data-next");
+
+    if (url) {
+        window.location.href = url;
+    } else {
+        currentSection.setAttribute("aria-hidden", "true");
+        nextSection.setAttribute("aria-hidden", "false");
+
+        const offset = 100;
+        const sectionTop = nextSection.getBoundingClientRect().top + window.scrollY - offset;
+
+        // Smooth scroll
+        window.scrollTo({ top: sectionTop, behavior: "smooth" });
+    }
+}
+
 const init = () => {
     handleRadioSelection();
     updateButtonState(); // Ensure correct state on load
+    
+    const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next");
+    if (!nextStepButton) return;
+    nextStepButton.addEventListener("click", showNextSection);
 };
 
 init();

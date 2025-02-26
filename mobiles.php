@@ -7,11 +7,12 @@
 
     <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="css/styles.css?t=<?php echo time()?>">
+    <script src="https://kit.fontawesome.com/425e9c0def.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php include("./parts/header.php")?>
     <main>
-        <?php include("./parts/product-section/top-slider.php")?>
+        <?php include("./parts/home/top-slider.php")?>
 
         <div class="section-page">
             <div class="cont">

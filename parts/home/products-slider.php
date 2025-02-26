@@ -36,14 +36,13 @@
                 <?php foreach($products as $product):?>
                     <div class="swiper-slide">
                         <div class="product-card">
-                            <a href="">
-                                <div class="pic">
-                                    <img src="<?php echo $product["pic"]?>" alt="<?php echo $product["name"]?>">
-                                    <div class="icon"></div>
-                                </div>
-                                <div class="brand">Samsung</div>
-                                <div class="name"><span><?php echo $product["name"]?></span></div>
-                            </a>
+                            <div class="pic">
+                                <a href="product.php"><img src="<?php echo $product["pic"]?>" alt="<?php echo $product["name"]?>"></a>
+                                <div class="icon"></div>
+                            </div>
+                            <div class="brand"><a href="brand-page.php">Samsung</a></div>
+                            <div class="name"><a href="product.php"><?php echo $product["name"]?></a></div>
+
                             <div class="inner">
                                 <div class="price">
                                     <div class="price-inner">

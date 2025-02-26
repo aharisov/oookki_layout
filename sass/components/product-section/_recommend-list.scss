@@ -6,4 +6,14 @@
     .recommend-slider, .swiper-wrapper {
         width: 100%;
     }
+
+    .product-card .inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .price {
+            margin-bottom: 0;
+        }
+    }
 }

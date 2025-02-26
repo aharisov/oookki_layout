@@ -14,7 +14,12 @@
     <main>
         <div class="cont">
             <form class="order-wrap flex" method="post">
-                <div class="order-content">
+                <div class="order-content recommend-list" aria-hidden="false">
+                    <?php include("./parts/order/basket/recommend-list.php")?>
+                    <?php include("./parts/order/basket/next-button.php")?>
+                    <?php include("./parts/order/basket/basket-why-we.php")?>
+                </div>
+                <div class="order-content config-content" aria-hidden="true">
                     <?php include("./parts/order/basket/basket-abon.php")?>
                     <?php include("./parts/order/basket/basket-line-config.php")?>
                     <?php include("./parts/order/basket/basket-sim-type.php")?>

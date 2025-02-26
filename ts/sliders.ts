@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded',  function(event) {
         spaceBetween: 20,
         autoHeight: true,
         breakpoints: {
-            768: {
+            640: {
                 slidesPerView: 2,
             },
             1024: {
@@ -81,10 +81,10 @@ document.addEventListener('DOMContentLoaded',  function(event) {
         spaceBetween: 20,
         autoHeight: true,
         breakpoints: {
-            768: {
+            640: {
                 slidesPerView: 2,
             },
-            1024: {
+            800: {
                 autoHeight: false,
                 slidesPerView: 3,
             },
@@ -95,6 +95,30 @@ document.addEventListener('DOMContentLoaded',  function(event) {
             1360: {
                 autoHeight: false,
                 slidesPerView: 5,
+            },
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    const modalRecommendSlider = new Swiper(".modal-recommend .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoHeight: true,
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            768: {
+                direction: "vertical",
+                slidesPerView: "auto",
             },
         },
         pagination: {
