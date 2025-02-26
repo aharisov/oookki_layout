@@ -2,7 +2,7 @@
     <div class="modal-close"></div>
 
     <div class="modal-inner">
-        <h2>En savoir plus sur le transfert de mon numéro</h2>
+        <h4>En savoir plus sur le transfert de mon numéro</h4>
 
         <div class="transfer-steps">
             <ul>

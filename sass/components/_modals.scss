@@ -52,7 +52,6 @@
             transform: scale(1.2) rotate(180deg);
         }
     }
-
     .modal-inner {
         display: flex;
         justify-content: center;
@@ -106,6 +105,11 @@
     }
 }
 
+@media (min-width: 640px) {
+    .plan-details-modal.modal {
+        max-width: 480px;
+    }
+}
 @media (min-width: 768px) {
     .modal {
         padding-left: 2rem;

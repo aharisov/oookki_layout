@@ -2,7 +2,7 @@
     <div class="modal-close"></div>
 
     <div class="modal-inner">
-        <h2>Avantages OOOKKI Family</h2>
+        <h4>Avantages OOOKKI Family</h4>
 
         <div class="family-advantages">
             <ul>

@@ -27,3 +27,33 @@
         }
     }
 }
+
+@media (max-width: 1099px) and (max-height: 430px) {
+    .transfer-steps {
+        height: 100px;
+        padding-right: 5px;
+        overflow-y: scroll;
+    }
+    .change-plan-modal .packs-list-modal {
+        height: 200px;
+        padding-right: 5px;
+        overflow-y: scroll;
+    }
+}
+@media (max-width: 1099px) and (min-height: 431px) and (max-height: 630px) {
+    .transfer-steps {
+        height: 250px;
+        padding-right: 5px;
+        overflow-y: scroll;
+    }
+    .change-plan-modal .packs-list-modal {
+        height: 250px;
+        padding-right: 5px;
+        overflow-y: scroll;
+    }
+}
+@media (min-width: 768px) {
+    #number-transfer-modal.modal {
+        max-width: 640px;
+    }
+}

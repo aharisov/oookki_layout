@@ -2,7 +2,7 @@
     <div class="modal-close"></div>
 
     <div class="modal-inner">
-        <h2>Choisissez un de nos forfaits mobile</h2>
+        <h4>Choisissez un de nos forfaits mobile</h4>
 
         <div class="packs-list-modal flex">
             <div class="swiper">

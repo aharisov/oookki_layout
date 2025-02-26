@@ -253,10 +253,6 @@
     .pay-summary {
         display: flex;
 
-        .pay-summary-inner {
-            height: 380px;
-            overflow-y: auto;
-        }
         .pay-block {
             h5, .sum {
                 font-size: $fontXS;
@@ -274,12 +270,35 @@
         }
     }
 }
-
-@media (min-height: 700px) {
+@media (max-width: 1024px) and (max-height: 430px) {
     .basket-price-modal {
         .pay-summary {
             .pay-summary-inner {
-                height: 420px;
+                height: 150px;
+                padding-right: 5px;
+                overflow-y: scroll;
+            }
+        }
+    }
+}
+@media (max-width: 1024px) and (min-height: 431px) and (max-height: 630px) {
+    .basket-price-modal {
+        .pay-summary {
+            .pay-summary-inner {
+                height: 250px;
+                padding-right: 5px;
+                overflow-y: scroll;
+            }
+        }
+    }
+}
+@media (min-width: 1025px) and (max-height: 800px) {
+    .basket-price-modal {
+        .pay-summary {
+            .pay-summary-inner {
+                height: 250px;
+                padding-right: 5px;
+                overflow-y: scroll;
             }
         }
     }

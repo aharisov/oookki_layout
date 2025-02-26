@@ -2,7 +2,7 @@
     <div class="modal-close"></div>
 
     <div class="modal-inner summary-block pay-summary">
-        <h2 class="title">Détail du prix</h2>
+        <h4 class="title">Détail du prix</h4>
 
         <div class="pay-summary-inner">
             <div class="pay-block all-info">

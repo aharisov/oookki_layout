@@ -2,7 +2,7 @@
     <div class="modal-close"></div>
 
     <div class="modal-inner">
-        <h2>Détail du prix</h2>
+        <h4>Détail du prix</h4>
 
         <div class="price-details">
             <div class="block">

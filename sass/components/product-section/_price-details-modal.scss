@@ -4,7 +4,7 @@
     }
 
     .price-details .block {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
 
         &:last-child {
             margin-bottom: 0;
@@ -13,14 +13,19 @@
         .line {
             display: flex;
             justify-content: space-between;
-            margin-bottom: $mb-s;
+            margin-bottom: 0.3rem;
 
             .left {
                 width: 60%;
+
+                i {
+                    font-size: $font14;
+                    color: $colorBorder;
+                }
             }
         }
         .line-sum {
-            padding-top: $mb-s;
+            padding-top: $mb-xs;
             border-top: 1px solid $colorBorder;
             font-weight: bold;
 
@@ -31,7 +36,7 @@
     }
 
     .credit-note {
-        padding: 1rem;
+        padding: 0.5rem;
         background: $colorSecond;
         border-radius: $borderRadiusCommon;
 
@@ -53,6 +58,77 @@
     }
 }
 
+@media (max-height: 500px) {
+    .price-details-modal.modal {
+        padding: 1rem;
+        h4 {
+            margin-bottom: 0;
+        }
+        .price-details {
+            height: 100px;
+            padding-right: 5px;
+            overflow-y: scroll;
+        }
+        &.plan-details-modal {
+            .plan-modal-content {
+                height: 120px;
+                padding-right: 5px;
+                overflow-y: scroll;
+            }
+            .price-details {
+                height: auto;
+                padding-right: 0;
+                overflow: auto;
+            }
+        }
+        .credit-note {
+            p {
+                margin-bottom: 0.2rem;
+                font-size: 12px;
+            }
+        }
+    }
+}
+@media (min-height: 501px) and (max-height: 600px) {
+    .price-details-modal {
+        .price-details {
+            height: 150px;
+            padding-right: 5px;
+            overflow-y: scroll;
+        }
+        &.plan-details-modal {
+            .plan-modal-content {
+                height: 150px;
+                padding-right: 5px;
+                overflow-y: scroll;
+            }
+            .price-details {
+                height: auto;
+                padding-right: 0;
+                overflow: auto;
+            }
+        }
+        .credit-note {
+            p {
+                margin-bottom: 0.2rem;
+                font-size: 12px;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    .price-details-modal {
+        .price-details .block {
+            margin-bottom: 2rem;
+            .line {
+                margin-bottom: $mb-xs;
+            }
+        }
+        .credit-note {
+            padding: 1rem;
+        }
+    }
+}
 @media (min-width: 1024px) {
     .price-details-modal.modal {
         max-width: 800px;
