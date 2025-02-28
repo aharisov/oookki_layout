@@ -25,7 +25,7 @@
                     <div class="right">500 €</div>
                 </div>
                 <div class="line">
-                    <div class="left">Puis à payer par mois
+                    <div class="left">Puis à payer par mois <br>
                         <i>Financement sur 3 mois*</i>
                     </div>
                     <div class="right">40 €/mois</div>

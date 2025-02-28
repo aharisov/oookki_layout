@@ -1,14 +1,13 @@
 .price-details-modal {
-    .modal-inner {
-        flex-direction: column;
+    &.modal {
+        .modal-inner {
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
     }
-
+    
     .price-details .block {
         margin-bottom: 1rem;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
 
         .line {
             display: flex;

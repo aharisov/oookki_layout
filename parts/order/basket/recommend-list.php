@@ -129,7 +129,7 @@
     
     <div class="section-inner">
     <?php $cnt = 1; foreach($products as $product):?>
-        <div class="product-card <?php if ($cnt > 2) echo "hidden";?>">
+        <div class="product-card">
             
             <div class="pic">
                 <a href="product.php"><img src="<?php echo $product["pic"]?>" alt="<?php echo $product["name"]?>"></a>
@@ -164,4 +164,5 @@
         </div>
     <?php $cnt++; endforeach;?>
     </div>
+    <div class="btn btn-black show-more">Afficher plus <i class="fa-solid fa-angles-down"></i></div>
 </section>

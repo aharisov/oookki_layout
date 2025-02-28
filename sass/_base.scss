@@ -19,17 +19,6 @@ body {
     }
 }
 
-// ::-webkit-scrollbar {
-//     -webkit-appearance: none;
-//     width: 4px;
-// }
-
-// ::-webkit-scrollbar-thumb {
-//     border-radius: 2px;
-//     background-color: $colorRedTransparent;
-//     box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-// }
-
 /* Set the width and height of the scrollbar */
 ::-webkit-scrollbar {
     width: 5px;
@@ -217,17 +206,12 @@ main:has(.top-slider) {
     h2 {
         font-size: $fontXL;
     }
-    h3 {
-        font-size: $fontL;
-    }
-    h4 {
+    h3,h4 {
+        margin-bottom: 1.5rem;
         font-size: $fontM;
     }
     h1, h2 {
         margin-bottom: 3rem;
-    }
-    h3, h4 {
-        margin-bottom: 1.5rem;
     }
 
     main {

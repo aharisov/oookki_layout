@@ -78,6 +78,9 @@
 .btn-red__empty {
     @include btn($colorRed, $colorWhite, $colorWhite, $colorRed, 'empty');
 }
+.btn-rose {
+    @include btn($colorWhite, $colorRedTransparent, $colorWhite, $colorRed, 'full');
+}
 
 @media (min-width: 1024px) {
     .btn {

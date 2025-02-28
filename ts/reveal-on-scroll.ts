@@ -20,4 +20,4 @@ const revealOnScroll = () => {
 };
 
 // Run when DOM is loaded
-document.addEventListener("DOMContentLoaded", revealOnScroll);
+// document.addEventListener("DOMContentLoaded", revealOnScroll);

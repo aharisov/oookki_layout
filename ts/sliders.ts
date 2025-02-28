@@ -112,6 +112,9 @@ document.addEventListener('DOMContentLoaded',  function(event) {
         slidesPerView: 1,
         spaceBetween: 20,
         autoHeight: true,
+        mousewheel: {
+            enabled: true,
+        },
         breakpoints: {
             640: {
                 slidesPerView: 2,
