@@ -138,28 +138,6 @@ body.lock {
   overflow: hidden;
 }
 
-/* Set the width and height of the scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-/* Set the background color of the scrollbar */
-::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-}
-
-/* Set the color of the scrollbar thumb */
-::-webkit-scrollbar-thumb {
-  background-color: rgba(187, 37, 50, 0.7);
-  border-radius: 5px;
-}
-
-/* Keep the scrollbar always visible */
-::-webkit-scrollbar-thumb:vertical {
-  min-height: 50px;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: "Oswald", Tahoma, Arial, sans-serif;
 }
