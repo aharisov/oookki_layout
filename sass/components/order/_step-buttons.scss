@@ -1,15 +1,25 @@
 .order-buttons {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
     margin-bottom: $mb-l;
 
-    .next-step, .next {
-        align-self: center;
-        width: 100%;
-        max-width: 200px;
-        margin: $mb-m auto 0;
+    .buttons-wrap {
+        display: flex;
+        align-items: center;
+        margin-top: $mb-m;
+
+        .btn {
+            height: 42px;
+            margin: 0 0.5rem;
+        }
+        .next-step, .next {
+            align-self: center;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+        }
     }
 }
 
@@ -20,12 +30,40 @@
 @media (min-width: 480px) {
     .order-buttons {
         flex-wrap: nowrap;
-        justify-content: space-between;
 
         .next-step, .next {
             width: auto;
             min-width: 120px;
             margin: 0;
+        }
+    }
+}
+@media (min-width: 600px) {
+    .order-buttons {
+        flex-direction: row;
+
+        .buttons-wrap {
+            margin-top: 0;
+        }
+    }
+}
+@media (min-width: 768px) {
+    .order-buttons {
+        &.full {
+            flex-direction: column;
+            .buttons-wrap {
+               margin-top: $mb-m;
+            }
+        }
+    }
+}
+@media (min-width: 1024px) {
+    .order-buttons {
+        &.full {
+            flex-direction: row;
+            .buttons-wrap {
+               margin-top: 0;
+            }
         }
     }
 }

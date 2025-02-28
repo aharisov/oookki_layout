@@ -3,5 +3,7 @@
         <i class="fa-solid fa-xmark"></i> 
         <span>Abandonner ma commande</span>
     </a>
-    <button type="submit" class="btn btn-red next">Continuer</button>
+    <div class="buttons-wrap">
+        <button type="submit" class="btn btn-red next">Continuer</button>
+    </div>
 </div>

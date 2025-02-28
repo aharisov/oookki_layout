@@ -1,4 +1,4 @@
-<div class="order-buttons">
+<div class="order-buttons full">
     <a href="index.php" class="link order-reset">
         <i class="fa-solid fa-xmark"></i> 
         <span>Abandonner ma commande</span>

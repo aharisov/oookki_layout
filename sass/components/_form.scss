@@ -1,7 +1,10 @@
 form {
     .form-line {
-        margin-bottom: $mb-s;
+        margin-bottom: $mb-m;
 
+        &.full-line {
+            width: 100%;
+        }
         label {
             display: block;
             margin-bottom: $mb-xs;
@@ -13,10 +16,37 @@ form {
             padding: 1rem 0.3rem;
             border: 1px solid $colorGray;
             border-radius: $borderRadiusS;
+            transition: $transition;
+
+            &:focus {
+                border-width: 2px;
+            }
         }
 
         &.btn-submit-wrap {
             margin-top: $mb-l;
+        }
+
+        .note {
+            display: flex;
+            margin-top: $mb-s;
+            font-size: $font14;
+            color: $colorGray;
+
+            i {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                max-width: 20px;
+                height: 20px;
+                margin-right: $mb-xs;
+                border: 1px solid $colorGray;
+                border-radius: $borderRadiusCircle;
+            }
+            span {
+                display: inline-flex;
+            }
         }
     }
 }

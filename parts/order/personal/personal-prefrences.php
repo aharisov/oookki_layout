@@ -2,7 +2,7 @@
     <h3>Préférences de contact</h3>
 
     <div class="personal-block__inner">
-        <div class="form-line">
+        <div class="form-line full-line">
             <div class="form-line__content">
                 <label class="check">
                     <input type="checkbox" name="oookkiOption" checked>

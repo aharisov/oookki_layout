@@ -22,7 +22,7 @@
             <label for="city-name" class="form-line__title">Ville <span class="red">*</span></label>
             <input id="city-name" type="text" name="cityName" autocomplete="off" required>
         </div>
-        <div class="form-line">
+        <div class="form-line full-line">
             <label for="full-address" class="form-line__title">Complément d'adresse (facultatif)</label>
             <input id="full-address" type="text" name="fullAddress" autocomplete="off">
         </div>

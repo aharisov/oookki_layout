@@ -178,27 +178,6 @@
         overflow: hidden;
         transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
 
-        .note {
-            display: flex;
-            margin-top: $mb-l;
-            font-size: $font14;
-            color: $colorGray;
-
-            i {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                max-width: 20px;
-                height: 20px;
-                margin-right: $mb-xs;
-                border: 1px solid $colorGray;
-                border-radius: $borderRadiusCircle;
-            }
-            span {
-                display: inline-flex;
-            }
-        }
         .more-info {
             margin-top: $mb-m;
 

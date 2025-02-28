@@ -4,6 +4,14 @@
     flex-direction: column-reverse;
 }
 
+.order-content {
+    &.recommend-list {
+        .product-card {
+            margin-bottom: $mb-m;
+        }
+    }
+}
+
 @media (min-width: 768px) {
     .order-wrap {
         flex-direction: row;
