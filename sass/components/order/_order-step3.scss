@@ -1,0 +1,62 @@
+.basket-block {
+    .config-options {
+        &.delivery-options {
+            .config-option {
+                .switch {
+                    padding-left: 0;
+                    .label-pic {
+                        position: relative;
+                        top: -3px;
+                    }
+                    img {
+                        position: relative;
+                        right: auto;
+                        left: 2rem;
+                    }
+                    .switch-right {
+                        width: 100%;
+                        margin-top: $mb-xs;
+
+                        .price {
+                            font-size: $font16;
+                            color: $colorRedTransparent;
+                        }
+                    }
+                    label {
+                        display: block;
+                        font-family: $fontTitle;
+                        font-size: $fontXS;
+                    }
+                }
+                .config-text {
+                    margin-bottom: $mb-m;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    .basket-block {
+        .config-options {
+            &.delivery-options {
+                .config-option {
+                    .switch {
+                        flex-direction: row;
+
+                        img {
+                            position: absolute;
+                        }
+                        .switch-right {
+                            position: relative;
+                            top: -5px;
+                            width: auto;
+                            margin-top: 0;
+                            margin-left: 4.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

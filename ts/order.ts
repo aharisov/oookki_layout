@@ -57,7 +57,7 @@ const updateButtonState = () => {
 
     if (!allGroupsChecked) {
         nextStepButton.disabled = true;
-        console.info('not all checked');
+        // console.info('not all checked');
         return;
     } else {
         nextStepButton.disabled = false;
@@ -267,11 +267,55 @@ const orderFormValidation = () => {
     });
 };
 
+const addDeliveryToSummary = () => {
+    const payBlockList = document.querySelectorAll<HTMLElement>(".pay-summary .pay-block.all-info ul");
+    const selectedDeliveryItem = document.querySelector<HTMLInputElement>("input[name='delivery']:checked");
+
+    if (!payBlockList || !selectedDeliveryItem) return;
+
+    // Remove existing entry if any
+    payBlockList.forEach(el => {
+        const existingElement = el.querySelector(".delivery-info");
+
+        if (existingElement) {
+            existingElement.remove();
+        }
+    })
+
+    payBlockList.forEach(el => {
+        // Create new list item for selected entry
+        const newListItem = document.createElement("li");
+        let price = selectedDeliveryItem.getAttribute("data-price") + "€";
+        if (selectedDeliveryItem.getAttribute("data-price") == "gratuit") price = "gratuit";
+
+        newListItem.classList.add("delivery-info");
+        newListItem.innerHTML = `<span>Delivery ${selectedDeliveryItem.value}</span><span>${price}</span>`;
+
+        // Append new list item to the list
+            el.appendChild(newListItem);
+    });
+}
+
+const validateDeliveryStep = () => {
+    const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next-step");
+    const radioButtons = document.querySelectorAll<HTMLInputElement>(`input[name="delivery"]`);
+
+    if (!nextStepButton || !radioButtons) return;
+      
+    radioButtons.forEach((radio) => {
+        radio.addEventListener("change", (event) => {
+            addDeliveryToSummary();
+            if (isRadioGroupSelected("delivery")) nextStepButton.disabled = false;
+        });
+    });
+}
+
 const init = () => {
     handleRadioSelection();
     updateButtonState(); 
     showMobileCart();
     orderFormValidation();
+    validateDeliveryStep();
     
     const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next");
     if (!nextStepButton) return;

@@ -4709,6 +4709,12 @@ form .form-line .datalist .option:hover {
   height: 42px;
   margin: 0 0.5rem;
 }
+.order-buttons .buttons-wrap .btn:disabled {
+  background: rgba(187, 37, 50, 0.7);
+  border-color: rgba(81, 101, 108, 0.1);
+  color: #fff;
+  opacity: 0.5;
+}
 .order-buttons .buttons-wrap .next-step, .order-buttons .buttons-wrap .next {
   align-self: center;
   width: 100%;
@@ -5148,7 +5154,7 @@ form .form-line .datalist .option:hover {
 .basket-block {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(81, 101, 108, 0.1);
+  border-bottom: 1px solid rgba(81, 101, 108, 0.2);
 }
 .basket-block p {
   margin-bottom: 0.75rem;
@@ -5614,6 +5620,50 @@ form .form-line .datalist .option:hover {
 @media (min-width: 800px) {
   .personal-block__inner .form-line label {
     font-size: 1rem;
+  }
+}
+.basket-block .config-options.delivery-options .config-option .switch {
+  padding-left: 0;
+}
+.basket-block .config-options.delivery-options .config-option .switch .label-pic {
+  position: relative;
+  top: -3px;
+}
+.basket-block .config-options.delivery-options .config-option .switch img {
+  position: relative;
+  right: auto;
+  left: 2rem;
+}
+.basket-block .config-options.delivery-options .config-option .switch .switch-right {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.basket-block .config-options.delivery-options .config-option .switch .switch-right .price {
+  font-size: 1rem;
+  color: rgba(187, 37, 50, 0.7);
+}
+.basket-block .config-options.delivery-options .config-option .switch label {
+  display: block;
+  font-family: "Oswald", Tahoma, Arial, sans-serif;
+  font-size: 1.2rem;
+}
+.basket-block .config-options.delivery-options .config-option .config-text {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 480px) {
+  .basket-block .config-options.delivery-options .config-option .switch {
+    flex-direction: row;
+  }
+  .basket-block .config-options.delivery-options .config-option .switch img {
+    position: absolute;
+  }
+  .basket-block .config-options.delivery-options .config-option .switch .switch-right {
+    position: relative;
+    top: -5px;
+    width: auto;
+    margin-top: 0;
+    margin-left: 4.5rem;
   }
 }
 footer {

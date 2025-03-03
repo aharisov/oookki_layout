@@ -13,6 +13,13 @@
         .btn {
             height: 42px;
             margin: 0 0.5rem;
+
+            &:disabled {
+                background: $colorRedTransparent;
+                border-color: $colorGrayTransparent;
+                color: $colorWhite;
+                opacity: 0.5;
+            }
         }
         .next-step, .next {
             align-self: center;

@@ -44,22 +44,18 @@ switch($page) {
                 <div class="order-step current">
                     <i class="fa-solid fa-gear"></i>
                 </div>
-                <div class="order-step <?php if ($page == "order-step2.php") echo "current";?>">
+                <div class="order-step <?php if ($page != "order-step1.php") echo "current";?>">
                     <span></span>
                     <i class="fa-regular fa-circle-user"></i>
                 </div>
-                <div class="order-step <?php if ($page == "order-step3.php") echo "current";?>">
+                <div class="order-step <?php if ($page == "order-step3.php" || $page == "order-step4.php" || $page == "order-step5.php") echo "current";?>">
                     <span></span>
                     <i class="fa-solid fa-truck"></i>
                 </div>
-                <div class="order-step <?php if ($page == "order-step4.php") echo "current";?>">
+                <div class="order-step <?php if ($page == "order-step4.php" || $page == "order-step5.php") echo "current";?>">
                     <span></span>
                     <i class="fa-solid fa-credit-card"></i>
                 </div>
-                <!-- <div class="order-step <?php if ($page == "order-step5.php") echo "current";?>">
-                    <span></span>
-                    <i class="fa-regular fa-pen-to-square"></i>
-                </div> -->
                 <div class="order-step <?php if ($page == "order-step5.php") echo "current";?>">
                     <span></span>
                     <i class="fa-solid fa-circle-check"></i>
