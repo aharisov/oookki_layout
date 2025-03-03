@@ -16,7 +16,7 @@
         </div>
         <div class="form-line">
             <label for="postal-code" class="form-line__title" data-name="code postal">Code postal <span class="red">*</span></label>
-            <input id="postal-code" type="text" name="postalCode" placeholder="Ex : 34000" autocomplete="postal-code" required>
+            <input id="postal-code" type="text" name="postalCode" placeholder="Ex : 34000" maxlength="5" autocomplete="postal-code" required>
         </div>
         <div class="form-line">
             <label for="city-name" class="form-line__title" data-name="ville">Ville <span class="red">*</span></label>

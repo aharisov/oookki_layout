@@ -76,16 +76,18 @@ function applyInputMask(input, pattern) {
         target.value = maskedValue;
     });
 }
-// Usage example:
 const inputPhone = document.getElementById("phone-number");
 const inputRio = document.getElementById("phone-rio");
 const inputBirthDate = document.getElementById("birth-date");
+const inputPostalCode = document.getElementById("postal-code");
 if (inputPhone)
     applyInputMask(inputPhone, "00 00 00 00 00");
 if (inputRio)
     applyInputMask(inputRio, "00 X XXXXXX 0X0");
 if (inputBirthDate)
     applyInputMask(inputBirthDate, "00/00/0000");
+if (inputPostalCode)
+    applyInputMask(inputPostalCode, "00000");
 const openCloseMenu = () => {
     const menuBtn = document.querySelector('.js-open-menu');
     const menu = document.querySelector('.main-menu');
