@@ -1,5 +1,6 @@
 form {
     .form-line {
+        position: relative;
         margin-bottom: $mb-m;
 
         &.full-line {
@@ -10,16 +11,18 @@ form {
             margin-bottom: $mb-xs;
         }
         input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
             max-width: 360px;
             padding: 1rem 0.3rem;
-            border: 1px solid $colorGray;
-            border-radius: $borderRadiusS;
+            border: 2px solid $colorBorder;
+            border-radius: 10px;
             transition: $transition;
+            font-size: $font16;
 
             &:focus {
-                border-width: 2px;
+                border-color: $colorGray;
             }
         }
 
@@ -34,6 +37,8 @@ form {
             color: $colorGray;
 
             i {
+                position: relative;
+                top: 3px;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -46,6 +51,91 @@ form {
             }
             span {
                 display: inline-flex;
+            }
+        }
+        &.error {
+            input {
+                border-color: $colorRedTransparent;
+            }
+        }
+        .error-message {
+            position: relative;
+            display: block;
+            margin-top: $mb-xs;
+            padding-left: 25px;
+            font-size: $font14;
+            color: $colorRedTransparent;
+            i {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                max-width: 20px;
+                height: 20px;
+                margin-right: 3px;
+                border: 1px solid $colorRedTransparent;
+                border-radius: $borderRadiusCircle;
+                font-size: 12px;
+            }
+        }
+
+        &.with-list {
+            .inner {
+                position: relative;
+
+                &::after {
+                    @include arrow(12px);
+                    margin-top: -2px;
+                }
+            }
+            input {
+                padding-right: 38px;
+            }
+            &.open {
+                .inner::after {
+                    transform: translateY(0) rotate(135deg);
+                }
+                &.error {
+                    .error-message {
+                        position: absolute;
+                    }
+                }
+            }
+        }
+        .datalist {
+            position: absolute;
+            top: 56px;
+            z-index: 99;
+            width: 100%;
+            height: 280px;
+            overflow-y: scroll;
+            padding: 1rem;
+            border: 1px solid $colorBorder;
+            border-radius: 10px;
+            background: $colorSecond;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px $colorBorder;
+                border-radius: 5px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: $colorRedTransparent;
+                border-radius: 5px;
+            }
+            .option {
+                padding: 3px 0;
+                cursor: pointer;
+                transition: $transition;
+
+                &:hover {
+                    color: $colorRedTransparent;
+                }
             }
         }
     }

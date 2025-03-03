@@ -160,7 +160,7 @@
             display: block;
             width: 20px;
             height: 20px;
-            background: $colorGrayTransparent;
+            background: $colorBorder;
             border-radius: $borderRadiusCircle;
             content: "";
             transition: $transition;
@@ -172,7 +172,7 @@
             display: block;
             width: 26px;
             height: 26px;
-            border: 1px solid $colorSecond;
+            border: 1px solid $colorBorder;
             border-radius: $borderRadiusCircle;
             content: "";
             transition: $transition;

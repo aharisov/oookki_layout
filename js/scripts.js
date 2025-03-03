@@ -79,10 +79,13 @@ function applyInputMask(input, pattern) {
 // Usage example:
 const inputPhone = document.getElementById("phone-number");
 const inputRio = document.getElementById("phone-rio");
+const inputBirthDate = document.getElementById("birth-date");
 if (inputPhone)
-    applyInputMask(inputPhone, "00 00 00 00 00"); // Example: Phone number format
+    applyInputMask(inputPhone, "00 00 00 00 00");
 if (inputRio)
-    applyInputMask(inputRio, "00 X XXXXXX 0X0"); // Example: Custom alphanumeric format
+    applyInputMask(inputRio, "00 X XXXXXX 0X0");
+if (inputBirthDate)
+    applyInputMask(inputBirthDate, "00/00/0000");
 const openCloseMenu = () => {
     const menuBtn = document.querySelector('.js-open-menu');
     const menu = document.querySelector('.main-menu');
@@ -220,6 +223,7 @@ const choosePlan = () => {
 };
 choosePlan();
 updateOrderPlan();
+// radio buttons select on order step 1
 const handleRadioSelection = () => {
     const cardRadios = document.querySelectorAll("input[name='card']");
     const phoneSaveRadios = document.querySelectorAll("input[name='phone_save']");
@@ -255,6 +259,7 @@ const updatePayBlock = () => {
         el.appendChild(newListItem);
     });
 };
+// verify if all radios are checked in order step 1
 const updateButtonState = () => {
     var _a, _b;
     const phoneSaveChecked = ((_a = document.querySelector("input[name='phone_save']:checked")) === null || _a === void 0 ? void 0 : _a.value) === "yes";
@@ -281,18 +286,16 @@ const updateButtonState = () => {
         const isPhoneNumberFilled = phoneNumber.value.length === phoneNumber.maxLength;
         const isPhoneRioFilled = phoneRio.value.length === phoneRio.maxLength;
         nextStepButton.disabled = !(isPhoneNumberFilled && isPhoneRioFilled);
-        console.info('phone save checked', isPhoneNumberFilled, isPhoneRioFilled);
     }
     else {
         phoneNumber.required = false;
         phoneRio.required = false;
-        console.info('phone save unchecked');
     }
     if (abonChecked) {
         nextStepButton.disabled = true;
-        console.info('abon checked');
     }
 };
+// go to order step 2
 const clickNextBtn = (e) => {
     e.preventDefault();
     const nextStepButton = document.querySelector(".order-buttons .next-step");
@@ -303,6 +306,7 @@ const clickNextBtn = (e) => {
         window.location.href = url;
     }
 };
+// show second part of order step 1
 const showNextSection = (e) => {
     e.preventDefault();
     const nextStepButton = document.querySelector(".order-buttons .next");
@@ -323,9 +327,135 @@ const showNextSection = (e) => {
         window.scrollTo({ top: sectionTop, behavior: "smooth" });
     }
 };
+function isRadioGroupSelected(groupName) {
+    const selectedOption = document.querySelector(`input[name="${groupName}"]:checked`);
+    return selectedOption !== null;
+}
+function handleRadioGroup(groupName) {
+    const radioButtons = document.querySelectorAll(`input[name="${groupName}"]`);
+    radioButtons.forEach((radio) => {
+        radio.addEventListener("change", (event) => {
+            var _a;
+            const selectedRadio = event.target;
+            const parent = selectedRadio.closest(".form-line");
+            parent === null || parent === void 0 ? void 0 : parent.classList.remove("error");
+            (_a = parent === null || parent === void 0 ? void 0 : parent.querySelector(".error-message")) === null || _a === void 0 ? void 0 : _a.remove();
+        });
+    });
+}
+// open/close cart on mobile device in order after step 1
+const showMobileCart = () => {
+    const showBtn = document.querySelector(".show-mobile-cart");
+    const cartSummary = document.querySelector(".cart-summary");
+    if (!showBtn || !cartSummary)
+        return;
+    showBtn === null || showBtn === void 0 ? void 0 : showBtn.addEventListener("click", () => {
+        if (cartSummary.classList.contains("show")) {
+            showBtn.innerHTML = 'Détail du panier <i class="fa-solid fa-angles-down"></i>';
+        }
+        else {
+            showBtn.innerHTML = 'Cacher le panier <i class="fa-solid fa-angles-up"></i>';
+        }
+        cartSummary === null || cartSummary === void 0 ? void 0 : cartSummary.classList.toggle("show");
+    });
+};
+const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+};
+const validateBirthDate = (birthDate) => {
+    const birthDateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+    if (!birthDateRegex.test(birthDate))
+        return false;
+    const [day, month, year] = birthDate.split("/").map(Number);
+    const dateObj = new Date(year, month - 1, day);
+    return (dateObj.getFullYear() === year &&
+        dateObj.getMonth() === month - 1 &&
+        dateObj.getDate() === day);
+};
+// check all personal data in order step 2
+const orderFormValidation = () => {
+    const form = document.querySelector(".order-wrap");
+    const submitButton = document.querySelector(".next-step");
+    const inputs = document.querySelectorAll(".order-wrap input:required");
+    if (!form || !submitButton || inputs.length === 0)
+        return;
+    // create and append error message
+    const showErrorMessage = (input, message) => {
+        const parent = input.closest(".form-line");
+        if (!parent)
+            return;
+        let errorMessage = parent.querySelector(".error-message");
+        if (!errorMessage) {
+            errorMessage = document.createElement("span");
+            errorMessage.classList.add("error-message");
+            parent.appendChild(errorMessage);
+        }
+        errorMessage.innerHTML = `<i>!</i> ${message}`;
+        parent.classList.add("error");
+    };
+    // remove error message
+    const removeErrorMessage = (input) => {
+        const parent = input.closest(".form-line");
+        if (!parent)
+            return;
+        const errorMessage = parent.querySelector(".error-message");
+        if (errorMessage)
+            errorMessage.remove();
+        parent.classList.remove("error");
+    };
+    // handle input validation on blur (when user leaves an input)
+    const handleBlur = (event) => {
+        var _a;
+        const input = event.target;
+        const parent = input.closest(".form-line");
+        if (!parent)
+            return;
+        const fieldName = (_a = parent.querySelector(".form-line__title")) === null || _a === void 0 ? void 0 : _a.getAttribute("data-name");
+        if (!input.value.trim()) {
+            showErrorMessage(input, `Veuillez renseigner votre ${fieldName}`);
+            return;
+        }
+        if (input.type == "email" && !validateEmail(input.value)) {
+            showErrorMessage(input, "Veuillez entrer un email valide.");
+            return;
+        }
+        if (input.getAttribute("name") == "birthDate" && !validateBirthDate(input.value)) {
+            showErrorMessage(input, "Veuillez entrer une date valide au format JJ/MM/AAAA.");
+            return;
+        }
+        removeErrorMessage(input);
+        checkInputs();
+    };
+    // check if all required inputs are filled
+    const checkInputs = () => {
+        let allFilled = true;
+        if (!isRadioGroupSelected("sex")) {
+            let radioElem = document.querySelector(".radio-group");
+            if (!radioElem)
+                return;
+            showErrorMessage(radioElem, "Veuillez sélectionner votre civilité");
+            allFilled = false;
+        }
+        inputs.forEach(input => {
+            handleRadioGroup("sex");
+            if (!input.value.trim() && isRadioGroupSelected("sex")) {
+                allFilled = false;
+            }
+        });
+        submitButton.disabled = !allFilled;
+    };
+    // event Listeners
+    inputs.forEach(input => {
+        input.addEventListener("input", checkInputs); // Re-check when typing
+        input.addEventListener("blur", handleBlur); // Check on blur
+    });
+};
 const init = () => {
     handleRadioSelection();
-    updateButtonState(); // Ensure correct state on load
+    updateButtonState();
+    showMobileCart();
+    orderFormValidation();
     const nextStepButton = document.querySelector(".order-buttons .next");
     if (!nextStepButton)
         return;
@@ -978,6 +1108,137 @@ function initTabs() {
 document.addEventListener("DOMContentLoaded", () => {
     initTabs();
 });
+const regionsFranceList = [
+    "Hors France", "Ain (01)", "Aisne (02)", "Allier (03)", "Alpes-de-Haute-Provence (04)", "Hautes-Alpes (05)",
+    "Alpes-Maritimes (06)", "Ardèche (07)", "Ardennes (08)", "Ariège (09)", "Aube (10)",
+    "Aude (11)", "Aveyron (12)", "Bouches-du-Rhône (13)", "Calvados (14)", "Cantal (15)",
+    "Charente (16)", "Charente-Maritime (17)", "Cher (18)", "Corrèze (19)", "Corse-du-Sud (2A)",
+    "Haute-Corse (2B)", "Côte-d'Or (21)", "Côtes-d'Armor (22)", "Creuse (23)", "Dordogne (24)",
+    "Doubs (25)", "Drôme (26)", "Eure (27)", "Eure-et-Loir (28)", "Finistère (29)", "Gard (30)",
+    "Haute-Garonne (31)", "Gers (32)", "Gironde (33)", "Hérault (34)", "Ille-et-Vilaine (35)",
+    "Indre (36)", "Indre-et-Loire (37)", "Isère (38)", "Jura (39)", "Landes (40)", "Loir-et-Cher (41)",
+    "Loire (42)", "Haute-Loire (43)", "Loire-Atlantique (44)", "Loiret (45)", "Lot (46)", "Lot-et-Garonne (47)",
+    "Lozère (48)", "Maine-et-Loire (49)", "Manche (50)", "Marne (51)", "Haute-Marne (52)", "Mayenne (53)",
+    "Meurthe-et-Moselle (54)", "Meuse (55)", "Morbihan (56)", "Moselle (57)", "Nièvre (58)", "Nord (59)",
+    "Oise (60)", "Orne (61)", "Pas-de-Calais (62)", "Puy-de-Dôme (63)", "Pyrénées-Atlantiques (64)",
+    "Hautes-Pyrénées (65)", "Pyrénées-Orientales (66)", "Bas-Rhin (67)", "Haut-Rhin (68)", "Rhône (69)",
+    "Haute-Saône (70)", "Saône-et-Loire (71)", "Sarthe (72)", "Savoie (73)", "Haute-Savoie (74)", "Paris (75)",
+    "Seine-Maritime (76)", "Seine-et-Marne (77)", "Yvelines (78)", "Deux-Sèvres (79)", "Somme (80)", "Tarn (81)",
+    "Tarn-et-Garonne (82)", "Var (83)", "Vaucluse (84)", "Vendée (85)", "Vienne (86)", "Haute-Vienne (87)",
+    "Vosges (88)", "Yonne (89)", "Territoire de Belfort (90)", "Essonne (91)", "Hauts-de-Seine (92)",
+    "Seine-Saint-Denis (93)", "Val-de-Marne (94)", "Val-d'Oise (95)"
+];
+const countriesList = [
+    "Afghanistan", "Albanie", "Algérie", "Andorre", "Angola", "Antigua-et-Barbuda", "Argentine", "Arménie", "Australie", "Autriche",
+    "Azerbaïdjan", "Bahamas", "Bahreïn", "Bangladesh", "Barbade", "Belgique", "Belize", "Bénin", "Bhoutan", "Bolivie",
+    "Bosnie-Herzégovine", "Botswana", "Brésil", "Brunei", "Bulgarie", "Burkina Faso", "Burundi", "Cambodge", "Cameroun", "Canada",
+    "Cap-Vert", "Chili", "Chine", "Chypre", "Colombie", "Comores", "Congo (République du Congo)", "Congo (République Démocratique du Congo)",
+    "Costa Rica", "Croatie", "Cuba", "Danemark", "Djibouti", "Dominique", "Égypte", "El Salvador", "Équateur", "Érythrée",
+    "Espagne", "Estonie", "Eswatini", "États-Unis", "Éthiopie", "Fidji", "Finlande", "France", "Gabon", "Gambie", "Géorgie",
+    "Ghana", "Grèce", "Grenade", "Guatemala", "Guinée", "Guinée-Bissau", "Guinée équatoriale", "Guyana", "Haïti", "Honduras",
+    "Hongrie", "Inde", "Indonésie", "Irak", "Iran", "Irlande", "Islande", "Israël", "Italie", "Jamaïque", "Japon", "Jordanie",
+    "Kazakhstan", "Kenya", "Kiribati", "Koweït", "Laos", "Lesotho", "Lettonie", "Liban", "Liberia", "Libye", "Liechtenstein",
+    "Lituanie", "Luxembourg", "Macédoine du Nord", "Madagascar", "Malaisie", "Malawi", "Maldives", "Mali", "Malte", "Maroc",
+    "Marshall (îles)", "Maurice", "Mauritanie", "Mexique", "Micronésie", "Moldavie", "Monaco", "Mongolie", "Monténégro",
+    "Mozambique", "Namibie", "Nauru", "Népal", "Nicaragua", "Niger", "Nigeria", "Niue", "Norvège", "Nouvelle-Zélande",
+    "Oman", "Ouganda", "Pakistan", "Palaos", "Panama", "Papouasie-Nouvelle-Guinée", "Paraguay", "Pays-Bas", "Pérou", "Philippines",
+    "Pologne", "Portugal", "Qatar", "République tchèque", "République dominicaine", "République du Congo", "Roumanie",
+    "Rwanda", "Saint-Christophe-et-Niévès", "Saint-Marin", "Saint-Siège", "Sainte-Lucie", "Sénégal", "Serbie", "Seychelles",
+    "Sierra Leone", "Singapour", "Syrie", "Somalie", "Soudan", "Soudan du Sud", "Sri Lanka", "Suède", "Suisse", "Suriname",
+    "Suisse", "Syrie", "Tadjikistan", "Tanzanie", "Tchad", "Thaïlande", "Timor oriental", "Togo", "Tonga", "Trinité-et-Tobago",
+    "Tunisie", "Turkménistan", "Turquie", "Tuvalu", "Ukraine", "Uruguay", "Vanuatu", "Vatican", "Venezuela", "Vietnam", "Yémen",
+    "Zambie", "Zimbabwe"
+];
+/**
+ * Shows/hides list popup
+ * @param selectClass selector for list parent
+ * @param inputSelector selector for list input
+ * @param show boolean for show or hide list popup
+ * @returns
+ */
+const showDataList = (selectClass, inputSelector = "input", show) => {
+    const dataList = document.querySelector(selectClass);
+    if (!dataList)
+        return;
+    const dataInput = dataList.querySelector(inputSelector);
+    if (!dataInput)
+        return;
+    if (show) {
+        dataList.setAttribute("aria-hidden", "false");
+        dataInput.required = true;
+    }
+    else {
+        dataList.setAttribute("aria-hidden", "true");
+        dataInput.required = false;
+    }
+};
+// initialize regions and countires lists
+const initDataList = () => {
+    const inputRegionField = document.getElementById("birth-region");
+    const dataRegionList = document.getElementById("region-datalist");
+    const inputCountryField = document.getElementById("birth-country");
+    const dataCountryList = document.getElementById("country-datalist");
+    if (!inputRegionField || !dataRegionList || !inputCountryField || !dataCountryList)
+        return;
+    const dataListChange = (data, input, listElement) => {
+        const inputParent = input.closest(".with-list");
+        if (!inputParent)
+            return;
+        // create data list
+        const populateDatalist = (filter = "") => {
+            listElement.innerHTML = "";
+            const filteredList = data.filter(dataItem => dataItem.toLowerCase().includes(filter.toLowerCase()));
+            if (filteredList.length === 0) {
+                listElement.setAttribute("aria-hidden", "true");
+                inputParent === null || inputParent === void 0 ? void 0 : inputParent.classList.remove("open");
+                return;
+            }
+            filteredList.forEach(dataItem => {
+                const listItem = document.createElement("li");
+                listItem.textContent = dataItem;
+                listItem.classList.add("option");
+                listItem.addEventListener("click", () => {
+                    var _a;
+                    input.value = dataItem;
+                    listElement.setAttribute("aria-hidden", "true");
+                    inputParent === null || inputParent === void 0 ? void 0 : inputParent.classList.remove("open");
+                    (_a = inputParent === null || inputParent === void 0 ? void 0 : inputParent.querySelector(".error-message")) === null || _a === void 0 ? void 0 : _a.remove();
+                    inputParent === null || inputParent === void 0 ? void 0 : inputParent.classList.remove("error");
+                    if (input.getAttribute("id") == "birth-region") {
+                        if (input.value == "Hors France") {
+                            showDataList(".country-select", "input", true);
+                            showDataList(".birth-city-select", "input", false);
+                        }
+                        else {
+                            showDataList(".country-select", "input", false);
+                            showDataList(".birth-city-select", "input", true);
+                        }
+                    }
+                });
+                listElement.appendChild(listItem);
+            });
+            listElement.setAttribute("aria-hidden", "false");
+            inputParent === null || inputParent === void 0 ? void 0 : inputParent.classList.remove("open");
+        };
+        // show list
+        input.addEventListener("focus", () => {
+            populateDatalist();
+            inputParent === null || inputParent === void 0 ? void 0 : inputParent.classList.add("open");
+        });
+        // dynamic filter of list items
+        input.addEventListener("input", () => populateDatalist(input.value));
+        // hide list on clicking outside of it
+        document.addEventListener("click", (event) => {
+            if (!input.contains(event.target) && !listElement.contains(event.target)) {
+                listElement.setAttribute("aria-hidden", "true");
+                inputParent === null || inputParent === void 0 ? void 0 : inputParent.classList.remove("open");
+            }
+        });
+    };
+    dataListChange(regionsFranceList, inputRegionField, dataRegionList);
+    dataListChange(countriesList, inputCountryField, dataCountryList);
+};
+initDataList();
 const removeFromCart = () => {
     const removeButtons = document.querySelectorAll(".product-buttons .delete");
     if (!removeButtons)

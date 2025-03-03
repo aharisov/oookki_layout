@@ -37,6 +37,8 @@ function applyInputMask(input: HTMLInputElement, pattern: string) {
 // Usage example:
 const inputPhone = document.getElementById("phone-number") as HTMLInputElement;
 const inputRio = document.getElementById("phone-rio") as HTMLInputElement;
+const inputBirthDate = document.getElementById("birth-date") as HTMLInputElement;
 
-if (inputPhone) applyInputMask(inputPhone, "00 00 00 00 00"); // Example: Phone number format
-if (inputRio) applyInputMask(inputRio, "00 X XXXXXX 0X0"); // Example: Custom alphanumeric format
+if (inputPhone) applyInputMask(inputPhone, "00 00 00 00 00");
+if (inputRio) applyInputMask(inputRio, "00 X XXXXXX 0X0");
+if (inputBirthDate) applyInputMask(inputBirthDate, "00/00/0000");
