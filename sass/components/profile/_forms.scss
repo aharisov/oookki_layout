@@ -1,0 +1,47 @@
+.auth-form {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background: $colorGrayTransparent;
+    border-radius: $borderRadiusCommon;
+
+    .form-line {
+        input {
+            max-width: none !important;
+        }
+
+        .js-toggle-pass {
+            position: absolute;
+            top: 30px;
+            right: 0;
+            height: 55px;
+            border-radius: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            svg {
+                width: 25px;
+                height: 25px;
+
+                &.fa-eye-slash {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    .auth-form {
+        padding: 2rem;
+    }
+}
+@media (min-width: 1024px) {
+    .auth-form {
+        .form-line {
+            .js-toggle-pass {
+                top: 33px;
+            }
+        }
+    }
+}

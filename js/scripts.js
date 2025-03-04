@@ -1615,3 +1615,45 @@ const right = document.querySelector(".product-info .product-info__inner");
 if (left && right && window.innerWidth >= 768) {
     stickySidebar(left, right, 100);
 }
+// handle login form submission
+function handleSignin(event) {
+    event.preventDefault();
+    // If authentication is successful, save a cookie
+    localStorage.setItem("authenticated", "true");
+    // Redirect user after login
+    window.location.href = "index.php";
+}
+function handleSignout(event) {
+    event.preventDefault();
+    localStorage.setItem("authenticated", "false");
+    toggleProfileLink();
+}
+function toggleProfileLink() {
+    const checkLogin = localStorage.getItem("authenticated");
+    const btnLogin = document.querySelector(".btn-login");
+    const btnProfile = document.querySelector(".btn-profile");
+    if (!btnLogin || !btnProfile)
+        return;
+    if (checkLogin == "true") {
+        btnLogin === null || btnLogin === void 0 ? void 0 : btnLogin.classList.add("hidden");
+        btnProfile === null || btnProfile === void 0 ? void 0 : btnProfile.classList.remove("hidden");
+    }
+    else {
+        btnLogin === null || btnLogin === void 0 ? void 0 : btnLogin.classList.remove("hidden");
+        btnProfile === null || btnProfile === void 0 ? void 0 : btnProfile.classList.add("hidden");
+    }
+}
+const initProfileFunctions = () => {
+    const loginForm = document.getElementById("auth-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", handleSignin);
+    }
+    const logoutBtns = document.querySelectorAll(".js-logout");
+    if (logoutBtns) {
+        logoutBtns.forEach(btn => {
+            btn.addEventListener("click", handleSignout);
+        });
+    }
+};
+initProfileFunctions();
+toggleProfileLink();

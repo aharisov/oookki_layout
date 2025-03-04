@@ -110,9 +110,29 @@ const openModal = () => {
     });
 }
 
+const showHidePass = () => {
+    const passwordInput = document.getElementById("field-password");
+    const toggleButton = document.querySelector(".js-toggle-pass");
+    if (!passwordInput || !toggleButton) return;
+
+    toggleButton.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleButton.querySelector('.fa-eye-slash').style.display = "block";
+            toggleButton.querySelector('.fa-eye').style.display = "none";
+        } else {
+            passwordInput.type = "password";
+            toggleButton.querySelector('.fa-eye-slash').style.display = "none";
+            toggleButton.querySelector('.fa-eye').style.display = "block";
+        }
+    });
+
+}
+
 document.addEventListener('DOMContentLoaded',  function(event) {
     accordion();
     scrollToTop();
     openCloseSearch();
     openModal();
+    showHidePass();
 });

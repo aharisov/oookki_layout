@@ -81,9 +81,20 @@ header {
         position: relative;
         display: inline-flex;
         width: 25px;
-        margin: 0 0.35rem;
+        margin: 0 0.5rem;
+
+        &.hidden {
+            display: none;
+        }
 
         span {
+            display: none;
+        }
+        svg, img {
+            width: 25px;
+            height: 25px;
+        }
+        .js-logout {
             display: none;
         }
     }
@@ -148,7 +159,7 @@ header {
             margin: 0 1rem;
             align-items: center;
 
-            img {
+            img, svg {
                 width: 28px;
                 transition: $transition;
             }
@@ -160,8 +171,14 @@ header {
             &:hover {
                 color: $colorGray;
             }
-            &:hover img {
+            &:hover img,
+            &:hover svg {
                 transform: scale(1.1);
+            }
+
+            .js-logout {
+                display: inline-flex;
+                color: $colorRedTransparent;
             }
         }
         .btn-cart {

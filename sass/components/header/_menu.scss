@@ -85,6 +85,11 @@
     &__dropdown a {
         font-size: $fontS;
     }
+    .js-logout {
+        svg {
+            margin-right: 10px;
+        }
+    }
 }
 
 @media (min-width: 1024px) {
@@ -151,6 +156,10 @@
                 font-size: $fontXS;
                 @include hoverEffect;
             }
+        }
+
+        .js-logout {
+            display: none;
         }
     }
 }

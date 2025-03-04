@@ -18,7 +18,12 @@
                         <i class="cnt">0</i>
                         <span>Panier</span>
                     </a>
-                    <a href="" class="header-btn btn-login">
+                    <a href="profile.php" class="header-btn btn-profile hidden">
+                        <img src="images/ic-person-circle.svg" alt="Mon compte" title="Mon compte">
+                        <span>Bonjour Dominique</span>
+                        <button class="header-btn js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                    </a>
+                    <a href="login.php" class="header-btn btn-login">
                         <img src="images/ic-person.svg" alt="Connexion" title="Connexion">
                         <span>Connexion</span>
                     </a>
@@ -108,6 +113,7 @@
                     </div>
                 </li>
             </ul>
+            <button class="btn btn-black js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i>Déconnecter</button>
         </nav>
     </div>
 </header>
