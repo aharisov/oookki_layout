@@ -280,7 +280,7 @@ const updateButtonState = () => {
     }
     else {
         nextStepButton.disabled = false;
-        nextStepButton.addEventListener("click", clickNextBtn);
+        nextStepButton.addEventListener("click", showNextStep);
     }
     if (phoneSaveChecked) {
         phoneNumber.required = true;
@@ -297,13 +297,14 @@ const updateButtonState = () => {
         nextStepButton.disabled = true;
     }
 };
-// go to order step 2
-const clickNextBtn = (e) => {
+// go to next step
+const showNextStep = (e) => {
     e.preventDefault();
     const nextStepButton = document.querySelector(".order-buttons .next-step");
     if (!nextStepButton)
         return;
     const url = nextStepButton.getAttribute("data-next");
+    console.log('url', url);
     if (url) {
         window.location.href = url;
     }
@@ -452,6 +453,7 @@ const orderFormValidation = () => {
         input.addEventListener("input", checkInputs); // Re-check when typing
         input.addEventListener("blur", handleBlur); // Check on blur
     });
+    submitButton.addEventListener("click", showNextStep);
 };
 const addDeliveryToSummary = () => {
     const payBlockList = document.querySelectorAll(".pay-summary .pay-block.all-info ul");
@@ -489,6 +491,20 @@ const validateDeliveryStep = () => {
                 nextStepButton.disabled = false;
         });
     });
+    nextStepButton.addEventListener("click", showNextStep);
+};
+const validatePayStep = () => {
+    const nextStepButton = document.querySelector(".order-buttons .next-step");
+    const radioButtons = document.querySelectorAll(`input[name="payment"]`);
+    if (!nextStepButton || !radioButtons)
+        return;
+    radioButtons.forEach((radio) => {
+        radio.addEventListener("change", (event) => {
+            if (isRadioGroupSelected("payment"))
+                nextStepButton.disabled = false;
+        });
+    });
+    nextStepButton.addEventListener("click", showNextStep);
 };
 const init = () => {
     handleRadioSelection();
@@ -496,10 +512,12 @@ const init = () => {
     showMobileCart();
     orderFormValidation();
     validateDeliveryStep();
-    const nextStepButton = document.querySelector(".order-buttons .next");
-    if (!nextStepButton)
+    validatePayStep();
+    // button in first step
+    const nextButton = document.querySelector(".order-buttons .next");
+    if (!nextButton)
         return;
-    nextStepButton.addEventListener("click", showNextSection);
+    nextButton.addEventListener("click", showNextSection);
 };
 init();
 function playVideo() {

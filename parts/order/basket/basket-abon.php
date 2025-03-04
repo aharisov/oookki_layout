@@ -16,7 +16,7 @@
         </div>
         <input type="radio" id="abon-no" name="abon" value="no" checked>
         <div class="config-option accordion-item">
-            <div class="switch accordion-head">
+            <div class="switch one-line accordion-head">
                 <label for="abon-no">Non, je ne suis pas abonné</label>
             </div>
         </div>

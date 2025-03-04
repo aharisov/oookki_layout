@@ -11,13 +11,13 @@
                     <div class="swiper-slide">
                         <div class="pack-item">
                             <h3 class="pack-item__title">One</h3>
-                            <div class="pack-item__offer">100Mo</div>
+                            <div class="pack-item__offer">3Go</div>
                             <ul class="pack-item__specs">
                                 <li class="calls"><strong>2 Heures</strong> d’appels en France</li>
                                 <li class="sms">SMS <strong>Illimités</strong></li>
                                 <li class="mms">MMS <strong>Illimités</strong></li>
                                 <li class="net4g">
-                                    <span>Internet <strong>100Mo</strong> en <strong>4G</strong></span>
+                                    <span>Internet <strong>3Go</strong> en <strong>4G</strong></span>
                                     <i>SMS et MMS illimités depuis l’Europe, DOM.</i>
                                 </li>
                             </ul>

@@ -61,7 +61,7 @@ const updateButtonState = () => {
         return;
     } else {
         nextStepButton.disabled = false;
-        nextStepButton.addEventListener("click", clickNextBtn);
+        nextStepButton.addEventListener("click", showNextStep);
     }
 
     if (phoneSaveChecked) {
@@ -82,15 +82,15 @@ const updateButtonState = () => {
     }
 };
 
-// go to order step 2
-const clickNextBtn = (e: Event) => {
+// go to next step
+const showNextStep = (e: Event) => {
     e.preventDefault();
 
     const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next-step");
     if (!nextStepButton) return;
 
     const url = nextStepButton.getAttribute("data-next");
-
+    console.log('url', url)
     if (url) {
         window.location.href = url;
     }
@@ -265,6 +265,8 @@ const orderFormValidation = () => {
         input.addEventListener("input", checkInputs); // Re-check when typing
         input.addEventListener("blur", handleBlur);   // Check on blur
     });
+
+    submitButton.addEventListener("click", showNextStep);
 };
 
 const addDeliveryToSummary = () => {
@@ -308,6 +310,23 @@ const validateDeliveryStep = () => {
             if (isRadioGroupSelected("delivery")) nextStepButton.disabled = false;
         });
     });
+
+    nextStepButton.addEventListener("click", showNextStep);
+}
+
+const validatePayStep = () => {
+    const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next-step");
+    const radioButtons = document.querySelectorAll<HTMLInputElement>(`input[name="payment"]`);
+    
+    if (!nextStepButton || !radioButtons) return;
+      
+    radioButtons.forEach((radio) => {
+        radio.addEventListener("change", (event) => {
+            if (isRadioGroupSelected("payment")) nextStepButton.disabled = false;
+        });
+    });
+
+    nextStepButton.addEventListener("click", showNextStep);
 }
 
 const init = () => {
@@ -316,11 +335,12 @@ const init = () => {
     showMobileCart();
     orderFormValidation();
     validateDeliveryStep();
+    validatePayStep();
     
-    const nextStepButton = document.querySelector<HTMLButtonElement>(".order-buttons .next");
-    if (!nextStepButton) return;
-
-    nextStepButton.addEventListener("click", showNextSection);
+    // button in first step
+    const nextButton = document.querySelector<HTMLButtonElement>(".order-buttons .next");
+    if (!nextButton) return;
+    nextButton.addEventListener("click", showNextSection);
 };
 
 init();
