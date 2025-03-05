@@ -11,9 +11,10 @@
     <script src="https://kit.fontawesome.com/425e9c0def.js" crossorigin="anonymous"></script>
 </head>
 <body class="profile-page">
-    <?php include("../parts/header-profile.php")?>
+    <?php include("../parts/profile/header-profile.php")?>
     <main>
         <div class="cont">
+            <?php include("../parts/profile/profile-breadcrumbs.php")?>
             <h1>Mon compte</h1>
             <div class="profile-links">
                 <div class="profile-link">
@@ -49,6 +50,6 @@
             </div>
         </div>
     </main>
-    <?php include("../parts/footer-profile.php")?>
+    <?php include("../parts/profile/footer-profile.php")?>
 </body>
 </html>

@@ -110,10 +110,13 @@ const openModal = () => {
     });
 }
 
-const showHidePass = () => {
-    const passwordInput = document.getElementById("field-password");
-    const toggleButton = document.querySelector(".js-toggle-pass");
-    if (!passwordInput || !toggleButton) return;
+const showHidePass = (el) => {
+    const passwordInput = document.getElementById(el);
+    if (!passwordInput) return;
+    const parent = passwordInput.closest(".inner");
+    if (!parent) return;
+    const toggleButton = parent.querySelector(".js-toggle-pass");
+    if (!toggleButton) return;
 
     toggleButton.addEventListener("click", () => {
         if (passwordInput.type === "password") {
@@ -134,5 +137,6 @@ document.addEventListener('DOMContentLoaded',  function(event) {
     scrollToTop();
     openCloseSearch();
     openModal();
-    showHidePass();
+    showHidePass("field-password");
+    showHidePass("field-new_password");
 });

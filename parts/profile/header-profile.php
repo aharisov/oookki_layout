@@ -18,7 +18,7 @@
                         <i class="cnt">0</i>
                         <span>Panier</span>
                     </a>
-                    <a href="profile/index.php" class="header-btn btn-profile">
+                    <a href="index.php" class="header-btn btn-profile">
                         <img src="../images/ic-person-circle.svg" alt="Mon compte" title="Mon compte">
                         <span>Bonjour Dominique</span>
                         <button class="header-btn js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
@@ -113,7 +113,7 @@
                     </div>
                 </li>
             </ul>
-            <button class="btn btn-black js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i>Déconnecter</button>
+            <button class="btn btn-black js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i>Me déconnecter</button>
         </nav>
     </div>
 </header>

@@ -5,6 +5,9 @@
     border-radius: $borderRadiusCommon;
     box-shadow: 1px 5px 10px $colorBorder;
 
+    &.personal-form {
+        margin: 0;
+    }
     .top-note {
         margin-bottom: $mb-l;
         font-size: $fontXS;
@@ -16,7 +19,7 @@
 
         .js-toggle-pass {
             position: absolute;
-            top: 30px;
+            top: auto;
             right: 0;
             height: 55px;
             border-radius: 0;
@@ -43,9 +46,6 @@
 @media (min-width: 1024px) {
     .auth-form {
         .form-line {
-            .js-toggle-pass {
-                top: 33px;
-            }
         }
     }
 }

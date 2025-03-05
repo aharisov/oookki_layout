@@ -113,7 +113,7 @@
                     </div>
                 </li>
             </ul>
-            <button class="btn btn-black js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i>Déconnecter</button>
+            <button class="btn btn-black js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i>Me déconnecter</button>
         </nav>
     </div>
 </header>

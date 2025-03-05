@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/styles.css?t=<?php echo time()?>">
     <script src="https://kit.fontawesome.com/425e9c0def.js" crossorigin="anonymous"></script>
 </head>
-<body class="auth-register-page">
+<body class="signup-page">
     <?php include("./parts/header.php")?>
     <main>
         <div class="cont">
