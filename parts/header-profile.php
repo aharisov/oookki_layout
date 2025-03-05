@@ -1,7 +1,7 @@
 <header class="flex">
     <div class="cont">
         <div class="header__inner flex">
-            <a href="index.php" class="header__logo"><img src="images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
+            <a href="../index.php" class="header__logo"><img src="../images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
             <div class="header__search">
                 <form action="">
                     <input type="text" placeholder="Recherchez des produits essentiels ...">
@@ -11,20 +11,20 @@
             <div class="right flex">
                 <div class="header__buttons flex">
                     <div class="header-btn btn-search js-open-search">
-                        <img src="images/ic-search.svg" alt="Rechercher" title="Rechercher">
+                        <img src="../images/ic-search.svg" alt="Rechercher" title="Rechercher">
                     </div>
                     <a href="order-step1.php" class="header-btn btn-cart">
-                        <img src="images/ic-cart.svg" alt="Panier" title="Panier">
+                        <img src="../images/ic-cart.svg" alt="Panier" title="Panier">
                         <i class="cnt">0</i>
                         <span>Panier</span>
                     </a>
-                    <a href="profile/index.php" class="header-btn btn-profile hidden">
-                        <img src="images/ic-person-circle.svg" alt="Mon compte" title="Mon compte">
+                    <a href="profile/index.php" class="header-btn btn-profile">
+                        <img src="../images/ic-person-circle.svg" alt="Mon compte" title="Mon compte">
                         <span>Bonjour Dominique</span>
                         <button class="header-btn js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                     </a>
-                    <a href="login.php" class="header-btn btn-login">
-                        <img src="images/ic-person.svg" alt="Connexion" title="Connexion">
+                    <a href="login.php" class="header-btn btn-login hidden">
+                        <img src="../images/ic-person.svg" alt="Connexion" title="Connexion">
                         <span>Connexion</span>
                     </a>
                 </div>
@@ -57,7 +57,7 @@
                     <span>Mobiles</span>
                     <div class="main-menu__dropdown">
                         <ul>
-                            <li><a href="mobiles.php">Tous les mobiles</a></li>
+                            <li><a href="../mobiles.php">Tous les mobiles</a></li>
                             <li><a href="">Bons plans</a></li>
                             <li><a href="">Smartphones 5G</a></li>
                             <li><a href="">Comparer</a></li>

@@ -1,5 +1,70 @@
-.auth-register-page {
-    h1 {
-        text-align: center;
+// profile page
+.profile-links {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+    .profile-link {
+        position: relative;
+        padding: 1.5rem 1rem;
+        border: 2px solid $colorRedTransparent2;
+        border-radius: $borderRadiusCommon;
+        transition: $transition;
+        cursor: pointer;
+
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon {
+            display: flex;
+            width: 40px;
+            height: 40px;
+            margin-bottom: $mb-l;
+            color: $colorRedTransparent2;
+            transition: transform 0.3s ease-in;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .name {
+            font-size: $fontS;
+            text-align: center;
+        }
+    }
+}
+
+@media (min-width: 640px) {
+    .profile-links {
+        grid-template-columns: repeat(2, 1fr);
+        .profile-link {
+            .icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+}
+@media (min-width: 1024px) {
+    .profile-links {
+        grid-template-columns: repeat(3, 1fr);
+        .profile-link {
+            .icon {
+                width: 60px;
+                height: 60px;
+            }
+            &:hover {
+                background: $colorRedTransparent2;
+
+                .icon {
+                    transform: scale(1.1);
+                    color: $colorRedTransparent;
+                }
+            }
+        }
     }
 }
