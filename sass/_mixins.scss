@@ -81,7 +81,8 @@
 
 @mixin customCheckbox($borderColor: $colorPrimary, $bgColor: $colorPrimary, $posTop: 50%) {
     input {
-        display: none;
+        position: absolute;
+        opacity: 0;
     }
     span {
         position: relative;

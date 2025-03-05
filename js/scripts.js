@@ -39,6 +39,162 @@ function addToCart() {
 document.addEventListener("DOMContentLoaded", () => {
     addToCart();
 });
+const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+};
+const validateBirthDate = (birthDate) => {
+    const birthDateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+    if (!birthDateRegex.test(birthDate))
+        return false;
+    const [day, month, year] = birthDate.split("/").map(Number);
+    const dateObj = new Date(year, month - 1, day);
+    return (dateObj.getFullYear() === year &&
+        dateObj.getMonth() === month - 1 &&
+        dateObj.getDate() === day);
+};
+const formValidation = (formClass, submitBtn, input, checkRadioGroup, nextEvent) => {
+    const form = document.querySelector(formClass);
+    const submitButton = document.querySelector(submitBtn);
+    const inputs = document.querySelectorAll(input);
+    const requiredCheckboxes = document.querySelectorAll("input[type='checkbox'][required]");
+    if (!form || !submitButton || inputs.length === 0 || requiredCheckboxes.length === 0)
+        return;
+    // create and append error message
+    const showErrorMessage = (input, message) => {
+        const parent = input.closest(".form-line");
+        if (!parent)
+            return;
+        let errorMessage = parent.querySelector(".error-message");
+        if (!errorMessage) {
+            errorMessage = document.createElement("span");
+            errorMessage.classList.add("error-message");
+            parent.appendChild(errorMessage);
+        }
+        errorMessage.innerHTML = `<i>!</i> ${message}`;
+        parent.classList.add("error");
+    };
+    // remove error message
+    const removeErrorMessage = (input) => {
+        const parent = input.closest(".form-line");
+        if (!parent)
+            return;
+        const errorMessage = parent.querySelector(".error-message");
+        if (errorMessage)
+            errorMessage.remove();
+        parent.classList.remove("error");
+    };
+    const handleBlur = (event) => {
+        const input = event.target;
+        validateInput(input);
+        checkInputs();
+    };
+    const handleCheckbox = (event) => {
+        const input = event.target;
+        validateInput(input);
+        checkInputs();
+    };
+    // Validate a single input field
+    const validateInput = (input) => {
+        var _a;
+        const parent = input.closest(".form-line");
+        if (!parent)
+            return false;
+        const fieldName = (_a = parent.querySelector(".form-line__title")) === null || _a === void 0 ? void 0 : _a.getAttribute("data-name");
+        if (input.hasAttribute("required") && !input.value.trim()) {
+            showErrorMessage(input, `Veuillez renseigner votre ${fieldName}`);
+            return false;
+        }
+        if (input.type === "email" && !validateEmail(input.value)) {
+            showErrorMessage(input, "Veuillez entrer un email valide");
+            return false;
+        }
+        if ((input.getAttribute("name") === "birthDate" || input.getAttribute("name") === "birthday") && !validateBirthDate(input.value)) {
+            showErrorMessage(input, "Veuillez entrer une date valide au format JJ/MM/AAAA");
+            return false;
+        }
+        removeErrorMessage(input);
+        return true;
+    };
+    // Check if all required inputs are filled
+    const checkInputs = () => {
+        let allValid = true;
+        // validate radio buttons
+        if (checkRadioGroup) {
+            if (!isRadioGroupSelected("sex")) {
+                let radioElem = document.querySelector(".radio-group");
+                if (!radioElem)
+                    return false;
+                showErrorMessage(radioElem, "Veuillez sélectionner votre civilité");
+                allValid = false;
+                return false;
+            }
+        }
+        // validate inputs
+        inputs.forEach(input => {
+            if (checkRadioGroup) {
+                handleRadioGroup("sex");
+                if (!input.value.trim() && isRadioGroupSelected("sex")) {
+                    allValid = false;
+                    return false;
+                }
+            }
+            else {
+                if (input.hasAttribute("required") && !input.value.trim()) {
+                    allValid = false;
+                    // input.addEventListener("input", handleBlur);
+                    validateInput(input);
+                    return false;
+                }
+                else {
+                    allValid = true;
+                }
+            }
+        });
+        // validate checkboxes
+        requiredCheckboxes.forEach(checkbox => {
+            if (!checkbox.checked) {
+                showErrorMessage(checkbox, "Vous devez accepter les conditions");
+                allValid = false;
+            }
+            else {
+                removeErrorMessage(checkbox);
+            }
+        });
+        submitButton.disabled = !allValid;
+        return allValid;
+    };
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (checkInputs()) {
+            nextEvent();
+        }
+    });
+    // event Listeners
+    inputs.forEach(input => {
+        input.addEventListener("input", handleBlur); // Re-check when typing
+        input.addEventListener("blur", handleBlur);
+    });
+    requiredCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener("input", handleCheckbox);
+    });
+    submitButton.addEventListener("click", () => {
+        if (!checkInputs()) {
+            const offset = 100;
+            const sectionTop = form.getBoundingClientRect().top + window.scrollY - offset;
+            // Smooth scroll
+            window.scrollTo({ top: sectionTop, behavior: "smooth" });
+        }
+    });
+};
+const login = () => {
+    // If authentication is successful, save a cookie
+    localStorage.setItem("authenticated", "true");
+    // Redirect user after login
+    window.location.href = "index.php";
+};
+formValidation(".order-wrap", ".next-step", ".order-wrap input:required", true, () => showNextStep);
+formValidation(".signup-form", "#submit-register", ".signup-form .form-line__title + input:required", false, () => login());
 function applyInputMask(input, pattern) {
     input.addEventListener("input", (event) => {
         const target = event.target;
@@ -304,7 +460,6 @@ const showNextStep = (e) => {
     if (!nextStepButton)
         return;
     const url = nextStepButton.getAttribute("data-next");
-    console.log('url', url);
     if (url) {
         window.location.href = url;
     }
@@ -362,99 +517,6 @@ const showMobileCart = () => {
         cartSummary === null || cartSummary === void 0 ? void 0 : cartSummary.classList.toggle("show");
     });
 };
-const validateEmail = (email) => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-};
-const validateBirthDate = (birthDate) => {
-    const birthDateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
-    if (!birthDateRegex.test(birthDate))
-        return false;
-    const [day, month, year] = birthDate.split("/").map(Number);
-    const dateObj = new Date(year, month - 1, day);
-    return (dateObj.getFullYear() === year &&
-        dateObj.getMonth() === month - 1 &&
-        dateObj.getDate() === day);
-};
-// check all personal data in order step 2
-const orderFormValidation = () => {
-    const form = document.querySelector(".order-wrap");
-    const submitButton = document.querySelector(".next-step");
-    const inputs = document.querySelectorAll(".order-wrap input:required");
-    if (!form || !submitButton || inputs.length === 0)
-        return;
-    // create and append error message
-    const showErrorMessage = (input, message) => {
-        const parent = input.closest(".form-line");
-        if (!parent)
-            return;
-        let errorMessage = parent.querySelector(".error-message");
-        if (!errorMessage) {
-            errorMessage = document.createElement("span");
-            errorMessage.classList.add("error-message");
-            parent.appendChild(errorMessage);
-        }
-        errorMessage.innerHTML = `<i>!</i> ${message}`;
-        parent.classList.add("error");
-    };
-    // remove error message
-    const removeErrorMessage = (input) => {
-        const parent = input.closest(".form-line");
-        if (!parent)
-            return;
-        const errorMessage = parent.querySelector(".error-message");
-        if (errorMessage)
-            errorMessage.remove();
-        parent.classList.remove("error");
-    };
-    // handle input validation on blur (when user leaves an input)
-    const handleBlur = (event) => {
-        var _a;
-        const input = event.target;
-        const parent = input.closest(".form-line");
-        if (!parent)
-            return;
-        const fieldName = (_a = parent.querySelector(".form-line__title")) === null || _a === void 0 ? void 0 : _a.getAttribute("data-name");
-        if (!input.value.trim()) {
-            showErrorMessage(input, `Veuillez renseigner votre ${fieldName}`);
-            return;
-        }
-        if (input.type == "email" && !validateEmail(input.value)) {
-            showErrorMessage(input, "Veuillez entrer un email valide.");
-            return;
-        }
-        if (input.getAttribute("name") == "birthDate" && !validateBirthDate(input.value)) {
-            showErrorMessage(input, "Veuillez entrer une date valide au format JJ/MM/AAAA.");
-            return;
-        }
-        removeErrorMessage(input);
-        checkInputs();
-    };
-    // check if all required inputs are filled
-    const checkInputs = () => {
-        let allFilled = true;
-        if (!isRadioGroupSelected("sex")) {
-            let radioElem = document.querySelector(".radio-group");
-            if (!radioElem)
-                return;
-            showErrorMessage(radioElem, "Veuillez sélectionner votre civilité");
-            allFilled = false;
-        }
-        inputs.forEach(input => {
-            handleRadioGroup("sex");
-            if (!input.value.trim() && isRadioGroupSelected("sex")) {
-                allFilled = false;
-            }
-        });
-        submitButton.disabled = !allFilled;
-    };
-    // event Listeners
-    inputs.forEach(input => {
-        input.addEventListener("input", checkInputs); // Re-check when typing
-        input.addEventListener("blur", handleBlur); // Check on blur
-    });
-    submitButton.addEventListener("click", showNextStep);
-};
 const addDeliveryToSummary = () => {
     const payBlockList = document.querySelectorAll(".pay-summary .pay-block.all-info ul");
     const selectedDeliveryItem = document.querySelector("input[name='delivery']:checked");
@@ -510,7 +572,6 @@ const init = () => {
     handleRadioSelection();
     updateButtonState();
     showMobileCart();
-    orderFormValidation();
     validateDeliveryStep();
     validatePayStep();
     // button in first step

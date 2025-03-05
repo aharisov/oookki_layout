@@ -1,4 +1,8 @@
 <form id="auth-form" class="auth-form" method="post">
+    <div class="form-title">
+        <i class="fa-solid fa-user-pen"></i>
+        <h1>Connectez-vous à votre compte</h1>
+    </div>
     <div class="form-line">
         <label for="field-email">Votre e-mail <span class="red">*</span></label>
         <input id="field-email" class="form-control" name="email" type="email" placeholder="Ex : pauline.s@gmail.com" autocomplete="email" required="">

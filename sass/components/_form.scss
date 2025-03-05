@@ -1,4 +1,22 @@
 form {
+    .form-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: $mb-l;
+        padding-bottom: $mb-m;
+        border-bottom: 2px solid $colorGrayTransparent2;
+        color: $colorRedTransparent;
+        svg {
+            width: 30px;
+            height: 30px;
+            margin-right: $mb-m;
+        }
+        h1 {
+            margin-bottom: 0;
+            font-size: $fontS;
+            text-align: left;
+        }
+    }
     .form-line {
         position: relative;
         margin-bottom: $mb-m;
@@ -138,12 +156,77 @@ form {
                 }
             }
         }
+
+        &.with-checkbox {
+            label {
+                @include customCheckbox($colorPrimary, $colorPrimary, 3px);
+
+                span {
+                    display: block;
+
+                    &::before {
+                        transform: translateY(0);
+                    }
+                    &::after {
+                        top: 6px !important;
+                    }
+                }
+            }
+        }
+        .form-line__content {
+            display: flex;
+            align-items: center
+        }
+        .radio-group {
+            label {
+                margin-right: 2rem;
+                @include customRadioBtn;
+
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &.auth-form {
+        max-width: 640px;
+        .note {
+            margin-top: $mb-m;
+            font-size: $font14;
+        }
     }
 }
 
-.auth-form {
-    .note {
-        margin-top: $mb-m;
-        font-size: $font14;
+@media (min-width: 480px) {
+    form {
+        .form-title {
+            h1 {
+                font-size: $fontS;
+            }
+        }
+    }
+}
+@media (min-width: 640px) {
+    form {
+        .form-title {
+            justify-content: center;
+            svg {
+                width: 50px;
+                height: 50px;
+            }
+            h1 {
+                font-size: $fontM;
+            }
+        }
+    }
+}
+@media (min-width: 1024px) {
+    form {
+        .form-title {
+            h1 {
+                font-size: $fontL;
+            }
+        }
     }
 }

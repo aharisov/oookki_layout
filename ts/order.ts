@@ -90,7 +90,6 @@ const showNextStep = (e: Event) => {
     if (!nextStepButton) return;
 
     const url = nextStepButton.getAttribute("data-next");
-    console.log('url', url)
     if (url) {
         window.location.href = url;
     }
@@ -139,7 +138,6 @@ function handleRadioGroup(groupName: string): void {
     });
 }
   
-
 // open/close cart on mobile device in order after step 1
 const showMobileCart = () => {
     const showBtn = document.querySelector<HTMLButtonElement>(".show-mobile-cart");
@@ -156,118 +154,6 @@ const showMobileCart = () => {
         cartSummary?.classList.toggle("show");
     })
 }
-
-const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-};
-
-const validateBirthDate = (birthDate: string): boolean => {
-    const birthDateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
-
-    if (!birthDateRegex.test(birthDate)) return false;
-
-    const [day, month, year] = birthDate.split("/").map(Number);
-    const dateObj = new Date(year, month - 1, day);
-
-    return (
-        dateObj.getFullYear() === year &&
-        dateObj.getMonth() === month - 1 &&
-        dateObj.getDate() === day
-    );
-};
-// check all personal data in order step 2
-const orderFormValidation = () => {
-    const form = document.querySelector<HTMLFormElement>(".order-wrap");
-    const submitButton = document.querySelector<HTMLButtonElement>(".next-step");
-    const inputs = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(".order-wrap input:required");
-
-    if (!form || !submitButton || inputs.length === 0) return;
-
-    // create and append error message
-    const showErrorMessage = (input: HTMLInputElement | HTMLTextAreaElement, message: string) => {
-        const parent = input.closest(".form-line");
-        if (!parent) return;
-
-        let errorMessage = parent.querySelector<HTMLSpanElement>(".error-message");
-
-        if (!errorMessage) {
-            errorMessage = document.createElement("span");
-            errorMessage.classList.add("error-message");
-            parent.appendChild(errorMessage);
-        }
-
-        errorMessage.innerHTML = `<i>!</i> ${message}`;
-        parent.classList.add("error");
-    };
-
-    // remove error message
-    const removeErrorMessage = (input: HTMLInputElement | HTMLTextAreaElement) => {
-        const parent = input.closest(".form-line");
-        if (!parent) return;
-
-        const errorMessage = parent.querySelector<HTMLSpanElement>(".error-message");
-        if (errorMessage) errorMessage.remove();
-
-        parent.classList.remove("error");
-    };
-
-    // handle input validation on blur (when user leaves an input)
-    const handleBlur = (event: Event) => {
-        const input = event.target as HTMLInputElement | HTMLTextAreaElement;
-        const parent = input.closest(".form-line");
-        if (!parent) return;
-        const fieldName = parent.querySelector(".form-line__title")?.getAttribute("data-name");
-
-        if (!input.value.trim()) {
-            showErrorMessage(input, `Veuillez renseigner votre ${fieldName}`);
-            return;
-        }
-
-        if (input.type == "email" && !validateEmail(input.value)) {
-            showErrorMessage(input, "Veuillez entrer un email valide.");
-            return;
-        }
-
-        if (input.getAttribute("name") == "birthDate" && !validateBirthDate(input.value)) {
-            showErrorMessage(input, "Veuillez entrer une date valide au format JJ/MM/AAAA.");
-            return;
-        }
-        
-        removeErrorMessage(input);
-
-        checkInputs();
-    };
-
-    // check if all required inputs are filled
-    const checkInputs = () => {
-        let allFilled = true;
-
-        if (!isRadioGroupSelected("sex")) {
-            let radioElem = document.querySelector(".radio-group") as HTMLInputElement;
-            if (!radioElem) return;
-            showErrorMessage(radioElem, "Veuillez sélectionner votre civilité");
-
-            allFilled = false;
-        }
-        inputs.forEach(input => {
-            handleRadioGroup("sex");
-            if (!input.value.trim() && isRadioGroupSelected("sex")) {
-                allFilled = false;
-            }
-        });
-
-        submitButton.disabled = !allFilled;
-    };
-
-    // event Listeners
-    inputs.forEach(input => {
-        input.addEventListener("input", checkInputs); // Re-check when typing
-        input.addEventListener("blur", handleBlur);   // Check on blur
-    });
-
-    submitButton.addEventListener("click", showNextStep);
-};
 
 const addDeliveryToSummary = () => {
     const payBlockList = document.querySelectorAll<HTMLElement>(".pay-summary .pay-block.all-info ul");
@@ -333,7 +219,6 @@ const init = () => {
     handleRadioSelection();
     updateButtonState(); 
     showMobileCart();
-    orderFormValidation();
     validateDeliveryStep();
     validatePayStep();
     

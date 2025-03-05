@@ -14,7 +14,6 @@
     <?php include("./parts/header.php")?>
     <main>
         <div class="cont">
-            <h1>Connectez-vous à votre compte</h1>
             <?php include("./parts/profile/form-login.php")?>
         </div>
     </main>
