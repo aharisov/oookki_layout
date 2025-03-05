@@ -4,9 +4,9 @@ form {
         align-items: center;
         margin-bottom: $mb-l;
         padding-bottom: $mb-m;
-        border-bottom: 2px solid $colorGrayTransparent2;
+        border-bottom: 2px solid $colorRedTransparent2;
         color: $colorRedTransparent;
-        svg {
+        svg, i {
             width: 30px;
             height: 30px;
             margin-right: $mb-m;
@@ -196,6 +196,23 @@ form {
             font-size: $font14;
         }
     }
+
+    .form-note {
+        &.success {
+            max-height: 0;
+            margin: 0 0 1rem;
+            background: $colorSuccess;
+            border-radius: $borderRadiusCommon;
+            color: $colorWhite;
+            transition: max-height 0.3s ease-in;
+            overflow: hidden;
+
+            &.active {
+                max-height: 300px;
+                padding: 1rem;
+            }
+        }
+    }
 }
 
 @media (min-width: 480px) {
@@ -211,7 +228,7 @@ form {
     form {
         .form-title {
             justify-content: center;
-            svg {
+            svg, i {
                 width: 50px;
                 height: 50px;
             }

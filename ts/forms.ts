@@ -30,8 +30,8 @@ const formValidation = (
     const inputs = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(input);
     const requiredCheckboxes = document.querySelectorAll<HTMLInputElement>("input[type='checkbox'][required]");
 
-    if (!form || !submitButton || inputs.length === 0 || requiredCheckboxes.length === 0) return;
-
+    if (!form || !submitButton || inputs.length === 0) return;
+    console.log(form);
     // create and append error message
     const showErrorMessage = (input: HTMLInputElement | HTMLTextAreaElement, message: string) => {
         const parent = input.closest(".form-line");
@@ -137,14 +137,16 @@ const formValidation = (
         });
 
         // validate checkboxes
-        requiredCheckboxes.forEach(checkbox => {
-            if (!checkbox.checked) {
-                showErrorMessage(checkbox, "Vous devez accepter les conditions");
-                allValid = false;
-            } else {
-                removeErrorMessage(checkbox);
-            }
-        });
+        if (requiredCheckboxes) {
+            requiredCheckboxes.forEach(checkbox => {
+                if (!checkbox.checked) {
+                    showErrorMessage(checkbox, "Vous devez accepter les conditions");
+                    allValid = false;
+                } else {
+                    removeErrorMessage(checkbox);
+                }
+            });
+        }
 
         submitButton.disabled = !allValid;
         return allValid;
@@ -186,5 +188,17 @@ const login = () => {
     // Redirect user after login
     window.location.href = "index.php"; 
 }
+const restoreSuccess = () => {
+    const successMess = document.querySelector(".form-note.success");
+    const email = document.querySelector(".restore-form input") as HTMLInputElement;
+    const span = successMess?.querySelector("span");
+
+    if (!successMess || !email || !span) return;
+    span.innerHTML = email?.value;
+    successMess.classList.add("active");
+}
+
 formValidation(".order-wrap", ".next-step", ".order-wrap input:required", true, () => showNextStep);
+formValidation(".signin-form", "#submit-login", ".signin-form input:required", false, () => login());
 formValidation(".signup-form", "#submit-register", ".signup-form .form-line__title + input:required", false, () => login());
+formValidation(".restore-form", "#submit-restore", ".restore-form input:required", false, () => restoreSuccess());

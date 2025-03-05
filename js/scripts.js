@@ -58,8 +58,9 @@ const formValidation = (formClass, submitBtn, input, checkRadioGroup, nextEvent)
     const submitButton = document.querySelector(submitBtn);
     const inputs = document.querySelectorAll(input);
     const requiredCheckboxes = document.querySelectorAll("input[type='checkbox'][required]");
-    if (!form || !submitButton || inputs.length === 0 || requiredCheckboxes.length === 0)
+    if (!form || !submitButton || inputs.length === 0)
         return;
+    console.log(form);
     // create and append error message
     const showErrorMessage = (input, message) => {
         const parent = input.closest(".form-line");
@@ -152,15 +153,17 @@ const formValidation = (formClass, submitBtn, input, checkRadioGroup, nextEvent)
             }
         });
         // validate checkboxes
-        requiredCheckboxes.forEach(checkbox => {
-            if (!checkbox.checked) {
-                showErrorMessage(checkbox, "Vous devez accepter les conditions");
-                allValid = false;
-            }
-            else {
-                removeErrorMessage(checkbox);
-            }
-        });
+        if (requiredCheckboxes) {
+            requiredCheckboxes.forEach(checkbox => {
+                if (!checkbox.checked) {
+                    showErrorMessage(checkbox, "Vous devez accepter les conditions");
+                    allValid = false;
+                }
+                else {
+                    removeErrorMessage(checkbox);
+                }
+            });
+        }
         submitButton.disabled = !allValid;
         return allValid;
     };
@@ -193,8 +196,19 @@ const login = () => {
     // Redirect user after login
     window.location.href = "index.php";
 };
+const restoreSuccess = () => {
+    const successMess = document.querySelector(".form-note.success");
+    const email = document.querySelector(".restore-form input");
+    const span = successMess === null || successMess === void 0 ? void 0 : successMess.querySelector("span");
+    if (!successMess || !email || !span)
+        return;
+    span.innerHTML = email === null || email === void 0 ? void 0 : email.value;
+    successMess.classList.add("active");
+};
 formValidation(".order-wrap", ".next-step", ".order-wrap input:required", true, () => showNextStep);
+formValidation(".signin-form", "#submit-login", ".signin-form input:required", false, () => login());
 formValidation(".signup-form", "#submit-register", ".signup-form .form-line__title + input:required", false, () => login());
+formValidation(".restore-form", "#submit-restore", ".restore-form input:required", false, () => restoreSuccess());
 function applyInputMask(input, pattern) {
     input.addEventListener("input", (event) => {
         const target = event.target;

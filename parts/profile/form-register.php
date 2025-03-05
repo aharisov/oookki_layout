@@ -81,6 +81,6 @@
             Enregistrer
         </button>
     </div>
-    
+    <div class="form-note success"></div>
     <div class="form-note"><span class="red">*</span> Champs obligatoires</div>
 </form>
