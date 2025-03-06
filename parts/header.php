@@ -18,15 +18,15 @@
                         <i class="cnt">0</i>
                         <span>Panier</span>
                     </a>
-                    <a href="profile/index.php" class="header-btn btn-profile hidden">
-                        <img src="images/ic-person-circle.svg" alt="Mon compte" title="Mon compte">
-                        <span>Dominique</span>
-                    </a>
-                    <button class="header-btn js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                     <a href="login.php" class="header-btn btn-login">
                         <img src="images/ic-person.svg" alt="Connexion" title="Connexion">
                         <span>Connexion</span>
                     </a>
+                    <a href="profile/index.php" class="header-btn btn-profile hidden">
+                        <img src="images/ic-person-circle.svg" alt="Mon compte" title="Mon compte">
+                        <span>Dominique</span>
+                    </a>
+                    <button class="header-btn js-logout hidden" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
                 <button
                     aria-label="Ouvrir le menu principal"

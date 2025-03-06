@@ -1717,15 +1717,18 @@ function toggleProfileLink() {
     const checkLogin = localStorage.getItem("authenticated");
     const btnLogin = document.querySelector(".btn-login");
     const btnProfile = document.querySelector(".btn-profile");
+    const btnLogout = document.querySelector(".js-logout");
     if (!btnLogin || !btnProfile)
         return;
     if (checkLogin == "true") {
         btnLogin === null || btnLogin === void 0 ? void 0 : btnLogin.classList.add("hidden");
         btnProfile === null || btnProfile === void 0 ? void 0 : btnProfile.classList.remove("hidden");
+        btnLogout === null || btnLogout === void 0 ? void 0 : btnLogout.classList.remove("hidden");
     }
     else {
         btnLogin === null || btnLogin === void 0 ? void 0 : btnLogin.classList.remove("hidden");
         btnProfile === null || btnProfile === void 0 ? void 0 : btnProfile.classList.add("hidden");
+        btnLogout === null || btnLogout === void 0 ? void 0 : btnLogout.classList.add("hidden");
     }
 }
 const initProfileFunctions = () => {

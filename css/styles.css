@@ -435,13 +435,13 @@ header .header__inner .header__search.active {
   width: 25px;
   margin: 0 0.35rem;
 }
-.header__buttons .header-btn.hidden, .header__buttons .header-btn.js-logout {
+.header__buttons .header-btn.hidden, .header__buttons .header-btn.js-logout, .header__buttons .header-btn.js-logout.hidden {
   display: none;
 }
 .header__buttons .header-btn span {
   display: none;
 }
-.header__buttons .header-btn svg, .header__buttons .header-btn img {
+.header__buttons .header-btn svg, .header__buttons .header-btn img, .header__buttons .header-btn i {
   width: 25px;
   height: 25px;
 }
@@ -737,7 +737,7 @@ header .header__inner .header__search.active {
 .btn-mobile .bar-two,
 .btn-mobile .bar-three {
   width: 2rem;
-  height: 0.2rem;
+  height: 2.5px;
   background: #000;
   border-radius: 10px;
   transition: all 0.3s linear;

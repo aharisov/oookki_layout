@@ -28,15 +28,18 @@ function toggleProfileLink(): void {
     const checkLogin = localStorage.getItem("authenticated");
     const btnLogin = document.querySelector(".btn-login");
     const btnProfile = document.querySelector(".btn-profile");
+    const btnLogout = document.querySelector(".js-logout");
 
     if (!btnLogin || !btnProfile) return;
 
     if (checkLogin == "true") {
         btnLogin?.classList.add("hidden");
         btnProfile?.classList.remove("hidden");
+        btnLogout?.classList.remove("hidden");
     } else {
         btnLogin?.classList.remove("hidden");
         btnProfile?.classList.add("hidden");
+        btnLogout?.classList.add("hidden");
     }
 }
 
