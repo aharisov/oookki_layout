@@ -1,9 +1,4 @@
 <form id="register-form" class="signup-form auth-form personal-form" method="post">
-    <div class="form-title">
-        <i class="fa-solid fa-id-card"></i>
-        <h2>Modifier mon compte OOOKKI</h2>
-    </div>
-    <p class="top-note">Ici vous pouvez modifier vos données personnelles.</p>
     <div class="form-line full-line">
             <label class="form-line__title" data-name="civilité">Civilité</label>
 

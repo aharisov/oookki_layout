@@ -178,18 +178,11 @@ main:has(.top-slider) {
     body {
         line-height: 1.6;
     }
-    h1 {
-        font-size: $fontXXL;
-    }
-    h2 {
-        font-size: $fontXL;
+    h1, h2 {
+        margin-bottom: 3rem;
     }
     h3,h4 {
         margin-bottom: 1.5rem;
-        font-size: $fontM;
-    }
-    h1, h2 {
-        margin-bottom: 3rem;
     }
 
     main {

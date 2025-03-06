@@ -1,0 +1,117 @@
+.orders-table {
+    width: 100%;
+    margin-top: 2rem;
+
+    thead {
+        &.hidden-xs {
+            display: none;
+        }
+        th {
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid $colorBorder;
+            font-family: $fontTitle;
+            font-size: $fontXS;
+        }
+    }
+    tbody {
+        tr {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: $mb-m;
+            padding: 1rem 1.5rem;
+            background: $colorGrayTransparent;
+            border-radius: $borderRadiusCommon;
+        }
+        td, th {
+            display: inline-flex;
+            margin-bottom: $mb-s;
+            text-align-last: left;
+        }
+        th {
+            font-size: $fontXS;
+            font-weight: bold;
+            color: $colorRedTransparent;
+        }
+        td {
+            font-size: $fontXS;
+
+            &.hidden-xs {
+                display: none;
+            }
+        }
+    }
+    .order-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        border-radius: $borderRadiusS;
+        font-size: $font16;
+
+        &.status-created {
+            background: $colorOrange;
+            color: $colorWhite;
+        }
+        &.status-payed {
+            background: $colorGreen;
+            color: $colorWhite;
+        }
+    }
+    .order-bill {
+        text-align: center;
+        
+        svg, i {
+            width: 34px;
+            height: 34px;
+            margin-left: 1rem;
+            transition: $transition;
+
+            &:hover {
+                color: $colorRedTransparent;
+                transform: scale(1.1);
+            }
+        }
+    }
+    .order-actions {
+        text-align: right;
+
+        .inner {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0.5rem 0;
+        }
+        .btn {
+            margin-bottom: $mb-s;
+
+            svg, i {
+                width: 25px;
+                height: 25px;
+                margin-right: $mb-s;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .orders-table {
+        width: 100%;
+        margin-top: 2rem;
+    
+        thead {
+            &.hidden-xs {
+                display: table-header-group;
+            }
+        }
+        tbody {
+            tr:nth-of-type(even) {
+                td, th {
+                    background: $colorGrayTransparent;
+                }
+            }
+            td {
+                padding: 0.5rem;
+            }
+        }
+    }
+}

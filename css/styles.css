@@ -305,18 +305,11 @@ main:has(.top-slider) {
   body {
     line-height: 1.6;
   }
-  h1 {
-    font-size: 2.986rem;
-  }
-  h2 {
-    font-size: 2.488rem;
+  h1, h2 {
+    margin-bottom: 3rem;
   }
   h3, h4 {
     margin-bottom: 1.5rem;
-    font-size: 1.728rem;
-  }
-  h1, h2 {
-    margin-bottom: 3rem;
   }
   main {
     margin-top: 10rem;
@@ -5986,7 +5979,11 @@ form .form-note.success.active {
   box-shadow: 1px 5px 10px #b1b1b1;
 }
 .auth-form.personal-form {
+  max-width: none;
   margin: 0;
+  box-shadow: none;
+  background: none;
+  border: 1px solid #b1b1b1;
 }
 .auth-form .top-note {
   margin-bottom: 1.5rem;
@@ -6017,6 +6014,40 @@ form .form-note.success.active {
     padding: 2rem;
   }
 }
+.profile-page-inner {
+  flex-wrap: nowrap;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 350px;
+  margin: -3rem 0 2rem;
+  background-image: url("../images/bg-profile-top.jpg");
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.profile-top .inner {
+  max-width: 90%;
+  padding: 1rem 2rem;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  background: rgba(187, 37, 50, 0.7);
+  color: #fff;
+}
+.profile-top .inner h2 {
+  font-family: "Poppins", Tahoma, Arial, sans-serif;
+}
+.profile-top .inner p {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
 .profile-links {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -6063,6 +6094,17 @@ form .form-note.success.active {
   }
 }
 @media (min-width: 1024px) {
+  .profile-top .inner {
+    min-width: 640px;
+    padding: 2rem 3rem;
+  }
+  .profile-top .inner h2 {
+    margin-bottom: 1rem;
+  }
+  .profile-top .inner p {
+    font-size: 1.44rem;
+    text-align: right;
+  }
   .profile-links {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -6076,6 +6118,180 @@ form .form-note.success.active {
   .profile-links .profile-link:hover .icon {
     transform: scale(1.1);
     color: rgba(187, 37, 50, 0.7);
+  }
+}
+.orders-table {
+  width: 100%;
+  margin-top: 2rem;
+}
+.orders-table thead.hidden-xs {
+  display: none;
+}
+.orders-table thead th {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #b1b1b1;
+  font-family: "Oswald", Tahoma, Arial, sans-serif;
+  font-size: 1.2rem;
+}
+.orders-table tbody tr {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(81, 101, 108, 0.1);
+  border-radius: 15px;
+}
+.orders-table tbody td, .orders-table tbody th {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
+  -moz-text-align-last: left;
+       text-align-last: left;
+}
+.orders-table tbody th {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(187, 37, 50, 0.7);
+}
+.orders-table tbody td {
+  font-size: 1.2rem;
+}
+.orders-table tbody td.hidden-xs {
+  display: none;
+}
+.orders-table .order-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.orders-table .order-status.status-created {
+  background: #ec7519;
+  color: #fff;
+}
+.orders-table .order-status.status-payed {
+  background: #48e44b;
+  color: #fff;
+}
+.orders-table .order-bill {
+  text-align: center;
+}
+.orders-table .order-bill svg, .orders-table .order-bill i {
+  width: 34px;
+  height: 34px;
+  margin-left: 1rem;
+  transition: 0.2s linear;
+}
+.orders-table .order-bill svg:hover, .orders-table .order-bill i:hover {
+  color: rgba(187, 37, 50, 0.7);
+  transform: scale(1.1);
+}
+.orders-table .order-actions {
+  text-align: right;
+}
+.orders-table .order-actions .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+}
+.orders-table .order-actions .btn {
+  margin-bottom: 0.75rem;
+}
+.orders-table .order-actions .btn svg, .orders-table .order-actions .btn i {
+  width: 25px;
+  height: 25px;
+  margin-right: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .orders-table {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .orders-table thead.hidden-xs {
+    display: table-header-group;
+  }
+  .orders-table tbody tr:nth-of-type(even) td, .orders-table tbody tr:nth-of-type(even) th {
+    background: rgba(81, 101, 108, 0.1);
+  }
+  .orders-table tbody td {
+    padding: 0.5rem;
+  }
+}
+.profile-sidebar {
+  display: none;
+  width: 100%;
+  max-width: 360px;
+  height: 100%;
+  margin-right: 1.5rem;
+  padding: 1.5rem 1rem;
+  background: rgba(81, 101, 108, 0.1);
+  border-radius: 15px;
+}
+.profile-sidebar .sidebar-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(187, 37, 50, 0.3);
+}
+.profile-sidebar .sidebar-block:last-child {
+  margin-bottom: 0;
+  border: none;
+}
+.profile-sidebar .sidebar-block .title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: rgba(187, 37, 50, 0.3);
+}
+.profile-sidebar .sidebar-block .title svg, .profile-sidebar .sidebar-block .title i {
+  width: 25px;
+  height: 25px;
+  margin-right: 0.75rem;
+}
+.profile-sidebar .sidebar-block .title span {
+  color: #000;
+}
+.profile-sidebar .sidebar-block ul {
+  margin-left: 0.75rem;
+}
+.profile-sidebar .sidebar-block ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 15px;
+}
+.profile-sidebar .sidebar-block ul li::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: rgba(187, 37, 50, 0.3);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  content: "";
+  transition: 0.2s linear;
+}
+.profile-sidebar .sidebar-block ul li:hover a, .profile-sidebar .sidebar-block ul li.active a {
+  color: #BB2532;
+}
+.profile-sidebar .sidebar-block ul li:hover::before, .profile-sidebar .sidebar-block ul li.active::before {
+  background: #BB2532;
+}
+.profile-sidebar .btn {
+  display: flex;
+  margin: 0 auto;
+}
+.profile-sidebar .btn svg, .profile-sidebar .btn i {
+  margin-right: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .profile-sidebar {
+    display: block;
+    padding: 1.5rem;
   }
 }
 footer {

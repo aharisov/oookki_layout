@@ -6,7 +6,11 @@
     box-shadow: 1px 5px 10px $colorBorder;
 
     &.personal-form {
+        max-width: none;
         margin: 0;
+        box-shadow: none;
+        background: none;
+        border: 1px solid $colorBorder;
     }
     .top-note {
         margin-bottom: $mb-l;

@@ -1702,6 +1702,13 @@ function handleSignout(event) {
     event.preventDefault();
     localStorage.setItem("authenticated", "false");
     toggleProfileLink();
+    const url = window.location.href.split("/");
+    if (url[3] && url[3] == "profile") {
+        window.location.href = "../index.php";
+    }
+    else {
+        window.location.href = "index.php";
+    }
 }
 function toggleProfileLink() {
     const checkLogin = localStorage.getItem("authenticated");

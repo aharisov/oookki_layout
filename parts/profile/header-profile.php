@@ -20,7 +20,7 @@
                     </a>
                     <a href="index.php" class="header-btn btn-profile">
                         <img src="../images/ic-person-circle.svg" alt="Mon compte" title="Mon compte">
-                        <span>Bonjour Dominique</span>
+                        <span>Dominique</span>
                         <button class="header-btn js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                     </a>
                     <a href="login.php" class="header-btn btn-login hidden">
