@@ -20,12 +20,12 @@
             <a href="restore-password.php" class="link">Mot de passe oublié ?</a>
         </div>
     </div>
-    <div class="form-line">
+    <div class="form-line button-line">
         <button id="submit-login" class="btn btn-black" type="submit">
             Connexion
         </button>
+        <p>
+            <a href="register.php" class="link">Pas de compte ? Créez-en un</a>
+        </p>
     </div>
-    <p>
-        <a href="register.php" class="link">Pas de compte ? Créez-en un</a>
-    </p>
 </form>

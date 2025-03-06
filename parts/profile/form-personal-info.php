@@ -52,26 +52,26 @@
         </div>
     </div>
     <div class="check-block">
-        <div class="form-line with-checkbox">
+        <div class="form-line with-checkbox full-line">
             <label for="optin">
                 <input name="optin" id="optin" type="checkbox" value="1">
                 <span>Recevoir les offres de nos partenaires</span>
             </label>
         </div>
-        <div class="form-line with-checkbox">
+        <div class="form-line with-checkbox full-line">
             <label for="psgdpr">
                 <input name="psgdpr" id="psgdpr" type="checkbox" value="1" required="">
                 <span>J'accepte les conditions générales et la politique de confidentialité <i class="red">*</i> </span>
             </label>
         </div>
-        <div class="form-line with-checkbox">
+        <div class="form-line with-checkbox full-line">
             <label for="newsletter">
                 <input name="newsletter" id="newsletter" type="checkbox" value="1">
                 <span>Recevoir notre newsletter</span>
             </label>
             <div class="note"><i>i</i> Vous pouvez vous désinscrire à tout moment. Vous trouverez pour cela nos informations de contact dans les conditions d'utilisation du site.</div>
         </div>
-        <div class="form-line with-checkbox">
+        <div class="form-line with-checkbox full-line">
             <label for="customer_privacy">
                 <input name="customer_privacy" id="customer_privacy" type="checkbox" value="1" required="">
                 <span>Message concernant la confidentialité des données clients <i class="red">*</i></span>
@@ -80,11 +80,12 @@
         </div>
     </div>
     
-    <div class="form-line">
+    <div class="form-note success"></div>
+    <div class="form-note"><span class="red">*</span> Champs obligatoires</div>
+    
+    <div class="form-line button-line">
         <button id="submit-register" class="btn btn-black" type="submit">
             Enregistrer
         </button>
     </div>
-    <div class="form-note success"></div>
-    <div class="form-note"><span class="red">*</span> Champs obligatoires</div>
 </form>

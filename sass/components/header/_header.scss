@@ -83,7 +83,7 @@ header {
         width: 25px;
         margin: 0 0.35rem;
 
-        &.hidden {
+        &.hidden, &.js-logout {
             display: none;
         }
 
@@ -132,6 +132,14 @@ header {
             .header__logo {
                 width: 170px;
             }
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    .header__buttons .header-btn {
+        &.js-logout {
+            display: inline-flex;
         }
     }
 }

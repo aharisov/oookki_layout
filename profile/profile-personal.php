@@ -19,7 +19,9 @@
             <h1>Mes informations personnelles</h1>
             <div class="profile-page-inner flex">
                 <?php include("../parts/profile/profile-sidebar.php")?>
-                <?php include("../parts/profile/form-personal-info.php")?>
+                <div class="profile-right">
+                    <?php include("../parts/profile/form-personal-info.php")?>
+                </div>
             </div>
     </main>
     <?php include("../parts/profile/footer-profile.php")?>

@@ -8,9 +8,9 @@
     &.personal-form {
         max-width: none;
         margin: 0;
+        padding: 0;
         box-shadow: none;
         background: none;
-        border: 1px solid $colorBorder;
     }
     .top-note {
         margin-bottom: $mb-l;
@@ -49,7 +49,28 @@
 }
 @media (min-width: 1024px) {
     .auth-form {
-        .form-line {
+        &.personal-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .form-line {
+                width: 48%;
+
+                &.full-line {
+                    width: 100%;
+                }
+            }
+            .form-note {
+                width: 100%;
+            }
+            .check-block {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: $mb-m;
+            }
         }
     }
 }

@@ -76,11 +76,12 @@
         </div>
     </div>
     
-    <div class="form-line">
+    <div class="form-note success"></div>
+    <div class="form-note"><span class="red">*</span> Champs obligatoires</div>
+    
+    <div class="form-line button-line">
         <button id="submit-register" class="btn btn-black" type="submit">
             Enregistrer
         </button>
     </div>
-    <div class="form-note success"></div>
-    <div class="form-note"><span class="red">*</span> Champs obligatoires</div>
 </form>

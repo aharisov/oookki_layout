@@ -1,6 +1,13 @@
 // profile page
 .profile-page-inner {
     flex-wrap: nowrap;
+
+    .profile-right {
+        width: 100%;
+        padding: 2rem;
+        border: 1px solid $colorGrayTransparent2;
+        border-radius: $borderRadiusCommon;
+    }
 }
 .profile-top {
     display: flex;

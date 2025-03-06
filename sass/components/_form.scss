@@ -199,11 +199,16 @@ form {
     }
 
     .form-note {
+        // padding: 0.5rem 1rem;
+        // background: $colorGrayTransparent2;
+        // border-radius: $borderRadiusS;
+        font-style: italic;
+        color: $colorGray;
         &.success {
             max-height: 0;
             margin: 0 0 1rem;
+            padding: 0;
             background: $colorSuccess;
-            border-radius: $borderRadiusCommon;
             color: $colorWhite;
             transition: max-height 0.3s ease-in;
             overflow: hidden;
@@ -212,6 +217,18 @@ form {
                 max-height: 300px;
                 padding: 1rem;
             }
+        }
+    }
+
+    .button-line {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        width: 100% !important;
+        margin-top: $mb-m;
+
+        p {
+            margin-top: $mb-m;
         }
     }
 }
