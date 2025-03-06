@@ -1,12 +1,18 @@
 // profile page
 .profile-page-inner {
     flex-wrap: nowrap;
+    margin-top: 2rem;
 
     .profile-right {
         width: 100%;
-        padding: 2rem;
+        padding: 1rem;
         border: 1px solid $colorGrayTransparent2;
         border-radius: $borderRadiusCommon;
+
+        .new-addr {
+            margin-top: $mb-l;
+            float: right;
+        }
     }
 }
 .profile-top {
@@ -76,6 +82,33 @@
         }
     }
 }
+.addr-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+    .addr-item {
+        padding: 1rem;
+        background: $colorGrayTransparent;
+        border-radius: $borderRadiusCommon;
+
+        .buttons {
+            margin-top: $mb-m;
+
+            .btn {
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+            svg, i {
+                width: 20px;
+                height: 20px;
+            }
+            span {
+                display: none;
+            }
+        }
+    }
+}
 
 @media (min-width: 640px) {
     .profile-links {
@@ -87,8 +120,26 @@
             }
         }
     }
+    .addr-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 768px) {
+    .profile-page-inner {
+        .profile-right {
+            padding: 1rem 1.5rem;
+        }
+    }
+    .addr-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 @media (min-width: 1024px) {
+    .profile-page-inner {
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+    }
     .profile-top {
         .inner {
             min-width: 640px;
@@ -115,6 +166,33 @@
                 .icon {
                     transform: scale(1.1);
                     color: $colorRedTransparent;
+                }
+            }
+        }
+    }
+    .addr-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1200px) {
+    .profile-page-inner {
+        margin-top: 3rem;
+    }
+    .addr-list {
+        .addr-item {
+            h5 {
+                font-size: $fontXS;
+            }
+            .buttons {
+                justify-content: center;
+                .btn {
+                    padding: 0.5rem 1rem;
+                }
+                span {
+                    display: inline-flex;
+                }
+                svg, i {
+                    margin-right: 10px;
                 }
             }
         }

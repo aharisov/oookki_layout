@@ -16,10 +16,10 @@
         <div class="cont">
             <?php include("../parts/profile/profile-breadcrumbs.php")?>
 
-            <h1>Mes informations personnelles</h1>
             <div class="profile-page-inner flex">
                 <?php include("../parts/profile/profile-sidebar.php")?>
                 <div class="profile-right">
+                    <h1>Mes informations personnelles</h1>
                     <?php include("../parts/profile/form-personal-info.php")?>
                 </div>
             </div>

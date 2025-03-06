@@ -19,11 +19,8 @@
             <div class="profile-page-inner flex">
                 <?php include("../parts/profile/profile-sidebar.php")?>
                 <div class="profile-right">
-                    <h1>Mes adresses</h1>
-                    <?php include("../parts/profile/address-list.php")?>
-                    <a href="profile-address-modify.php" class="btn btn-black icon-left new-addr">
-                        <i class="fa-solid fa-square-plus"></i>
-                        Créer une nouvelle adresse</a>
+                    <h1>Mettre à jour mon adresse</h1>
+                    <?php include("../parts/profile/form-modify-address.php")?>
                 </div>
             </div>
     </main>

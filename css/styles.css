@@ -306,7 +306,7 @@ main:has(.top-slider) {
     line-height: 1.6;
   }
   h1, h2 {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   h3, h4 {
     margin-bottom: 1.5rem;
@@ -6058,12 +6058,17 @@ form .button-line p {
 }
 .profile-page-inner {
   flex-wrap: nowrap;
+  margin-top: 2rem;
 }
 .profile-page-inner .profile-right {
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   border: 1px solid rgba(81, 101, 108, 0.2);
   border-radius: 15px;
+}
+.profile-page-inner .profile-right .new-addr {
+  margin-top: 1.5rem;
+  float: right;
 }
 
 .profile-top {
@@ -6132,6 +6137,31 @@ form .button-line p {
   text-align: center;
 }
 
+.addr-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+.addr-list .addr-item {
+  padding: 1rem;
+  background: rgba(81, 101, 108, 0.1);
+  border-radius: 15px;
+}
+.addr-list .addr-item .buttons {
+  margin-top: 1rem;
+}
+.addr-list .addr-item .buttons .btn {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.addr-list .addr-item .buttons svg, .addr-list .addr-item .buttons i {
+  width: 20px;
+  height: 20px;
+}
+.addr-list .addr-item .buttons span {
+  display: none;
+}
+
 @media (min-width: 640px) {
   .profile-links {
     grid-template-columns: repeat(2, 1fr);
@@ -6140,8 +6170,22 @@ form .button-line p {
     width: 50px;
     height: 50px;
   }
+  .addr-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .profile-page-inner .profile-right {
+    padding: 1rem 1.5rem;
+  }
+  .addr-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 @media (min-width: 1024px) {
+  .profile-page-inner h1 {
+    margin-bottom: 1.5rem;
+  }
   .profile-top .inner {
     min-width: 640px;
     padding: 2rem 3rem;
@@ -6166,6 +6210,29 @@ form .button-line p {
   .profile-links .profile-link:hover .icon {
     transform: scale(1.1);
     color: rgba(187, 37, 50, 0.7);
+  }
+  .addr-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .profile-page-inner {
+    margin-top: 3rem;
+  }
+  .addr-list .addr-item h5 {
+    font-size: 1.2rem;
+  }
+  .addr-list .addr-item .buttons {
+    justify-content: center;
+  }
+  .addr-list .addr-item .buttons .btn {
+    padding: 0.5rem 1rem;
+  }
+  .addr-list .addr-item .buttons span {
+    display: inline-flex;
+  }
+  .addr-list .addr-item .buttons svg, .addr-list .addr-item .buttons i {
+    margin-right: 10px;
   }
 }
 .orders-table {

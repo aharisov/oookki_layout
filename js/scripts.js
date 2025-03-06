@@ -60,7 +60,6 @@ const formValidation = (formClass, submitBtn, input, checkRadioGroup, nextEvent)
     const requiredCheckboxes = document.querySelectorAll("input[type='checkbox'][required]");
     if (!form || !submitButton || inputs.length === 0)
         return;
-    console.log(form);
     // create and append error message
     const showErrorMessage = (input, message) => {
         const parent = input.closest(".form-line");
@@ -205,10 +204,14 @@ const restoreSuccess = () => {
     span.innerHTML = email === null || email === void 0 ? void 0 : email.value;
     successMess.classList.add("active");
 };
+const updatedAddress = () => {
+    window.location.href = "profile-addresses.php";
+};
 formValidation(".order-wrap", ".next-step", ".order-wrap input:required", true, () => showNextStep);
 formValidation(".signin-form", "#submit-login", ".signin-form input:required", false, () => login());
 formValidation(".signup-form", "#submit-register", ".signup-form .form-line__title + input:required", false, () => login());
 formValidation(".restore-form", "#submit-restore", ".restore-form input:required", false, () => restoreSuccess());
+formValidation(".address-form", "#submit-address", ".address-form input:required", false, () => updatedAddress());
 function applyInputMask(input, pattern) {
     input.addEventListener("input", (event) => {
         const target = event.target;
