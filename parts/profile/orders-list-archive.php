@@ -20,7 +20,7 @@
                         <button class="btn btn-red icon-left" title="Acheter à nouveau"><i class="fa-solid fa-repeat"></i> <span>Acheter à nouveau</span></button>
                     </div>
                 </div>
-                <a href="order-details.php" class="order-link link">Détails de la commande</a>
+                <a href="profile-order-details.php" class="order-link link">Détails de la commande</a>
             </div>
         </div>
     </div>
