@@ -6187,6 +6187,17 @@ form .button-line p {
   margin-bottom: 0;
 }
 
+.rgpd .rgpd-block {
+  margin-bottom: 1.5rem;
+}
+.rgpd .rgpd-block h3 {
+  margin-bottom: 1rem;
+}
+.rgpd .rgpd-block p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
 @media (min-width: 640px) {
   .profile-links {
     grid-template-columns: repeat(2, 1fr);

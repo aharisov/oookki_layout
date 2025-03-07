@@ -3,7 +3,7 @@ $parts = parse_url($_SERVER["PHP_SELF"]);
 $path_parts= explode('/', $parts["path"]);
 $page = $path_parts[count($path_parts) - 1];
 
-$title = ["Mes achats", "Mes informations personnelles", "Mes adresses", "Mes favoris", "Mes données personnelles", "Détails de la commande N° PDXUFISVW"];
+$title = ["Mes achats", "Mes informations personnelles", "Mes adresses", "Mes favoris", "Mes données personnelles (RGPD)", "Détails de la commande N° PDXUFISVW"];
 ?>
 <nav class="breadcrumbs">
     <ul class="flex">
