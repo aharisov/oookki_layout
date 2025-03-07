@@ -23,7 +23,7 @@ $page = $path_parts[count($path_parts) - 1];
             </div>
             <ul class="links">
                 <li class="<?php if ($page == "profile-orders.php") echo "active";?>"><a href="profile-orders.php">Mes achats en cours</a></li>
-                <li class="<?php if ($page == "profile-orders.php") echo "active";?>"><a href="profile-orders.php">Mes achats terminés</a></li>
+                <li class="<?php if ($page == "profile-orders-archive.php") echo "active";?>"><a href="profile-orders-archive.php">Mes achats terminés</a></li>
             </ul>
         </div>
         <div class="sidebar-block">

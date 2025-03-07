@@ -1,116 +1,218 @@
-.orders-table {
-    width: 100%;
-    margin-top: 2rem;
+.orders-list {
+    .order-item {
+        margin-bottom: $mb-m;
+        border: 1px solid $colorGrayTransparent2;
+        border-radius: $borderRadiusCommon;
 
-    thead {
-        &.hidden-xs {
-            display: none;
-        }
-        th {
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid $colorBorder;
-            font-family: $fontTitle;
-            font-size: $fontXS;
-        }
-    }
-    tbody {
-        tr {
+        .order-head {
+            position: relative;
             display: flex;
             flex-direction: column;
-            margin-bottom: $mb-m;
-            padding: 1rem 1.5rem;
+            padding: 1rem;
+            border-top-left-radius: $borderRadiusCommon;
+            border-top-right-radius: $borderRadiusCommon;
             background: $colorGrayTransparent;
-            border-radius: $borderRadiusCommon;
-        }
-        td, th {
-            display: inline-flex;
-            margin-bottom: $mb-s;
-            text-align-last: left;
-        }
-        th {
-            font-size: $fontXS;
-            font-weight: bold;
-            color: $colorRedTransparent;
-        }
-        td {
-            font-size: $fontXS;
 
-            &.hidden-xs {
-                display: none;
-            }
-        }
-    }
-    .order-status {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem 1rem;
-        border-radius: $borderRadiusS;
-        font-size: $font16;
-
-        &.status-created {
-            background: $colorOrange;
-            color: $colorWhite;
-        }
-        &.status-payed {
-            background: $colorGreen;
-            color: $colorWhite;
-        }
-    }
-    .order-bill {
-        text-align: center;
-        
-        svg, i {
-            width: 34px;
-            height: 34px;
-            margin-left: 1rem;
-            transition: $transition;
-
-            &:hover {
+            h5 {
+                margin-bottom: $mb-xs;
                 color: $colorRedTransparent;
-                transform: scale(1.1);
+            }
+            p {
+                span {
+                    display: inline-block;
+                    margin-right: $mb-m;
+                    padding-right: $mb-m;
+                    border-right: 1px solid $colorBorder;
+
+                    &:last-child {
+                        margin-right: 0;
+                        padding-right: 0;
+                        border: none;
+                    }
+                }
+                i {
+                    font-weight: bold;
+                    color: $colorGray;
+                }
             }
         }
-    }
-    .order-actions {
-        text-align: right;
-
-        .inner {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 0.5rem 0;
+        .order-body {
+            padding: 1rem;
+            text-align: right;
         }
-        .btn {
-            margin-bottom: $mb-s;
+        .order-line {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: $mb-m;
+            padding-bottom: $mb-m;
+            border-bottom: 1px solid $colorGrayTransparent2;
+            text-align: left;
+            
+            &:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border: none;
+            }
 
-            svg, i {
-                width: 25px;
-                height: 25px;
-                margin-right: $mb-s;
+            .prod-pic {
+                width: 120px;
+                height: 80px;
+                margin-right: $mb-m;
+                border: 1px solid $colorGrayTransparent;
+                border-radius: $borderRadiusS;
+
+                img {
+                    @include imgFit;
+                    object-fit: contain;
+                }
+            }
+            .prod-inner {
+                position: relative;
+                width: 100%;
+                margin-top: $mb-m;
+            }
+            .prod-title {
+                font-size: $fontXS;
+                color: $colorGray;
+            }
+            .prod-props {
+                color: $colorBorder;
+                font-style: italic;
+            }
+            .prod-price {
+                color: $colorRedTransparent;
+            }
+            .btn {
+                width: 100%;
+                margin-top: $mb-m;
+                background: $colorRedTransparent;
+
+                &:hover {
+                    background: transparent;
+                    border-color: $colorRedTransparent;
+                    color: $colorRedTransparent;
+                }
             }
         }
     }
 }
 
-@media (min-width: 768px) {
-    .orders-table {
-        width: 100%;
-        margin-top: 2rem;
-    
-        thead {
-            &.hidden-xs {
-                display: table-header-group;
-            }
-        }
-        tbody {
-            tr:nth-of-type(even) {
-                td, th {
-                    background: $colorGrayTransparent;
+.order-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: $mb-m;
+    padding: 0.5rem 1rem;
+    border-radius: $borderRadiusS;
+    font-size: $font16;
+
+    &.status-created {
+        background: $colorOrange;
+        color: $colorWhite;
+    }
+    &.status-payed {
+        background: $colorGray;
+        color: $colorWhite;
+    }
+    &.status-finished {
+        background: $colorSuccess;
+        color: $colorWhite;
+    }
+}
+
+@media (min-width: 480px) {
+    .orders-list {
+        .order-item {
+            .order-head {
+                .order-status {
+                    max-width: 220px;
+                    margin-left: auto;
                 }
             }
-            td {
-                padding: 0.5rem;
+            .order-line {
+                .prod-inner {
+                    width: 60%;
+                    margin-top: 0;
+                }
+                .btn {
+                    width: auto;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 640px) {
+    .orders-list {
+        .order-item {
+            .order-head {
+                .order-status {
+                    position: absolute;
+                    top: 50%;
+                    right: 1rem;
+                    transform: translateY(-50%);
+                    margin-top: 0;
+                }
+            }
+            .order-line {
+                .prod-inner {
+                    
+                }
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    .orders-list {
+        .order-item {
+            .order-head {
+                .order-status {
+                    position: relative;
+                    top: 0;
+                    right: auto;
+                    transform: translateY(0);
+                    margin-top: $mb-m;
+                }
+            }
+            .order-line {
+                flex-wrap: nowrap;
+                .prod-inner {
+                    width: 100%;
+                }
+                .btn {
+                    position: relative;
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 1024px) {
+    .orders-list {
+        .order-item {
+            .order-head {
+                .order-status {
+                    position: absolute;
+                    top: 50%;
+                    right: 1rem;
+                    transform: translateY(-50%);
+                    margin-top: 0;
+                }
+            }
+            .order-line {
+                .prod-inner {
+                    margin-bottom: 0;
+                    padding-bottom: 1rem;
+                }
+                .prod-pic {
+                    width: 100%;
+                    max-width: 120px;
+                }
+                .btn {
+                    position: absolute;
+                    bottom: 0;
+                }
             }
         }
     }

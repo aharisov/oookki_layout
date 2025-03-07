@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes achats en cours</title>
+    <title>Mes achats terminé</title>
 
     <link rel="stylesheet" href="../css/swiper.css">
     <link rel="stylesheet" href="../css/photoswipe.css">
@@ -19,8 +19,8 @@
             <div class="profile-page-inner flex">
                 <?php include("../parts/profile/profile-sidebar.php")?>
                 <div class="profile-right">
-                    <h1>Mes achats en cours</h1>
-                    <?php include("../parts/profile/orders-list.php")?>
+                    <h1>Mes achats terminé</h1>
+                    <?php include("../parts/profile/orders-list-archive.php")?>
                 </div>
             </div>
     </main>

@@ -14,6 +14,10 @@
         cursor: not-allowed;
     }
 
+    svg, i {
+        width: 16px;
+        height: 16px;
+    }
     &.icon-right {
         svg {
             margin-left: $mb-s;
@@ -96,14 +100,9 @@
 
 @media (min-width: 1024px) {
     .btn {
-        padding: 0.5rem 1.5rem;
+        padding: 0.5rem 1rem;
     }
     .btn-mobile {
         display: none;
-    }
-}
-@media (min-width: 1200px) {
-    .btn {
-        padding: 0.5rem 2rem;
     }
 }

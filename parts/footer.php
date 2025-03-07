@@ -84,6 +84,28 @@
 <div class="bg-modal"></div>
 <?php include("home/pack-modal.php")?>
 
+<script>
+window.axeptioSettings = {
+    clientId: "67c997817c8859c0c821e0a8",
+    cookiesVersion: "oookki-fr-EU",
+    googleConsentMode: {
+        default: {
+            analytics_storage: "denied",
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            wait_for_update: 500
+        }
+    }
+};
+
+(function(d,s) {
+    var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+    e.async = true; e.src = "//static.axept.io/sdk.js";
+    t.parentNode.insertBefore(e, t);
+})(document, "script");
+</script>
+
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/helpers.js?t=<?php echo time()?>"></script>
 <script src="js/scripts.js?t=<?php echo time()?>"></script>

@@ -1,63 +1,61 @@
-<section class="orders-list">
-    <h3>Vous trouverez ici vos commandes passées depuis la création de votre compte</h3>
-
-    <table class="orders-table">
-        <thead class="hidden-xs">
-            <tr>
-                <th>Référence de commande</th>
-                <th>Date</th>
-                <th>Prix total</th>
-                <th class="hidden-md-down">Paiement</th>
-                <th class="hidden-md-down">État</th>
-                <th>Facture</th>
-                <th>&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">PDXUFISVW</th>
-                <td>04/03/2025</td>
-                <td class="text-xs-right">34,80&nbsp;€</td>
-                <td class="hidden-xs">Paiement en 4 fois</td>
-                <td>
-                    <span class="order-status status-payed">
-                        Paiement accepté
-                    </span>
-                </td>
-                <td class="order-bill">
-                    <a href="../images/demo/FA000001.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i></a>
-                </td>
-                <td class="order-actions">
-                    <span class="inner">
-                        <a class="btn btn-black__empty" href="order-details.php" data-link-action="view-order-details">
-                            Détails
-                        </a>
-                        <a class="reorder-link link" href="../order-step1.php"><i class="fa-solid fa-rotate-right"></i> Commander à nouveau</a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">KLUQQZBCU</th>
-                <td>27/01/2025</td>
-                <td class="text-xs-right">68,93&nbsp;€</td>
-                <td class="hidden-xs">Transfert bancaire</td>
-                <td>
-                    <span class="order-status status-created">
-                        En attente de virement bancaire
-                    </span>
-                </td>
-                <td class="order-bill hidden-xs">
-                                -
-                </td>
-                <td class="order-actions">
-                    <span class="inner">
-                        <a class="btn btn-black__empty" href="order-details.php" data-link-action="view-order-details">
-                            Détails
-                        </a>
-                        <a class="reorder-link link" href="../order-step1.php"><i class="fa-solid fa-rotate-right"></i> Commander à nouveau</a>
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<section class="orders-wrap">
+    <div class="orders-list">
+        <div class="order-item">
+            <div class="order-head">
+                <h5>N° PDXUFISVW</h5>
+                <p>
+                    <span>Le <i>04/03/2025</i></span>
+                    <span>Montant : <i>699,99€</i></span>
+                </p>
+                <div class="order-status status-payed">Paiement accepté</div>
+            </div>
+            <div class="order-body">
+                <div class="order-line">
+                    <div class="prod-pic">
+                        <img src="../images/demo/z-fold6/Phone_Samsung_ZFold6_blue_1.png" alt="Galaxy Z Fold6">
+                    </div>
+                    <div class="prod-inner">
+                        <a href="../product.php" class="prod-title">Samsung Galaxy Z Fold6</a>
+                        <p class="prod-props">Bleu nuit - 256Go</p>
+                        <p class="prod-price">599,99€</p>
+                        <button class="btn btn-red icon-left" title="Acheter à nouveau"><i class="fa-solid fa-repeat"></i> <span>Acheter à nouveau</span></button>
+                    </div>
+                </div>
+                <div class="order-line">
+                    <div class="prod-pic">
+                        <img src="../images/demo/forfait.png" alt="Forfait Extrems OOOKKI">
+                    </div>
+                    <div class="prod-inner">
+                        <a href="../product.php" class="prod-title">Forfait Extrems OOOKKI</a>
+                        <p class="prod-props">Sans engagements - 300Go</p>
+                        <p class="prod-price">18,99€/mois</p>
+                    </div>
+                </div>
+                <a href="profile-order-details.php" class="order-link link">Détails de la commande</a>
+            </div>
+        </div>
+        <div class="order-item">
+            <div class="order-head">
+                <h5>N° KLUQQZBCU</h5>
+                <p>
+                    <span>Le <i>06/03/2025</i></span>
+                    <span>Montant : <i>14€</i></span>
+                </p>
+                <div class="order-status status-created">En attente de paiement</div>
+            </div>
+            <div class="order-body">
+                <div class="order-line">
+                    <div class="prod-pic">
+                        <img src="https://www.bouyguestelecom.fr//media/catalog/product/c/o/coque_jaym_transparente_pour_apple_iphone_15.png" alt="Coque Jaym Transparente pour iPhone 15">
+                    </div>
+                    <div class="prod-inner">
+                        <a href="../product.php" class="prod-title">Coque Jaym Transparente pour iPhone 15</a>
+                        <p class="prod-price">14€</p>
+                        <button class="btn btn-red icon-left" title="Acheter à nouveau"><i class="fa-solid fa-repeat"></i> <span>Acheter à nouveau</span></button>
+                    </div>
+                </div>
+                <a href="profile-order-details.php" class="order-link link">Détails de la commande</a>
+            </div>
+        </div>
+    </div>
 </section>
