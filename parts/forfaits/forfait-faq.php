@@ -1,0 +1,17 @@
+<section class="home-section faq mb-common">
+    <div class="cont">
+        <div class="section-head flex">
+            <h2>Besoin d'aide pour choisir votre forfait chez OOOKKI ?</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item accordion-item">
+                <div class="faq-item__title accordion-head" role="button" tabindex="0">Quels sont les avantages d'un forfait mobile sans engagement ?</div>
+                <div class="faq-item__text accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
+            </div>
+            <div class="faq-item accordion-item">
+                <div class="faq-item__title accordion-head" role="button" tabindex="1">Quel forfait mobile choisir en 2025 ?</div>
+                <div class="faq-item__text accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec velit sed lacus malesuada cursus. Donec urna libero, bibendum sit amet sollicitudin sed, luctus nec mi. Nullam vehicula dolor id nisi semper imperdiet. Cras tempus ante et nunc rutrum posuere. Nunc at elit vel elit sollicitudin congue pretium quis tortor. </div>
+            </div>
+        </div>
+    </div>
+</section>

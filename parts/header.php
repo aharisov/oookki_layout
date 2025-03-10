@@ -45,11 +45,11 @@
                     <span>Abonnements</span>
                     <div class="main-menu__dropdown">
                         <ul>
-                            <li><a href="">Tous les forfaits</a></li>
-                            <li><a href="">Forfait OOOKKI 5G</a></li>
-                            <li><a href="">Séries OOOKKI</a></li>
-                            <li><a href="">Forfait Low-cost</a></li>
-                            <li><a href="">Forfait flexible</a></li>
+                            <li><a href="forfait-list.php">Tous les forfaits</a></li>
+                            <li><a href="forfait-list.php?forfait=5g">Forfait OOOKKI 5G</a></li>
+                            <li><a href="forfait-list.php?forfait=s">Séries OOOKKI</a></li>
+                            <li><a href="forfait-list.php?forfait=low">Forfait Low-cost</a></li>
+                            <li><a href="forfait-list.php?forfait=flex">Forfait flexible</a></li>
                         </ul>
                     </div>
                 </li>

@@ -1781,11 +1781,8 @@ header .header__inner .header__search.active {
   border-radius: 15px;
   border: 1px solid transparent;
 }
-.section-nav__item a:hover {
+.section-nav__item a:hover, .section-nav__item a.active {
   background: #f0eeee;
-  border-color: rgba(81, 101, 108, 0.2);
-}
-.section-nav__item a.active {
   border-color: rgba(81, 101, 108, 0.2);
 }
 .section-nav__item a img {
@@ -4260,12 +4257,12 @@ header .header__inner .header__search.active {
   font-family: "Roboto", Tahoma, Arial, sans-serif;
   font-size: 1.2rem;
   font-weight: normal;
-  color: rgba(81, 101, 108, 0.2);
+  color: #51656c;
   text-decoration: line-through;
 }
 .product-card .inner .price-suptitle {
   font-size: 0.875rem;
-  color: rgba(81, 101, 108, 0.2);
+  color: #b1b1b1;
 }
 .product-card .inner .price-credit {
   font-size: 1rem;
@@ -6723,6 +6720,177 @@ form .button-line p {
 @media (min-width: 1024px) {
   .profile-sidebar {
     max-width: 360px;
+  }
+}
+.plans-list-page .section-inner .packs-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+.plans-advants-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+.plans-advants-list .right {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+.plans-advants-list .advants-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  height: 300px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(81, 101, 108, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.plans-advants-list .advants-item .inner {
+  display: flex;
+  flex-direction: column;
+  height: 55%;
+  padding: 1rem;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: rgba(240, 238, 238, 0.8);
+}
+.plans-advants-list .advants-item .inner h4 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.44rem;
+  color: rgba(187, 37, 50, 0.7);
+}
+.plans-advants-list .advants-item .inner .link {
+  color: #51656c;
+}
+.plans-advants-list .advants-item .pic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 300px;
+}
+.plans-advants-list .advants-item .pic img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+}
+.plans-advants-list .advants-item.big {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  margin-bottom: 0;
+  border: 1px solid rgba(81, 101, 108, 0.2);
+  border-radius: 15px;
+}
+.plans-advants-list .advants-item.big .inner {
+  display: block;
+  height: auto;
+  border: none;
+  background: none;
+}
+.plans-advants-list .advants-item.big .pic {
+  position: relative;
+  margin-bottom: -6px;
+  height: auto;
+}
+.plans-advants-list .advants-item.big img {
+  border-radius: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.phones-with-plans .inner {
+  display: flex;
+  flex-direction: column;
+}
+.phones-with-plans .inner .swiper {
+  width: 100%;
+}
+.phones-with-plans .inner .block-pic {
+  margin-top: 1rem;
+}
+.phones-with-plans .inner .block-pic img {
+  border-radius: 15px;
+}
+
+@media (min-width: 480px) {
+  .plans-advants-list .advants-item {
+    margin-bottom: 0;
+  }
+  .plans-advants-list .advants-item.big .pic {
+    height: 450px;
+    margin-bottom: 0;
+  }
+  .plans-advants-list .advants-item.big img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+@media (min-width: 640px) {
+  .plans-list-page .section-inner .packs-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .plans-advants-list {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .plans-advants-list .right {
+    width: 60%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .plans-advants-list .advants-item.big {
+    width: 40%;
+  }
+  .phones-with-plans .inner {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .phones-with-plans .inner .phones-slider {
+    max-width: 400px;
+  }
+  .phones-with-plans .inner .phones-slider .swiper-wrapper {
+    height: 100%;
+  }
+  .phones-with-plans .inner .block-pic {
+    margin-top: 0;
+  }
+  .phones-with-plans .inner .block-pic img {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+@media (min-width: 1024px) {
+  .plans-list-page .section-inner .packs-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .plans-advants-list .right {
+    grid-template-columns: repeat(2, 1fr);
+    width: 70%;
+  }
+  .plans-advants-list .advants-item.big {
+    width: 30%;
+  }
+  .phones-with-plans .inner {
+    margin-bottom: 0;
   }
 }
 footer {

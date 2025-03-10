@@ -1619,6 +1619,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
             clickable: true,
         },
     });
+    const plansPhonesSlider = new Swiper(".phones-with-plans .swiper", {
+        speed: 600,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        /*
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },*/
+    });
 });
 function stickyElement(element, hideHeader) {
     if (!element)
