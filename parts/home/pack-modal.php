@@ -1,4 +1,4 @@
-<div id="pack-modal" class="modal">
+<div id="pack-modal" class="modal from-right">
     <div class="modal-close"></div>
 
     <div class="modal-inner">

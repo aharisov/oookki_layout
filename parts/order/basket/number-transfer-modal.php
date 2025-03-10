@@ -1,4 +1,4 @@
-<section id="number-transfer-modal" class="modal price-details-modal number-transfer-modal">
+<section id="number-transfer-modal" class="modal price-details-modal number-transfer-modal from-right">
     <div class="modal-close"></div>
 
     <div class="modal-inner">

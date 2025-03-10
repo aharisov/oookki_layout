@@ -19,7 +19,8 @@
 
                 i {
                     font-size: $font14;
-                    color: $colorBorder;
+                    font-style: italic;
+                    color: $colorGray;
                 }
             }
         }
@@ -56,7 +57,7 @@
         }
     }
 }
-
+/*
 @media (max-height: 500px) {
     .price-details-modal.modal {
         padding: 1rem;
@@ -114,7 +115,7 @@
             }
         }
     }
-}
+}*/
 @media (min-width: 768px) {
     .price-details-modal {
         .price-details .block {

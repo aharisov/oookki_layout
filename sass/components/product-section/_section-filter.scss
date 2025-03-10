@@ -8,7 +8,7 @@
     transition: transform 0.3s ease-in-out;
 
     &__inner {
-        background: $colorSecond;
+        background: $colorWhite;
         border-top-left-radius: $borderRadiusCommon;
         border-top-right-radius: $borderRadiusCommon;
     }
@@ -90,6 +90,7 @@
             }
             .filter-more {
                 border-bottom: 1px solid $colorPrimary;
+                padding: 0;
             }
 
             h4 {

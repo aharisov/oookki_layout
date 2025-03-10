@@ -21,8 +21,9 @@
             width: 30px;
             height: 30px;
             border-radius: $borderRadiusCircle;
-            background: $colorGrayTransparent;
+            background: $colorRedTransparent;
             counter-increment: section;
+            color: $colorWhite;
             content: counter(section);
         }
     }

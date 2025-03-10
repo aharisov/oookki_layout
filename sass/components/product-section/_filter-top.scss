@@ -12,7 +12,9 @@
         background: $colorWhite;
     }
     .cont {
+        flex-direction: column;
         justify-content: space-between;
+        align-items: flex-start;
     }
     .left {
         align-items: center;
@@ -22,7 +24,7 @@
         position: relative;
         display: inline-flex;
         height: 40px;
-        margin-bottom: 0;
+        margin-bottom: $mb-m;
         padding: 0.5rem 1rem 0.5rem 3rem;
         border: 1px solid $colorPrimary;
         border-radius: $borderRadiusCommon;
@@ -56,13 +58,13 @@
 
         .sort-title {
             margin-right: 0.5rem;
-            font-size: $fontXXS;
-            font-weight: bold;
+            font-size: $fontXS;
         }
         .sort-active {
             position: relative;
             padding-right: 1.5rem;
-            font-size: $fontXXS;
+            font-size: $fontXS;
+            font-weight: bold;
             cursor: pointer;
 
             &::after {
@@ -88,7 +90,7 @@
             left: 0;
             z-index: 999999;
             width: 100%;
-            background: $colorSecond;
+            background: $colorWhite;
             border-top-left-radius: $borderRadiusCommon;
             border-top-right-radius: $borderRadiusCommon;
             transform: translateY(100%);
@@ -114,13 +116,13 @@
                 width: 100%;
                 padding: 1.5rem;
                 border-bottom: 1px solid $colorBorder;
-                font-size: $fontS;
+                font-size: $fontXS;
 
                 &__title {
                     margin-right: 1rem;
-                    font-weight: bold;
                 }
                 &__active {
+                    font-weight: bold;
                     color: $colorGray;
                 }
             }
@@ -149,7 +151,7 @@
             button {
                 position: relative;
                 font-family: $fontPrimary;
-                font-size: $fontS;
+                font-size: $fontXS;
 
                 &::after {
                     position: absolute;
@@ -166,11 +168,11 @@
                 }
                 &[aria-selected="true"] {
                     font-weight: bold;
-                    color: $colorRed;
+                    color: $colorRedTransparent;
 
                     &::after {
                         opacity: 1;
-                        border-color: $colorRed;
+                        border-color: $colorRedTransparent;
                     }
                 }
             }
@@ -180,19 +182,23 @@
 
 @media (min-width: 360px) {
     .filter-top .right {
-        .sort-title, .sort-active {
-            font-size: $font16;
-        }
         .sort-list .sort-head {
             flex-direction: row;
         }
     }
 }
 @media (min-width: 420px) {
+    .filter-top .cont {
+        flex-direction: row;
+        align-items: center;
+    }
+    .filter-top h4 {
+        margin-bottom: 0;
+    }
     .filter-top .right {
         .sort-list .sort-head {
             padding: 1.5rem 2rem;
-            font-size: $fontM;
+            font-size: $fontS;
         }
         .sort-list .sort-close {
             top: 2rem;

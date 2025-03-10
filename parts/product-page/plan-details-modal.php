@@ -1,4 +1,4 @@
-<div id="plan-details-modal" class="modal price-details-modal plan-details-modal">
+<div id="plan-details-modal" class="modal from-right price-details-modal plan-details-modal">
     <div class="modal-close"></div>
 
     <div class="modal-inner">

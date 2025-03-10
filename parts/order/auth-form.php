@@ -19,4 +19,8 @@
     body {
         background: none;
     }
+    .auth-form {
+        background: none;
+        box-shadow: none;
+    }
 </style>

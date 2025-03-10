@@ -13,7 +13,7 @@
                     <div class="header-btn btn-search js-open-search">
                         <img src="../images/ic-search.svg" alt="Rechercher" title="Rechercher">
                     </div>
-                    <a href="order-step1.php" class="header-btn btn-cart">
+                    <a href="../order-step1.php" class="header-btn btn-cart">
                         <img src="../images/ic-cart.svg" alt="Panier" title="Panier">
                         <i class="cnt">0</i>
                         <span>Panier</span>
@@ -23,7 +23,7 @@
                         <span>Dominique</span>
                     </a>
                     <button class="header-btn js-logout" title="Déconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                    <a href="login.php" class="header-btn btn-login hidden">
+                    <a href="../login.php" class="header-btn btn-login hidden">
                         <img src="../images/ic-person.svg" alt="Connexion" title="Connexion">
                         <span>Connexion</span>
                     </a>

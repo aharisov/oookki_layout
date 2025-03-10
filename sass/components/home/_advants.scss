@@ -64,10 +64,11 @@
 @media (min-width: 1024px) {
     .advants-list {
         .advants-item {
-            filter: grayscale(0.6);
+            // filter: grayscale(0.6);
 
-            &:hover {
-                filter: grayscale(0);
+            &:hover .pic {
+                // filter: grayscale(0);
+                filter: grayscale(0.6);
             }
         }
     }
