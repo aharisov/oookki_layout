@@ -598,6 +598,17 @@ const init = () => {
     nextButton.addEventListener("click", showNextSection);
 };
 init();
+const togglePlanAbon = () => {
+    const switchBtns = document.querySelectorAll(".js-toggle-switch");
+    if (!switchBtns)
+        return;
+    switchBtns.forEach(btn => {
+        btn.addEventListener("click", function () {
+            switchBtns.forEach(b => b.classList.toggle("active"));
+        });
+    });
+};
+togglePlanAbon();
 function playVideo() {
     const figures = document.querySelectorAll(".media figure");
     if (!figures)
@@ -1660,15 +1671,18 @@ function stickyElement(element, hideHeader) {
     }
     window.addEventListener("scroll", handleScroll);
 }
-// Example usage:
 document.addEventListener("DOMContentLoaded", () => {
     const stickyProductTop = document.querySelector(".product-top");
     const stickyMobileTabs = document.querySelector(".product-top__tabs");
+    const stickyPlanTop = document.querySelector(".plan-details-top");
     if (stickyProductTop && window.innerWidth >= 1024) {
         stickyElement(stickyProductTop, true);
     }
     if (stickyMobileTabs && window.innerWidth < 1024) {
         stickyElement(stickyMobileTabs, true);
+    }
+    if (stickyPlanTop && window.innerWidth >= 768) {
+        stickyElement(stickyPlanTop, true);
     }
 });
 function stickySidebar(leftElement, rightElement, offset = 20) {

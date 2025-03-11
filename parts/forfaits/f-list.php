@@ -23,7 +23,7 @@
             <div class="note">Sans engagements</div>
         </div>
         <div class="pack-item__buttons">
-            <a href="" class="btn btn-black__empty pack-item__link">Voir l’offre</a>
+            <a href="forfait-details.php" class="btn btn-black__empty pack-item__link">Voir l’offre</a>
             <a href="" class="btn btn-red js-open-modal" data-modal="pack-modal" data-id="1">Je souscris</a>
         </div>
     </div>
@@ -48,7 +48,7 @@
             <div class="note">Sans engagements</div>
         </div>
         <div class="pack-item__buttons">
-            <a href="" class="btn btn-black__empty">Voir l’offre</a>
+            <a href="forfait-details.php" class="btn btn-black__empty">Voir l’offre</a>
             <a href="" class="btn btn-red js-open-modal" data-modal="pack-modal" data-id="2">Je souscris</a>
         </div>
     </div>
@@ -73,7 +73,7 @@
             <div class="note">Sans engagements</div>
         </div>
         <div class="pack-item__buttons">
-            <a href="" class="btn btn-black__empty">Voir l’offre</a>
+            <a href="forfait-details.php" class="btn btn-black__empty">Voir l’offre</a>
             <a href="" class="btn btn-red js-open-modal" data-modal="pack-modal" data-id="3">Je souscris</a>
         </div>
     </div>
