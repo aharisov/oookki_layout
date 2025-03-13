@@ -59,8 +59,8 @@
                         <ul>
                             <li><a href="mobiles.php">Tous les mobiles</a></li>
                             <li><a href="">Bons plans</a></li>
-                            <li><a href="">Smartphones 5G</a></li>
-                            <li><a href="">Comparer</a></li>
+                            <li><a href="mobiles.php">Smartphones 5G</a></li>
+                            <li><a href="compare-mobiles.php">Comparer</a></li>
                         </ul>
                     </div>
                 </li>
