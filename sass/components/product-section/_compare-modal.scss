@@ -134,6 +134,7 @@
                 .inner {
                     flex-direction: row;
                     flex-wrap: nowrap;
+                    align-items: center;
                 }
                 .pic {
                     margin-bottom: 0;
@@ -157,7 +158,7 @@
             .compare-buttons {
                 .btn {
                     padding: 0.8rem 2rem;
-                    font-size: $fontS;
+                    font-size: $fontXS;
                 }
             }
             .compare-item {
@@ -177,6 +178,10 @@
             .compare-item {
                 width: 33%;
                 flex: auto;
+
+                .pic {
+                    height: 80px;
+                }
             }
              
         }

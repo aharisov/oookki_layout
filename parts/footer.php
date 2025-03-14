@@ -108,5 +108,4 @@ window.axeptioSettings = {
 </script>
 
 <script src="js/swiper-bundle.min.js"></script>
-<script src="js/helpers.js?t=<?php echo time()?>"></script>
 <script src="js/scripts.js?t=<?php echo time()?>"></script>

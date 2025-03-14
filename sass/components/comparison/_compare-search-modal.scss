@@ -76,7 +76,7 @@
         .content {
             max-height: 200px;
             margin: $mb-l 0;
-            overflow-y: scroll;
+            overflow-y: auto;
         }
         .brand-list {
             display: grid;
@@ -94,6 +94,7 @@
                 width: 100%;
                 padding: 1rem;
                 background: $colorGrayTransparent;
+                border: 2px solid $colorGrayTransparent;
                 border-radius: $borderRadiusS;
                 transition: $transition;
 
@@ -104,7 +105,8 @@
                 }
 
                 &:hover {
-                    background: $colorRedTransparent2;
+                    border-color: $colorRedTransparent2;
+                    background: transparent;
                 }
             }
         }
@@ -123,7 +125,7 @@
                 align-items: center;
                 width: 100%;
                 padding: 1rem;
-                border: 1px solid $colorBorder;
+                border: 2px solid $colorBorder;
                 border-radius: $borderRadiusS;
                 transition: $transition;
 
@@ -133,8 +135,16 @@
                     margin-right: $mb-s;
                 }
 
-                &:hover {
+                &:hover, &.active {
                     border-color: $colorRedTransparent2;
+                }
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+
+                    &:hover {
+                        border-color: $colorBorder;
+                    }
                 }
             }
         }
@@ -143,10 +153,11 @@
     .compare-list {
         .compare-item {
             max-height: none;
-            &:last-child {
-                display: none;
-            }
 
+            &.empty {
+                border-color: $colorGrayLight;
+                background: $colorGrayTransparent;
+            }
             .pic {
                 img {
                     object-fit: contain;
@@ -190,6 +201,7 @@
             border: 1px solid $colorBorder;
             border-bottom-left-radius: $borderRadiusCommon;
             border-bottom-right-radius: $borderRadiusCommon;
+            transform: translate(-50%, 0);
             
             &.show {
                 bottom: 50%;
@@ -224,10 +236,19 @@
 
         .compare-list {
             .compare-item {
+                max-height: 120px;
                 &:last-child {
                     display: flex;
                 }
+                .pic {
+                    margin-bottom: 0;
+                }
             }
         }
+    }
+}
+@media (min-width: 1200px) {
+    .compare-search-modal .compare-search .content {
+        max-height: 300px;
     }
 }

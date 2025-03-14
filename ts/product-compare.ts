@@ -18,7 +18,7 @@ const addToCompareModal = (product: CompareItem): void => {
     }
   
     // get container for adding items
-    const compareList = compareModal.querySelector('.compare-list');
+    const compareList = compareModal.querySelector('.compare-list') as HTMLElement;
     if (!compareList) {
         // console.error('Compare inner container not found');
         return;
@@ -87,28 +87,33 @@ const addToCompareModal = (product: CompareItem): void => {
     
     // Show compare modal
     compareModal.classList.add('open');
-  
-    // item removal from the compare modal
-    const removeButton = compareItem.querySelector('.js-compare-remove');
+
+    removeFromCompareModal(compareItem, compareList, compareItemEmpty, compareModal);
+    openComparePage();
+    clearCompareModal();
+}
+
+// item removal from the compare modal
+const removeFromCompareModal = (item: HTMLElement, list: HTMLElement, emptyItem: HTMLElement, modal: HTMLElement) => {
+    const removeButton = item.querySelector('.js-compare-remove');
+    const compareBtn = document.querySelector('.js-open-compare') as HTMLButtonElement;
+
     if (removeButton) {
         removeButton.addEventListener('click', () => {
-            compareList.replaceChild(compareItemEmpty, compareItem);
+            list.replaceChild(emptyItem, item);
             compareBtn.disabled = true;
             disableProducts(false);
 
             unSelectProduct(removeButton.getAttribute('data-id'));
 
-            if ((window.innerWidth < 768 && compareList.querySelectorAll('.empty').length == 2)
-                || (window.innerWidth >= 768 && compareList.querySelectorAll('.empty').length == 3)
+            if ((window.innerWidth < 768 && list.querySelectorAll('.empty').length == 2)
+                || (window.innerWidth >= 768 && list.querySelectorAll('.empty').length == 3)
             ) {
-                compareModal.classList.remove('open');
-                compareList.innerHTML = '';
+                modal.classList.remove('open');
+                list.innerHTML = '';
             }
         });
     }
-
-    openComparePage();
-    clearCompareModal();
 }
   
 /**
@@ -176,7 +181,7 @@ const selectProduct = ():void => {
             } else {
                 disableProducts(true);
             }
-            console.info('Products in compare list:', compareList);
+            // console.info('Products in compare list:', compareList);
         });
     });
 }
@@ -256,7 +261,7 @@ const clearCompareModal = (): void => {
     const compareButtons = document.querySelectorAll('.product-card .compare input') as NodeListOf<HTMLInputElement>;
     
     if (!compareButtons.length) {
-        console.error('The page does not contain products');
+        // console.error('The page does not contain products');
         return;
     }
 

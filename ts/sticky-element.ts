@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const stickyProductTop = document.querySelector(".product-top") as HTMLElement;
     const stickyMobileTabs = document.querySelector(".product-top__tabs") as HTMLElement;
     const stickyPlanTop = document.querySelector(".plan-details-top") as HTMLElement;
+    const stickyCompareTop = document.querySelector(".compare-products") as HTMLElement;
 
     if (stickyProductTop && window.innerWidth >= 1024) {
         stickyElement(stickyProductTop, true);
@@ -42,5 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (stickyPlanTop && window.innerWidth >= 768) {
         stickyElement(stickyPlanTop, true);
+    }
+
+    if (stickyCompareTop) {
+        stickyElement(stickyCompareTop, true);
     }
 });

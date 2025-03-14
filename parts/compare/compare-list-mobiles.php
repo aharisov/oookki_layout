@@ -1,6 +1,6 @@
 <div class="compare-wrap accordion-show-all mb-common">
     <div class="compare-line compare-top">
-        <div class="compare-item" data-id="1">
+        <div class="compare-item" data-id="1" aria-colindex="1">
             <div class="pic">
                 <img src="https://mobile.free.fr/webpublic/Phone_i_Phone_16_Color_Sarcelle_View_Front_Back_1acd78e913.png" alt="">
             </div>
@@ -8,7 +8,7 @@
                 <i class="fa-solid fa-trash"></i>
             </button>
         </div>
-        <div class="compare-item" data-id="2">
+        <div class="compare-item" data-id="2" aria-colindex="2">
             <div class="pic">
                 <img src="https://mobile.free.fr/webpublic/samsung_galaxy_S25_ULTRA_argent_titane_7930aca960.png" alt="">
             </div>
@@ -16,7 +16,7 @@
                 <i class="fa-solid fa-trash"></i>
             </button>
         </div>
-        <div class="compare-item empty">
+        <div class="compare-item empty" aria-colindex="3">
             <button class="open-modal" data-modal="compare-modal">
                 <span class="icon">
                     <i class="fa-solid fa-plus"></i>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="compare-line compare-info compare-products">
-        <div class="compare-item" data-id="1">
+        <div class="compare-item" data-id="1" aria-colindex="1">
             <div class="prod-name">
                 <span>Apple</span>
                 <span>iPhone 16 Plus</span>
@@ -36,7 +36,7 @@
                 <button class="link open-modal" data-modal="compare-modal">Changer</button>
             </div>
         </div>
-        <div class="compare-item" data-id="2">
+        <div class="compare-item" data-id="2" aria-colindex="2">
             <div class="prod-name">
                 <span>Samsung</span>
                 <span>Galaxy S25 Ultra</span>
@@ -46,7 +46,7 @@
                 <button class="link open-modal" data-modal="compare-modal">Changer</button>
             </div>
         </div>
-        <div class="compare-item empty">
+        <div class="compare-item empty" aria-colindex="3">
             <button class="add-item open-modal" data-modal="compare-modal">
                 <span class="icon">
                     <i class="fa-solid fa-plus"></i>

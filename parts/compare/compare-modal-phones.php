@@ -20,7 +20,7 @@
     <div class="compare-inner flex">
         <div class="modal-close" title="Fermer le comparateur"></div>
         <div class="compare-list flex">
-            <div class="compare-item" data-id="1">
+            <div class="compare-item" data-id="1" aria-colindex="1">
                 <div class="compare-remove js-compare-remove" data-id="1"></div>
                 <div class="inner flex">
                     <div class="pic">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="compare-item" data-id="2">
+            <div class="compare-item" data-id="2" aria-colindex="2">
                 <div class="compare-remove js-compare-remove" data-id="2"></div>
                 <div class="inner flex">
                     <div class="pic">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="compare-item empty"></div>
+            <div class="compare-item empty" aria-colindex="3"></div>
         </div>
         <div class="compare-buttons flex">
             <button type="button" class="btn btn-red__empty js-clear-compare">Réinitialiser</button>

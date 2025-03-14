@@ -1,4 +1,4 @@
-<section class="home-section faq mb-common">
+<section class="home-section faq ">
     <div class="cont">
         <div class="section-head flex">
             <h2>Besoin d'aide pour choisir votre mobile ?</h2>

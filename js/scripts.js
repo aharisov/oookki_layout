@@ -39,6 +39,402 @@ function addToCart() {
 document.addEventListener("DOMContentLoaded", () => {
     addToCart();
 });
+async function readXMLFile(filePath) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+    const response = await fetch(filePath);
+    const text = await response.text();
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(text, "text/xml");
+    const productNode = xmlDoc.querySelector("product");
+    if (productNode) {
+        const id = (_b = (_a = productNode.querySelector("id")) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.trim();
+        const manufacturerName = (_d = (_c = productNode.querySelector("manufacturer_name")) === null || _c === void 0 ? void 0 : _c.textContent) === null || _d === void 0 ? void 0 : _d.trim();
+        const reference = (_f = (_e = productNode.querySelector("reference")) === null || _e === void 0 ? void 0 : _e.textContent) === null || _f === void 0 ? void 0 : _f.trim();
+        const price = (_h = (_g = productNode.querySelector("price")) === null || _g === void 0 ? void 0 : _g.textContent) === null || _h === void 0 ? void 0 : _h.trim();
+        const productName = (_k = (_j = productNode.querySelector("name language")) === null || _j === void 0 ? void 0 : _j.textContent) === null || _k === void 0 ? void 0 : _k.trim();
+        const description = (_m = (_l = productNode.querySelector("description language")) === null || _l === void 0 ? void 0 : _l.textContent) === null || _m === void 0 ? void 0 : _m.trim();
+        console.log("Product ID:", id);
+        console.log("Manufacturer:", manufacturerName);
+        console.log("Reference:", reference);
+        console.log("Price:", price);
+        console.log("Name:", productName);
+        console.log("Description:", description);
+    }
+    else {
+        console.error("No product data found.");
+    }
+}
+// Usage example:
+//readXMLFile("/response.xml");
+// TODO: add items to the page from CMS API after choosing them in modal
+const removeFromComparePage = () => {
+    const pageButtons = document.querySelectorAll(".remove-from-compare");
+    const modalButtons = document.querySelectorAll(".compare-search-modal .js-compare-remove");
+    if (pageButtons) {
+        pageButtons.forEach(btn => {
+            btn.addEventListener("click", function () {
+                removeCompareItem(this.getAttribute("data-id"));
+                toggleSelectButtonsState();
+            });
+        });
+    }
+    if (modalButtons) {
+        modalButtons.forEach(btn => {
+            btn.addEventListener("click", function () {
+                const compareItem = this.closest(".compare-item");
+                if (!compareItem)
+                    return;
+                const colIndex = compareItem.getAttribute("aria-colindex") || "";
+                const compareItemId = this.getAttribute("data-id");
+                const deselectedItem = document.querySelector(`.compare-search-modal .model-item[data-id="${compareItemId}"]`);
+                compareItem.innerHTML = "";
+                compareItem.classList.add("empty");
+                compareItem.removeAttribute("data-id");
+                removeCompareItem(compareItemId);
+                changeCompareButtonState();
+                toggleSelectButtonsState();
+                deselectedItem === null || deselectedItem === void 0 ? void 0 : deselectedItem.classList.remove("active");
+                localStorage.setItem("colIndex", colIndex);
+            });
+        });
+    }
+};
+/**
+ * Removes product from compare page
+ * @param id - product id
+ */
+const removeCompareItem = (id) => {
+    const items = document.querySelectorAll(`.compare-item[data-id="${id}"]`);
+    if (!items)
+        return;
+    items.forEach((item) => {
+        let itemDataId = item.getAttribute("data-id");
+        if (itemDataId == id) {
+            item.innerHTML = "";
+            item.classList.add("empty");
+        }
+    });
+    addSelectButton(".compare-top .compare-item.empty");
+    removeEmptyLines();
+};
+/**
+ * Adds button for adding new product to compare page
+ * @param element - parent element with compare items
+ */
+const addSelectButton = (element) => {
+    const items = document.querySelectorAll(element);
+    if (!items)
+        return;
+    items.forEach(item => {
+        const newButton = document.createElement("button");
+        newButton.classList.add("open-modal");
+        newButton.setAttribute("data-modal", "compare-modal");
+        newButton.innerHTML = `<span class="icon">
+            <svg class="svg-inline--fa fa-plus" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"></path></svg><!-- <i class="fa-solid fa-plus"></i> Font Awesome fontawesome.com -->
+            </span>
+            <span>Ajouter</span>`;
+        item.innerHTML = "";
+        item.append(newButton);
+        if (!item.classList.contains("empty")) {
+            item.classList.add("empty");
+        }
+    });
+    openModal();
+    getColumnNumber();
+};
+const countEmptyCells = () => {
+    const topEmptyItems = document.querySelectorAll(".compare-top .compare-item.empty");
+    return topEmptyItems.length;
+};
+const countModalEmptyCells = () => {
+    const emptyCells = document.querySelectorAll(".compare-search-modal .compare-item.empty");
+    return emptyCells.length;
+};
+const initEmptyCells = () => {
+    const emptyCells = document.querySelectorAll(".compare-search-modal .compare-item.empty");
+    if (window.innerWidth < 768) {
+        emptyCells[emptyCells.length - 1].remove();
+    }
+};
+const toggleSelectButtonsState = () => {
+    const compareItems = document.querySelectorAll(".compare-search-modal .model-item");
+    if (countModalEmptyCells() == 0) {
+        compareItems.forEach(item => {
+            if (!item.classList.contains("active")) {
+                item.disabled = true;
+            }
+        });
+    }
+    else {
+        compareItems.forEach(item => {
+            item.disabled = false;
+        });
+    }
+};
+const removeEmptyLines = () => {
+    const lines = document.querySelectorAll(".compare-line");
+    if (!lines)
+        return;
+    lines.forEach((line) => {
+        if (countEmptyCells() == 3) {
+            if (!line.classList.contains("compare-top")) {
+                line.remove();
+            }
+        }
+    });
+    addSelectButton(".compare-top .compare-item.empty");
+};
+const getColumnNumber = () => {
+    const buttons = document.querySelectorAll(".compare-wrap .compare-top .open-modal");
+    if (!buttons)
+        return;
+    buttons.forEach((btn) => {
+        var _a;
+        const colIndex = (_a = btn.closest(".compare-item")) === null || _a === void 0 ? void 0 : _a.getAttribute("aria-colindex");
+        btn.addEventListener("click", () => {
+            localStorage.setItem("colIndex", colIndex);
+        });
+    });
+};
+const changeCompareButtonState = () => {
+    const button = document.querySelector(".compare-search-modal .js-open-compare");
+    const compareItems = document.querySelectorAll(".compare-search-modal .compare-item.empty");
+    if (!button)
+        return;
+    if (compareItems.length <= 1) {
+        button.disabled = false;
+    }
+    else {
+        button.disabled = true;
+    }
+};
+const closeCompareSearchModal = () => {
+    const button = document.querySelector(".compare-search-modal .js-open-compare");
+    const modal = document.querySelector(".compare-search-modal");
+    const modalBg = document.querySelector(".bg-modal");
+    if (!button)
+        return;
+    button.addEventListener("click", () => {
+        modal.classList.remove("show");
+        modalBg.classList.remove("show");
+    });
+};
+const setColIndex = () => {
+    const emptyItems = document.querySelectorAll(".compare-search-modal .compare-item.empty");
+    if (emptyItems.length > 0) {
+        localStorage.setItem("colIndex", emptyItems[0].getAttribute("aria-colindex") || "");
+    }
+};
+const onChangeButtonClick = () => {
+    const buttons = document.querySelectorAll(".compare-products button.open-modal");
+    if (!buttons)
+        return;
+    buttons.forEach(btn => {
+        btn.addEventListener("click", function () {
+            const parent = this.closest(".compare-item");
+            const colIndex = parent.getAttribute("aria-colindex");
+            const itemId = parent.getAttribute("data-id");
+            const modalItem = document.querySelector(`.compare-search-modal .compare-item[data-id='${itemId}']`);
+            const removeButton = document.querySelector(`.compare-top .remove-from-compare[data-id='${itemId}']`);
+            localStorage.setItem("colIndex", colIndex || "");
+            modalItem.innerHTML = "";
+            modalItem.classList.add("empty");
+            removeButton.click();
+        });
+    });
+};
+const compareSearch = () => {
+    const brands = {
+        Apple: [
+            { id: "13", name: "iPhone 13", image: "images/brands-logo/iphone13.png", brand: "Apple" },
+            { id: "14", name: "iPhone 14", image: "images/brands-logo/iphone14.png", brand: "Apple" },
+            { id: "15", name: "iPhone 15", image: "images/brands-logo/iphone15.png", brand: "Apple" },
+            { id: "1", name: "iPhone 16 Plus", image: "images/brands-logo/iphone16plus.png", brand: "Apple" },
+            { id: "16", name: "iPhone 16 Pro", image: "images/brands-logo/iphone16pro.png", brand: "Apple" }
+        ],
+        Samsung: [
+            { id: "23", name: "Galaxy S23", image: "images/brands-logo/s23.png", brand: "Samsung" },
+            { id: "2", name: "Galaxy S25 Ultra", image: "images/brands-logo/s24.png", brand: "Samsung" },
+            { id: "55", name: "Galaxy A55", image: "images/brands-logo/a55.png", brand: "Samsung" }
+        ],
+        Xiaomi: [
+            { id: "33", name: "Redmi Note 13", image: "images/brands-logo/note13.png", brand: "Xiaomi" },
+            { id: "34", name: "Redmi 12", image: "images/brands-logo/redmi12.png", brand: "Xiaomi" },
+            { id: "35", name: "14", image: "images/brands-logo/x14.png", brand: "Xiaomi" }
+        ]
+    };
+    const brandLogos = [
+        "images/brands-logo/apple.png",
+        "images/brands-logo/samsung.png",
+        "images/brands-logo/xiaomi.png"
+    ];
+    const searchInput = document.querySelector(".compare-search-modal input");
+    const brandList = document.querySelector(".compare-search-modal .brand-list");
+    const modelList = document.querySelector(".compare-search-modal .model-list");
+    const returnBtn = document.querySelector(".compare-search-modal .return");
+    const compareNote = document.querySelector(".compare-search-modal .note span");
+    if (!searchInput || !brandList || !modelList || !returnBtn)
+        return;
+    if (window.innerWidth < 768) {
+        compareNote.innerHTML = "2";
+    }
+    else {
+        compareNote.innerHTML = "3";
+    }
+    function displayBrands() {
+        brandList.innerHTML = "";
+        Object.keys(brands).forEach((brand, index) => {
+            const icon = document.createElement("img");
+            icon.setAttribute("src", brandLogos[index]);
+            const button = document.createElement("button");
+            button.textContent = brand;
+            button.className = "brand";
+            button.onclick = () => {
+                brandList.classList.add("hidden");
+                returnBtn.classList.add("active");
+                getSelectedItems();
+                displayModels(brand);
+                toggleSelectButtonsState();
+            };
+            button.appendChild(icon);
+            brandList.appendChild(button);
+        });
+    }
+    function displayModels(brand) {
+        modelList.innerHTML = "";
+        modelList.classList.remove("hidden");
+        brands[brand].forEach((product) => {
+            const item = document.createElement("button");
+            item.innerHTML = `<img src="${product.image}" alt="${product.name}"> ${product.name}`;
+            item.className = "model-item";
+            item.setAttribute("data-id", product.id);
+            let comparedProducts = JSON.parse(localStorage.getItem("comparedProducts") || "");
+            if (comparedProducts.includes(product.id)) {
+                item.classList.add("active");
+            }
+            else {
+                item.classList.remove("active");
+            }
+            item.onclick = () => {
+                if (item.classList.contains("active")) {
+                    item.classList.remove("active");
+                    selectItem(product, false);
+                }
+                else {
+                    item.classList.add("active");
+                    selectItem(product, true);
+                }
+                changeCompareButtonState();
+            };
+            modelList.appendChild(item);
+        });
+    }
+    function getSelectedItems() {
+        const selectedItems = document.querySelectorAll(".compare-search-modal .compare-item:not(.empty)");
+        const idList = [];
+        localStorage.setItem("comparedProducts", "");
+        selectedItems.forEach(item => {
+            idList.push(item.getAttribute("data-id") || "");
+        });
+        localStorage.setItem("comparedProducts", JSON.stringify(idList));
+    }
+    function selectItem(product, select) {
+        if (select) {
+            const colIndex = localStorage.getItem("colIndex");
+            const compareBox = document.querySelector(`.compare-search-modal .compare-item[aria-colindex='${colIndex}']`);
+            if (!compareBox)
+                return;
+            compareBox.classList.remove("empty");
+            compareBox.setAttribute("data-id", product.id);
+            compareBox.innerHTML = `
+                <div class='compare-remove js-compare-remove' data-id='${product.id}'></div>
+                <div class='inner flex'>
+                    <div class='pic'>
+                        <img src='${product.image}' alt=''>
+                    </div>
+                    <div class='right'>
+                        <div class='brand'>${product.brand}</div>
+                        <div class='name'>${product.name}</div>
+                    </div>
+                </div>
+            `;
+            setColIndex();
+        }
+        else {
+            const compareBox = document.querySelector(`.compare-search-modal .compare-item[data-id='${product.id}']`);
+            if (!compareBox)
+                return;
+            compareBox.innerHTML = "";
+            compareBox.classList.add("empty");
+            compareBox.removeAttribute("data-id");
+            localStorage.setItem("colIndex", compareBox.getAttribute("aria-colindex") || "");
+        }
+        removeFromComparePage();
+        toggleSelectButtonsState();
+    }
+    function searchModels() {
+        const query = searchInput.value.toLowerCase();
+        modelList.innerHTML = "";
+        modelList.classList.remove("hidden");
+        let results = [];
+        if (query) {
+            Object.entries(brands).forEach(([_, models]) => {
+                results = results.concat(models.filter((model) => model.name.toLowerCase().includes(query)));
+            });
+            if (results.length === 0) {
+                modelList.innerHTML = "<p>Aucun résultat trouvé</p>";
+            }
+            else {
+                results.forEach(({ id, name, image }) => {
+                    const item = document.createElement("button");
+                    item.innerHTML = `<img src="${image}" alt="${name}"> ${name}`;
+                    item.className = "model-item";
+                    item.setAttribute("data-id", id);
+                    // item.onclick = () => selectItem(item);
+                    modelList.appendChild(item);
+                });
+            }
+        }
+        else {
+            displayBrands();
+            modelList.classList.add("hidden");
+        }
+    }
+    searchInput.addEventListener("input", searchModels);
+    returnBtn.addEventListener("click", () => {
+        brandList.classList.remove("hidden");
+        modelList.classList.add("hidden");
+        returnBtn.classList.remove("active");
+    });
+    displayBrands();
+};
+const clearComparePage = () => {
+    const clearBtn = document.querySelector(".compare-search-modal .js-clear-compare");
+    const modalItems = document.querySelectorAll(".compare-search-modal .compare-item");
+    const pageItems = document.querySelectorAll(".compare-wrap .compare-line:not(.compare-top)");
+    if (!clearBtn || !modalItems || !pageItems)
+        return;
+    clearBtn === null || clearBtn === void 0 ? void 0 : clearBtn.addEventListener('click', () => {
+        modalItems.forEach((item) => {
+            item.innerHTML = "";
+            item.classList.add("empty");
+            item.removeAttribute("data-id");
+        });
+        pageItems.forEach(item => {
+            item.remove();
+        });
+        addSelectButton(".compare-top .compare-item");
+        changeCompareButtonState();
+    });
+};
+initEmptyCells();
+compareSearch();
+removeFromComparePage();
+getColumnNumber();
+changeCompareButtonState();
+closeCompareSearchModal();
+clearComparePage();
+onChangeButtonClick();
 const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
@@ -212,6 +608,154 @@ formValidation(".signin-form", "#submit-login", ".signin-form input:required", f
 formValidation(".signup-form", "#submit-register", ".signup-form .form-line__title + input:required", false, () => login());
 formValidation(".restore-form", "#submit-restore", ".restore-form input:required", false, () => restoreSuccess());
 formValidation(".address-form", "#submit-address", ".address-form input:required", false, () => updatedAddress());
+// common accordion
+const accordion = () => {
+    const accordionHeaders = document.querySelectorAll(".accordion-head");
+    if (accordionHeaders.length > 0) {
+        accordionHeaders.forEach(el => {
+            el.addEventListener("click", function () {
+                const accordionItem = this.parentElement;
+                const isActive = accordionItem.classList.contains("active");
+                const isOption = accordionItem.classList.contains("config-option");
+                if (!accordionItem)
+                    return;
+                const accordionContainer = accordionItem.closest(".accordion-container");
+                const accordionShowAll = accordionItem.closest(".accordion-show-all");
+                // Close all accordion items
+                if (accordionContainer) {
+                    accordionContainer.querySelectorAll(".accordion-item").forEach(item => {
+                        item.classList.remove("active");
+                    });
+                }
+                else if (accordionShowAll) {
+                }
+                else {
+                    document.querySelectorAll(".accordion-item").forEach(item => {
+                        item.classList.remove("active");
+                    });
+                }
+                if (accordionShowAll) {
+                    accordionItem.classList.toggle("active");
+                }
+                else {
+                    // Toggle only the clicked one
+                    if (!isActive || isOption) {
+                        accordionItem.classList.add("active");
+                    }
+                }
+            });
+        });
+    }
+};
+// scroll to top button
+const scrollToTop = () => {
+    const scrollToTopBtn = document.querySelector(".up-btn");
+    if (!scrollToTopBtn)
+        return;
+    // Show button when user scrolls down
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 400) {
+            scrollToTopBtn.style.opacity = "1";
+        }
+        else {
+            scrollToTopBtn.style.opacity = "0";
+        }
+    });
+    // Scroll to top on button click
+    scrollToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+};
+// show/hide search input in mobile version
+const openCloseSearch = () => {
+    const btn = document.querySelector('.js-open-search');
+    const searchForm = document.querySelector('.header__search');
+    if (!btn || !searchForm)
+        return;
+    btn.addEventListener('click', function () {
+        searchForm.classList.toggle('active');
+    });
+};
+// open modal windows
+const openModal = () => {
+    const body = document.querySelector("body");
+    const bg = document.querySelector(".bg-modal");
+    const openButtons = document.querySelectorAll("[data-modal]");
+    const closeButtons = document.querySelectorAll(".modal .modal-close");
+    if (!bg || !openButtons || !closeButtons)
+        return;
+    openButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const modalId = this.getAttribute("data-modal");
+            if (!modalId)
+                return;
+            const modal = document.getElementById(modalId);
+            const dataId = this.getAttribute("data-id");
+            if (modal) {
+                bg.classList.add("show", "on-top");
+                modal.classList.add("show");
+                if (dataId) {
+                    modal.setAttribute("data-id", dataId);
+                }
+            }
+        });
+    });
+    closeButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            bg.classList.remove("show", "on-top");
+            this.closest(".modal").classList.remove("show");
+            this.closest(".modal").setAttribute("data-id", "");
+            body.classList.remove("lock");
+        });
+    });
+    window.addEventListener("click", function (e) {
+        if (e.target === bg) {
+            document.querySelectorAll(".modal").forEach(modal => {
+                modal.classList.remove("show");
+            });
+            bg.classList.remove("show");
+            body.classList.remove("lock");
+        }
+    });
+};
+// toggle password visibility
+const showHidePass = (input) => {
+    const passwordInput = document.getElementById(input);
+    if (!passwordInput)
+        return;
+    const parent = passwordInput.closest(".inner");
+    if (!parent)
+        return;
+    const toggleButton = parent.querySelector(".js-toggle-pass");
+    if (!toggleButton)
+        return;
+    toggleButton.addEventListener("click", () => {
+        let iconHide = toggleButton.querySelector('.fa-eye-slash');
+        let iconShow = toggleButton.querySelector('.fa-eye');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            iconHide.style.display = "block";
+            iconShow.style.display = "none";
+        }
+        else {
+            passwordInput.type = "password";
+            iconHide.style.display = "none";
+            iconShow.style.display = "block";
+        }
+    });
+};
+document.addEventListener('DOMContentLoaded', function (event) {
+    accordion();
+    scrollToTop();
+    openCloseSearch();
+    openModal();
+    showHidePass("field-password");
+    showHidePass("field-new_password");
+});
 function applyInputMask(input, pattern) {
     input.addEventListener("input", (event) => {
         const target = event.target;
@@ -728,23 +1272,27 @@ const addToCompareModal = (product) => {
     }
     // Show compare modal
     compareModal.classList.add('open');
-    // item removal from the compare modal
-    const removeButton = compareItem.querySelector('.js-compare-remove');
+    removeFromCompareModal(compareItem, compareList, compareItemEmpty, compareModal);
+    openComparePage();
+    clearCompareModal();
+};
+// item removal from the compare modal
+const removeFromCompareModal = (item, list, emptyItem, modal) => {
+    const removeButton = item.querySelector('.js-compare-remove');
+    const compareBtn = document.querySelector('.js-open-compare');
     if (removeButton) {
         removeButton.addEventListener('click', () => {
-            compareList.replaceChild(compareItemEmpty, compareItem);
+            list.replaceChild(emptyItem, item);
             compareBtn.disabled = true;
             disableProducts(false);
             unSelectProduct(removeButton.getAttribute('data-id'));
-            if ((window.innerWidth < 768 && compareList.querySelectorAll('.empty').length == 2)
-                || (window.innerWidth >= 768 && compareList.querySelectorAll('.empty').length == 3)) {
-                compareModal.classList.remove('open');
-                compareList.innerHTML = '';
+            if ((window.innerWidth < 768 && list.querySelectorAll('.empty').length == 2)
+                || (window.innerWidth >= 768 && list.querySelectorAll('.empty').length == 3)) {
+                modal.classList.remove('open');
+                list.innerHTML = '';
             }
         });
     }
-    openComparePage();
-    clearCompareModal();
 };
 /**
  * Chooses product to compare
@@ -804,7 +1352,7 @@ const selectProduct = () => {
             else {
                 disableProducts(true);
             }
-            console.info('Products in compare list:', compareList);
+            // console.info('Products in compare list:', compareList);
         });
     });
 };
@@ -872,7 +1420,7 @@ const clearCompareModal = () => {
     const clearBtn = document.querySelector('.js-clear-compare');
     const compareButtons = document.querySelectorAll('.product-card .compare input');
     if (!compareButtons.length) {
-        console.error('The page does not contain products');
+        // console.error('The page does not contain products');
         return;
     }
     clearBtn === null || clearBtn === void 0 ? void 0 : clearBtn.addEventListener('click', () => {
@@ -1675,6 +2223,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const stickyProductTop = document.querySelector(".product-top");
     const stickyMobileTabs = document.querySelector(".product-top__tabs");
     const stickyPlanTop = document.querySelector(".plan-details-top");
+    const stickyCompareTop = document.querySelector(".compare-products");
     if (stickyProductTop && window.innerWidth >= 1024) {
         stickyElement(stickyProductTop, true);
     }
@@ -1683,6 +2232,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (stickyPlanTop && window.innerWidth >= 768) {
         stickyElement(stickyPlanTop, true);
+    }
+    if (stickyCompareTop) {
+        stickyElement(stickyCompareTop, true);
     }
 });
 function stickySidebar(leftElement, rightElement, offset = 20) {

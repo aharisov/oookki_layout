@@ -4,34 +4,43 @@ const accordion = () => {
 
     if (accordionHeaders.length > 0) {
         accordionHeaders.forEach(el => {
-            el.addEventListener("click", function () {
+            el.addEventListener("click", function (this: HTMLElement) {
                 const accordionItem = this.parentElement;
-                const isActive = accordionItem.classList.contains("active");  
-                const isOption = accordionItem.classList.contains("config-option");
+                const isActive = accordionItem!.classList.contains("active");  
+                const isOption = accordionItem!.classList.contains("config-option");
+
+                if (!accordionItem) return;
 
                 const accordionContainer = accordionItem.closest(".accordion-container");
+                const accordionShowAll = accordionItem.closest(".accordion-show-all");
                 // Close all accordion items
                 if (accordionContainer) {
                     accordionContainer.querySelectorAll(".accordion-item").forEach(item => {
                         item.classList.remove("active");
                     });
+                } else if (accordionShowAll) {
+
                 } else {
                     document.querySelectorAll(".accordion-item").forEach(item => {
                         item.classList.remove("active");
                     });
                 }
 
-                // Toggle only the clicked one
-                if (!isActive || isOption) {
-                    accordionItem.classList.add("active");
+                if (accordionShowAll) { 
+                    accordionItem.classList.toggle("active");
+                } else {
+                    // Toggle only the clicked one
+                    if (!isActive || isOption) {
+                        accordionItem.classList.add("active");
+                    }
                 }
             });
         });
     }
 }
 // scroll to top button
-const scrollToTop = () => {
-    const scrollToTopBtn = document.querySelector(".up-btn");
+const scrollToTop = (): void => {
+    const scrollToTopBtn = document.querySelector(".up-btn") as HTMLDivElement;
 
     if (!scrollToTopBtn) return;
 
@@ -52,8 +61,9 @@ const scrollToTop = () => {
         });
     });
 }
+
 // show/hide search input in mobile version
-const openCloseSearch = () => {
+const openCloseSearch = (): void => {
     const btn = document.querySelector('.js-open-search');
     const searchForm = document.querySelector('.header__search');
 
@@ -63,19 +73,21 @@ const openCloseSearch = () => {
         searchForm.classList.toggle('active');
     })
 }
+
 // open modal windows
 const openModal = () => {
-    const body = document.querySelector("body");
-    const bg = document.querySelector(".bg-modal");
+    const body = document.querySelector("body") as HTMLElement;
+    const bg = document.querySelector(".bg-modal") as HTMLDivElement;
     const openButtons = document.querySelectorAll("[data-modal]");
     const closeButtons = document.querySelectorAll(".modal .modal-close");
 
     if (!bg || !openButtons || !closeButtons) return;
 
     openButtons.forEach(button => {
-        button.addEventListener("click", function (e) {
+        button.addEventListener("click", function (this: HTMLElement, e: Event) {
             e.preventDefault();
             const modalId = this.getAttribute("data-modal");
+            if (!modalId) return;
             const modal = document.getElementById(modalId);
             const dataId = this.getAttribute("data-id");
 
@@ -91,10 +103,10 @@ const openModal = () => {
     });
 
     closeButtons.forEach(button => {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (this: HTMLElement | null) {
             bg.classList.remove("show", "on-top");
-            this.closest(".modal").classList.remove("show");
-            this.closest(".modal").setAttribute("data-id", "");
+            this!.closest(".modal")!.classList.remove("show");
+            this!.closest(".modal")!.setAttribute("data-id", "");
             body.classList.remove("lock");
         });
     });
@@ -109,24 +121,29 @@ const openModal = () => {
         }
     });
 }
-
-const showHidePass = (el) => {
-    const passwordInput = document.getElementById(el);
+// toggle password visibility
+const showHidePass = (input: string): void => {
+    const passwordInput = document.getElementById(input) as HTMLInputElement;
     if (!passwordInput) return;
+
     const parent = passwordInput.closest(".inner");
     if (!parent) return;
-    const toggleButton = parent.querySelector(".js-toggle-pass");
+    
+    const toggleButton = parent.querySelector(".js-toggle-pass") as HTMLElement;
     if (!toggleButton) return;
 
     toggleButton.addEventListener("click", () => {
+        let iconHide = toggleButton!.querySelector('.fa-eye-slash') as HTMLElement;
+        let iconShow = toggleButton!.querySelector('.fa-eye') as HTMLElement;
+
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
-            toggleButton.querySelector('.fa-eye-slash').style.display = "block";
-            toggleButton.querySelector('.fa-eye').style.display = "none";
+            iconHide.style.display = "block";
+            iconShow.style.display = "none";
         } else {
             passwordInput.type = "password";
-            toggleButton.querySelector('.fa-eye-slash').style.display = "none";
-            toggleButton.querySelector('.fa-eye').style.display = "block";
+            iconHide.style.display = "none";
+            iconShow.style.display = "block";
         }
     });
 
