@@ -2226,6 +2226,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const stickyMobileTabs = document.querySelector(".product-top__tabs");
     const stickyPlanTop = document.querySelector(".plan-details-top");
     const stickyCompareTop = document.querySelector(".compare-products");
+    const stickySearchPageTop = document.querySelector(".search-page .filter-top");
     if (stickyProductTop && window.innerWidth >= 1024) {
         stickyElement(stickyProductTop, true);
     }
@@ -2237,6 +2238,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (stickyCompareTop) {
         stickyElement(stickyCompareTop, true);
+    }
+    if (stickySearchPageTop) {
+        stickyElement(stickySearchPageTop, true);
     }
 });
 function stickySidebar(leftElement, rightElement, offset = 20) {

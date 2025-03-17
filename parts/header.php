@@ -3,7 +3,7 @@
         <div class="header__inner flex">
             <a href="index.php" class="header__logo"><img src="images/logo.png" alt="OOOKKI" title="OOOKKI"></a>
             <div class="header__search">
-                <form action="">
+                <form action="search-page.php">
                     <input type="text" placeholder="Recherchez des produits essentiels ...">
                     <button type="submit" title="Rechercher"></button>
                 </form>

@@ -47,7 +47,7 @@
         display: none;
         span {
             margin-right: 0.3rem;
-            font-weight: bold;
+            font-weight: 500;
         }
     }
 
@@ -64,7 +64,7 @@
             position: relative;
             padding-right: 1.5rem;
             font-size: $fontXS;
-            font-weight: bold;
+            font-weight: 500;
             cursor: pointer;
 
             &::after {
@@ -122,7 +122,7 @@
                     margin-right: 1rem;
                 }
                 &__active {
-                    font-weight: bold;
+                    font-weight: 500;
                     color: $colorGray;
                 }
             }
@@ -167,7 +167,7 @@
                     opacity: 0;
                 }
                 &[aria-selected="true"] {
-                    font-weight: bold;
+                    font-weight: 500;
                     color: $colorRedTransparent;
 
                     &::after {
@@ -176,6 +176,24 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.search-page {
+    .filter-top {
+        .result {
+            display: inline-flex;
+        }
+
+        &.sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            width: 100%;
+            padding-top: 1rem;
+            background: $colorWhite;
         }
     }
 }
