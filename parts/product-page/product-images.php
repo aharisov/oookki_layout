@@ -48,6 +48,6 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
-    <div class="icon-5g"></div>
+    <div class="icon icon-5g"></div>
     </div>
 </div>

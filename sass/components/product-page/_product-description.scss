@@ -3,15 +3,29 @@
 
     .text {
         margin-bottom: $mb-m;
+
+        p {
+            font-size: $fontXS;
+        }
+        i {
+            display: block; 
+            margin-top: $mb-s;
+            font-style: italic;
+            color: $colorGray;
+        }
     }
     .media {
         position: relative;
-        figure, video {
+        figure, video, picture {
             width: 100%;
         }
         video, .cover {
             border-radius: $borderRadiusCommon;
             transition: $transition;
+            max-height: 380px;
+        }
+        picture img {
+            border-radius: $borderRadiusCommon;
         }
         .cover {
             position: absolute;
@@ -67,6 +81,10 @@
         }
         .text {
             width: 35%;
+
+            p {
+                font-size: $fontS;
+            }
         }
         .media {
             width: 60%;

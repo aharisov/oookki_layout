@@ -13,10 +13,9 @@
         <div class="top-feature">
             <div class="icon">
                 <img src="images/ic-phone.svg" alt="">
-                <span>7,6</span>
             </div>
             <p>Taille de l’écran</p>
-            <span>2160 x 1856 px</span>
+            <span>7,6" (2160 x 1856 px)</span>
         </div>
         <div class="top-feature">
             <div class="icon">
@@ -53,70 +52,70 @@
         <div class="feature-section">
             <div class="title">Photo</div>
             <ul class="list">
-                <li>Appareil photo arrière : 50 Mpx</li>
-                <li>Appareil photo frontal : 10 Mpx</li>
-                <li>Flash : Oui</li>
-                <li>Téléobjectif : 10 Mpx</li>
-                <li>Zoom : Oui</li>
-                <li>Nombre de caméras : 5</li>
-                <li>Grand angle : 12 Mpx</li>
+                <li><span>Appareil photo arrière :</span> 50 Mpx</li>
+                <li><span>Appareil photo frontal :</span> 10 Mpx</li>
+                <li><span>Flash :</span> Oui</li>
+                <li><span>Téléobjectif :</span> 10 Mpx</li>
+                <li><span>Zoom :</span> Oui</li>
+                <li><span>Nombre de caméras :</span> 5</li>
+                <li><span>Grand angle :</span> 12 Mpx</li>
             </ul>
         </div>
         <div class="feature-section">
             <div class="title">Vidéo</div>
             <ul class="list">
-                <li>Enregistrement vidéo : 8K à 30 ips</li>
+                <li><span>Enregistrement vidéo :</span> 8K à 30 ips</li>
             </ul>
         </div>
         <div class="feature-section">
             <div class="title">Sécurité</div>
             <ul class="list">
-                <li>Déverrouillage par reconnaissance faciale : Oui</li>
-                <li>Emplacement du capteur d'écran : cote</li>
+                <li><span>Déverrouillage par reconnaissance faciale :</span> Oui</li>
+                <li><span>Emplacement du capteur d'écran :</span> cote</li>
             </ul>
         </div>
         <div class="feature-section">
             <div class="title">Réseau et connexion</div>
             <ul class="list">
-                <li>Compatibilité 4G : Oui</li>
-                <li>Compatibilité 5G : Oui</li>
-                <li>Bluetooth : Bluetooth 5.3
+                <li><span>Compatibilité 4G :</span> Oui</li>
+                <li><span>Compatibilité 5G :</span> Oui</li>
+                <li><span>Bluetooth :</span> Bluetooth 5.3
                 </li>
-                <li>Wifi : Wifi 6E (ax)</li>
-                <li>NFC : Oui</li>
-                <li>Bandes 5G NSA : <b>n1, n2, n3, n5, n7, n8, n12, n20, n25, n26, n28, n38, n40</b></li>
-                <li>Bandes 4G TDD : <b>B39, B40, B41, B66</b></li>
-                <li>Bandes 4G FDD : <b>4G : B1, B2, B3, B4, B5, B7, B8, B12, B13, B17, B18, B19, B20, B25, B26, B28, B32, B38</b></li>
-                <li>Bandes 3G : <b>B1(2100), B2(1900), B4(AWS), B5(850), B8(900)</b></li>
-                <li>Bandes 2G : <b>GSM850, GSM900, DCS1800, PCS1900</b></li>
+                <li><span>Wifi :</span> Wifi 6E (ax)</li>
+                <li><span>NFC :</span> Oui</li>
+                <li><span>Bandes 5G NSA :</span> <b>n1, n2, n3, n5, n7, n8, n12, n20, n25, n26, n28, n38, n40</b></li>
+                <li><span>Bandes 4G TDD :</span> <b>B39, B40, B41, B66</b></li>
+                <li><span>Bandes 4G FDD :</span> <b>4G : B1, B2, B3, B4, B5, B7, B8, B12, B13, B17, B18, B19, B20, B25, B26, B28, B32, B38</b></li>
+                <li><span>Bandes 3G :</span> <b>B1(2100), B2(1900), B4(AWS), B5(850), B8(900)</b></li>
+                <li><span>Bandes 2G :</span> <b>GSM850, GSM900, DCS1800, PCS1900</b></li>
             </ul>
         </div>
         <div class="feature-section">
             <div class="title">Autonomie</div>
             <ul class="list">
-                <li>Capacité de la batterie : 4400 mAh</li>
-                <li>Recharge sans fil : Oui</li>
-                <li>Recharge rapide filaire : Oui</li>
-                <li>Recharge rapide sans fil : Oui</li>
+                <li><span>Capacité de la batterie :</span> 4400 mAh</li>
+                <li><span>Recharge sans fil :</span> Oui</li>
+                <li><span>Recharge rapide filaire :</span> Oui</li>
+                <li><span>Recharge rapide sans fil :</span> Oui</li>
             </ul>
         </div>
         <div class="feature-section">
             <div class="title">Écran</div>
             <ul class="list">
-                <li>Taille : 7.6 pouces</li>
-                <li>Design : pliable</li>
-                <li>Résolution : 2160 x 1856 px</li>
-                <li>DPI : 374 DPI</li>
-                <li>Écran : Dynamic AMOLED</li>
-                <li>Compatibilité HDR</li>
+                <li><span>Taille :</span> 7.6 pouces</li>
+                <li><span>Design :</span> pliable</li>
+                <li><span>Résolution :</span> 2160 x 1856 px</li>
+                <li><span>DPI :</span> 374 DPI</li>
+                <li><span>Écran :</span> Dynamic AMOLED</li>
+                <li><span>Compatibilité :</span> HDR</li>
             </ul>
         </div>
         <div class="feature-section">
             <div class="title">Performance</div>
             <ul class="list">
-                <li>OS : Android version 14</li>
-                <li>Processeur : Qualcomm Snapdragon 8 Gen3</li>
-                <li>RAM : 12 Go de RAM</li>
+                <li><span>OS :</span> Android version 14</li>
+                <li><span>Processeur :</span> Qualcomm Snapdragon 8 Gen3</li>
+                <li><span>RAM :</span> 12 Go de RAM</li>
             </ul>
         </div>
         <div class="feature-section">

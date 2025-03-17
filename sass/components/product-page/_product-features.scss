@@ -10,8 +10,10 @@
 
             .icon {
                 position: relative;
-                height: 50px;
-                margin-bottom: $mb-xs;
+                width: 40px;
+                height: 40px;
+                margin: 0 auto $mb-xs;
+                text-align: center;
 
                 img {
                     @include imgFit;
@@ -27,11 +29,10 @@
                 }
             }
             p {
-                font-weight: bold;
+                font-weight: 500;
                 color: $colorGray;
             }
             span {
-                font-size: $font14;
                 color: $colorGray;
             }
         }
@@ -40,6 +41,13 @@
     .features-inner {
         .feature-section {
             margin-bottom: $mb-l;
+            padding: 1rem;
+            background: $colorSecond;
+
+            &:nth-child(odd) {
+                padding: 0 1rem;
+                background: none;
+            }
 
             .title {
                 margin-bottom: $mb-s;
@@ -47,24 +55,39 @@
                 font-size: $fontS;
             }
             .list {
+                li {
+                    margin-bottom: $mb-xs;
+                    color: $colorGray;
+
+                    span {
+                        font-weight: 500;
+                        color: $colorPrimary;
+                    }
+                }
+                
+                .note {
+                    font-weight: 300;
+                    font-style: italic;
+                    color: $colorGray;
+                }
                 &.special {
                     display: flex;
+                    flex-wrap: wrap;
                     span {
                         display: inline-flex;
                         width: 20px;
                         height: 20px;
                         margin-right: $mb-xs;
                         border-radius: $borderRadiusCircle;
+                        color: $colorPrimary;
                     }
                     li {
                         display: inline-flex;
                         align-items: center;
                         margin-right: $mb-l;
                         font-weight: 500;
+                        color: $colorPrimary;
                     }
-                }
-                li {
-                    margin-bottom: $mb-xs;
                 }
                 &.capacity {
                     li {
@@ -75,6 +98,9 @@
                 }
             }
 
+            &.repare-score img {
+                width: 100px;
+            }
             &.repare-score .list {
                 display: flex;
             }
@@ -138,12 +164,7 @@
             .feature-section {
                 display: flex;
                 margin-bottom: 0;
-                padding: 1rem;
-                background: $colorSecond;
-
-                &:nth-child(odd) {
-                    background: none;
-                }
+                
                 .title {
                     width: 30%;
                     margin-bottom: 0;
@@ -157,16 +178,32 @@
         }
     } 
 }
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
     .product-features {
         .features-top .top-feature {
             p {
                 font-size: $fontS;
             }
             span {
-                font-size: $font16;
+                font-size: $fontXS;
             }
         }
+        .features-inner {
+            .feature-section {
+                .list {
+                    padding-top: 0;
+                }
+                .list.special {
+                    li {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .product-features {
         .features-inner {
             .feature-section {
                 margin-bottom: $mb-l;

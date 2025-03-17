@@ -72,7 +72,7 @@
                     }?>
                 ">
                     <div class="pic">
-                        <a href="product.php">
+                        <a href="tv-product-page.php">
                             <img src="<?php echo $products[$i]["pic"]?>" alt="<?php echo $products[$i]["name"]?>">
                         </a>
                         <div class="icon energy">

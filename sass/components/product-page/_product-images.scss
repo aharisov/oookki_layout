@@ -32,19 +32,29 @@
         object-fit: contain;
         transition: $transition;
     }
-    .icon-5g {
+    .icon {
         position: absolute;
         right: 0;
         bottom: 2rem;
         z-index: 100;
         width: 40px;
         height: 40px;
-        border: 1px solid $colorRed;
-        border-radius: $borderRadiusCircle;
-        background-image: url("../images/ic-5g-new.svg");
-        @include bgImg;
-        background-position: center;
-        background-size: 80%;
+
+        &.icon-5g {
+            border: 1px solid $colorRed;
+            border-radius: $borderRadiusCircle;
+            background-image: url("../images/ic-5g-new.svg");
+            @include bgImg;
+            background-position: center;
+            background-size: 80%;
+        }
+        &.icon-other {
+            bottom: 4rem;
+            img {
+                @include imgFit;
+                object-fit: contain;
+            }
+        }
     }
 }
 

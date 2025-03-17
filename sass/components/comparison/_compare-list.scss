@@ -57,6 +57,12 @@
                 border: 1px solid $colorRedTransparent;
                 border-radius: $borderRadiusCircle;
                 color: $colorRedTransparent;
+                transition: $transition;
+
+                &:hover {
+                    border-color: $colorGray;
+                    color: $colorGray;
+                }
             }
             &.empty {
                 flex-direction: column;
@@ -65,6 +71,9 @@
                 min-height: 150px;
                 border-radius: $borderRadiusS;
                 background: $colorGrayTransparent;
+            }
+            button.open-modal {
+                font-size: $fontXS;
             }
         }
     }
@@ -76,7 +85,6 @@
         justify-content: center;
         width: 100%;
         height: 100%;
-        font-size: $fontXS;
         color: $colorGray;
         transition: $transition;
 
@@ -100,10 +108,12 @@
             span {
                 display: block;
                 font-family: $fontTitle;
+                font-weight: 300;
+                font-size: $fontXS;
                 text-align: center;
 
                 &:last-child {
-                    font-weight: bold;
+                    font-weight: 500;
                 }
             }
         }
@@ -309,8 +319,7 @@
                     }
 
                     span {
-                        font-weight: bold;
-                        color: $colorGray;
+                        font-weight: 500;
                     }
                 }
                 &.colors {
@@ -375,6 +384,11 @@
 @media (min-width: 1024px) {
     .compare-line {
         &.compare-info {
+            .prod-name {
+                span:last-child {
+                    font-size: $fontS;
+                }
+            }
             .prod-actions {
                 flex-direction: row;
                 align-items: center;
