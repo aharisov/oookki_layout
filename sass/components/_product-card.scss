@@ -7,6 +7,9 @@
     border-radius: $borderRadiusCommon;
     transition: $transition;
 
+    &.hidden {
+        display: none;
+    }
     &.in-compare {
         border-color: $colorPrimary;
     }
@@ -127,6 +130,11 @@
             @include bgImg;
             background-position: center;
             background-size: 80%;
+
+            &.energy {
+                background: none;
+                border: none;
+            }
         }
     }
     .name {
@@ -325,6 +333,12 @@
             p {
                 font-size: $font14;
             }
+        }
+        .name-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100%;
         }
     }
 }

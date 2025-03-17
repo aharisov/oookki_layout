@@ -68,11 +68,11 @@
                     <span>TV & Audio</span>
                     <div class="main-menu__dropdown">
                         <ul>
-                            <li><a href="">Tous les TV & Audio</a></li>
-                            <li><a href="">Samsung</a></li>
-                            <li><a href="">Apple</a></li>
-                            <li><a href="">Acer</a></li>
-                            <li><a href="">Oookki</a></li>
+                            <li><a href="tv-section-page.php">Tous les TV & Audio</a></li>
+                            <li><a href="tv-section-page.php?brand=samsung">Samsung</a></li>
+                            <li><a href="tv-section-page.php?brand=hisense">Hisense</a></li>
+                            <li><a href="tv-section-page.php?brand=lg">LG</a></li>
+                            <li><a href="tv-section-page.php?brand=sony">Sony</a></li>
                         </ul>
                     </div>
                 </li>

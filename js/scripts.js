@@ -152,6 +152,8 @@ const countModalEmptyCells = () => {
 };
 const initEmptyCells = () => {
     const emptyCells = document.querySelectorAll(".compare-search-modal .compare-item.empty");
+    if (emptyCells.length == 0)
+        return;
     if (window.innerWidth < 768) {
         emptyCells[emptyCells.length - 1].remove();
     }

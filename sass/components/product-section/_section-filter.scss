@@ -87,6 +87,9 @@
                 input:checked + span::after {
                     top: 7px;
                 }
+                i {
+                    color: $colorRedTransparent2;
+                }
             }
             .filter-more {
                 border-bottom: 1px solid $colorPrimary;
@@ -260,7 +263,8 @@
 }
 @media (min-width: 1200px) {
     .section-filter {
-        max-width: 270px;
+        width: 100%;
+        max-width: 300px;
 
         .filter-inner .filter-block {
             h4 {
@@ -277,7 +281,8 @@
         }
 
         .fixed, .absolute {
-            max-width: 270px;
+            width: 100%;
+            max-width: 300px;
         }
     }
 }

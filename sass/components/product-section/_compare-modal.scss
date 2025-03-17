@@ -88,7 +88,10 @@
                 color: $colorGray;
             }
             .name {
+                height: 40px;
+                overflow: hidden;
                 font-weight: bold;
+                font-size: $font14;
             }
             .compare-remove {
                 position: absolute;
@@ -168,6 +171,10 @@
                 .pic {
                     margin-bottom: 1rem;
                 }
+                .name {
+                    height: 50px;
+                    font-size: $font16;
+                }
             }
         }
     }
@@ -187,6 +194,7 @@
         }
     }
 }
+/*
 @media (min-width: 1200px) {
     .compare-modal {
         .compare-inner {
@@ -201,4 +209,4 @@
              
         }
     }
-}
+}*/
