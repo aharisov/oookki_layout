@@ -5,7 +5,7 @@
     <div class="config-options">
         <input type="radio" name="card" id="sim-card" value="Carte sim">
         <div class="config-option">
-            <div class="switch">
+            <div class="switch sim-switch">
                 <label for="sim-card">Carte SIM</label>
                 <i class="note promo">Offerte</i>
                 <img src="images/ic-sim.svg" alt="SIM">
@@ -14,7 +14,7 @@
         </div>
         <input type="radio" name="card" id="esim-card" value="eSim">
         <div class="config-option">
-            <div class="switch">
+            <div class="switch sim-switch">
                 <label for="esim-card">eSIM</label>
                 <i class="note promo">Offerte</i>
                 <img src="images/ic-esim.svg" alt="SIM">
